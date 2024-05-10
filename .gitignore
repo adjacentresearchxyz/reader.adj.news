@@ -55,3 +55,6 @@ apps/expo/build-1694808019062.apk
 expo-env.d.ts
 
 target
+
+.nix-node
+.vscode
