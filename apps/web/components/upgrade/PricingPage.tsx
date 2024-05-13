@@ -11,12 +11,7 @@ export const PricingPage = () => {
     <>
       <div className="rounded-b-xl border-x border-b bg-[#fafafa] dark:rounded-none dark:border-none dark:border-neutral-700/80 dark:bg-[#141415]">
         <h1 className="mx-auto flex justify-center pt-10 text-7xl font-[775] leading-none tracking-tight md:w-[700px]">
-          <span className="z-10 py-2 tracking-tight text-sky-500">Pricing</span>
-        </h1>
-        <h1 className="mx-auto mt-3 flex justify-center text-lg leading-none md:w-[700px]">
-          <span className="font-base z-10 text-center text-neutral-450">
-            Use Refeed for free or try Refeed Pro with a free 14 day trial.
-          </span>
+          <span className="z-10 py-2 tracking-tight text-black-500">Pricing</span>
         </h1>
         <div className="mt-6 flex items-center justify-center">
           <Control

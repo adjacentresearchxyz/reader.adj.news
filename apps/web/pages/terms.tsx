@@ -42,8 +42,8 @@ const Terms = () => (
   <div className="text-lg">
     <p className="my-6">Effective Febuary 14, 2024</p>
     <p>
-      Refeed (“us”, “we”, or “our”) operates{" "}
-      <a href="https://refeedreader.com">https://refeedreader.com</a>{" "}
+      Adjacent (“us”, “we”, or “our”) operates{" "}
+      <a href="https://adj.news">adj.news</a>{" "}
       (hereinafter referred to as “Service”).
     </p>
     <h2 className="my-6 text-2xl font-bold" id="introduction">
@@ -51,8 +51,8 @@ const Terms = () => (
     </h2>
     <p>
       The following Terms of Service are a legal agreement between you (either
-      as an individual or on behalf of an entity) and Refeed regarding your use
-      of Refeed's Platform and associated documentation ("Software"). These erms
+      as an individual or on behalf of an entity) and Adjacent regarding your use
+      of Adjacent's Platform and associated documentation ("Software"). These erms
       apply to the executable code version of the Software. Source code for the
       Software is available separately and free of charge under open source
       software license agreements. If you do not agree to all of the terms in
@@ -61,7 +61,7 @@ const Terms = () => (
     </p>
     <h2 className="my-6 text-2xl font-bold">Modification</h2>
     <p>
-      Refeed reserves the right, at its sole discretion, to modify these Terms
+      Adjacent reserves the right, at its sole discretion, to modify these Terms
       at any time and without prior notice. The date of the last modification to
       the Terms will be posted at the beginning of these Terms. It is your
       responsibility to check from time to time for updates. By continuing to
@@ -82,7 +82,7 @@ const Terms = () => (
       Either party may terminate this Agreement upon written notice to the other
       party if the other party materially breaches this Agreement and such
       breach is not cured within thirty (30) days after the breaching party’s
-      receipt of such notice. Refeed may terminate Customer’s access to the Free
+      receipt of such notice. Adjacent may terminate Customer’s access to the Free
       Version at any time upon notice to Customer.
     </p>
     <h2 className="my-6 text-2xl font-bold">Disclaimer of Warranties.</h2>
@@ -109,7 +109,7 @@ const Terms = () => (
     </p>
     <h2 className="my-6 text-2xl font-bold">No Waiver</h2>
     <p>
-      The failure of Refeed to enforce any right or provision of these Terms
+      The failure of Adjacent to enforce any right or provision of these Terms
       will not constitute a waiver of future enforcement of that right or
       provision.
     </p>
@@ -125,7 +125,7 @@ const Terms = () => (
     <h2 className="my-6 text-2xl font-bold">Entire Agreement</h2>
     <p>
       Entire Agreement. These Terms constitute the entire agreement between you
-      and Refeed regarding your use of the Platform, and supersede all prior
+      and Adjacent regarding your use of the Platform, and supersede all prior
       written or oral agreements other than the Organization Agreements.
     </p>
     <h2 className="my-6 text-2xl font-bold" id="contact-us">
@@ -134,8 +134,8 @@ const Terms = () => (
     <p>
       If you have any questions about this Terms of Service, please contact us
       by email at{" "}
-      <a href="mailto:michaelkremenetsky@refeed.dev" className="text-sky-500">
-        michaelkremenetsky@refeed.dev
+      <a href="mailto:lucas@adjacentresearch.xyz" className="text-sky-500">
+        lucas@adjacentresearch.xyz
       </a>
     </p>
   </div>

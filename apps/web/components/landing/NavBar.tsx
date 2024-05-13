@@ -9,6 +9,7 @@ import {
 } from "../ui/NavigationMenu";
 import LoginButton from "./LoginButton";
 import TryNowButton from "./TryNowButton";
+import WaitlistButton from "./WaitlistButton";
 
 export default function NavBar() {
   return (
@@ -18,83 +19,33 @@ export default function NavBar() {
           href="/"
           className="ml-4 mr-5 flex items-start text-base font-[650]"
         >
-          Refeed
+          <img src="https://pbs.twimg.com/profile_images/1668357289747554304/7NSJ60Fd_400x400.jpg" alt="Refeed Logo" className="h-8 w-auto" />
         </Link>
         <MobileNav />
         <div className="flex items-center space-x-5 text-sm font-[550]">
-          <Link href="/pricing" className="hidden md:block">
-            Pricing
-          </Link>
-          {/* <Link className="hidden md:block" href="/features">
-            Features
-          </Link> */}
           <Link
             className={`hidden md:block`}
-            href="https://github.com/michaelkremenetsky/Refeed"
+            href="https://data.adj.news/markets"
           >
-            Github
+            Data
           </Link>
-          <Link
-            className="hidden md:block"
-            href="https://github.com/users/michaelkremenetsky/projects/3"
-          >
-            Roadmap
+          <Link href="https://adjacentresearch.substack.com" className="hidden md:block">
+            Research
           </Link>
-          <div className="hidden md:block">
-            <NavigationMenu>
-              <NavigationMenuList className="center">
-                <NavigationMenuItem>
-                  <NavigationMenuTrigger>Resources</NavigationMenuTrigger>
-                  <NavigationMenuContent className="min-w-[200px] bg-white py-2">
-                    <Link href="/about" className="cursor-default">
-                      <NavigationButton title="About" subtitle="About Us" />
-                    </Link>
-                    <Link
-                      href="https://github.com/michaelkremenetsky/Refeed?tab=readme-ov-file#self-hosting-with-docker"
-                      className="cursor-default"
-                    >
-                      <NavigationButton
-                        title="Self Host"
-                        subtitle="Self Host Refeed"
-                      />
-                    </Link>
-                    <Link
-                      href="https://github.com/michaelkremenetsky/Refeed?tab=readme-ov-file#contributing"
-                      className="cursor-default"
-                    >
-                      <NavigationButton
-                        title="Contributing"
-                        subtitle="Contribute to Refeed"
-                      />
-                    </Link>
-                    <Link
-                      href="https://github.com/michaelkremenetsky/Refeed/issues"
-                      className="cursor-default"
-                    >
-                      <NavigationButton
-                        title="Report an Issue"
-                        subtitle="Report on Github"
-                      />
-                    </Link>
-                    <Link href="/privacy" className="cursor-default">
-                      <NavigationButton
-                        title="Privacy Policy"
-                        subtitle="Our Privacy Policy"
-                      />
-                    </Link>
-                  </NavigationMenuContent>
-                </NavigationMenuItem>
-              </NavigationMenuList>
-            </NavigationMenu>
-          </div>
+          {/* <Link href="/pricing" className="hidden md:block">
+            Pricing
+          </Link> */}
         </div>
         {/** md:ml-32 */}
         <div className="mx-auto ml-auto mr-1.5 space-x-3 md:ml-44">
-          <Link href="/login">
+          {/* <Link href="/login">
             <LoginButton />
           </Link>
           <Link href="/signup">
             <TryNowButton />
+          </Link> */}
+          <Link href="https://getwaitlist.com/waitlist/16399" target="_blank">
+            <WaitlistButton />
           </Link>
         </div>
       </div>
@@ -112,22 +63,16 @@ const MobileNav = () => {
               <span>Links</span>
             </NavigationMenuTrigger>
             <NavigationMenuContent className="min-w-[200px] bg-white py-2">
+              <Link href="https://data.adj.news">
+                <NavigationButton title="Data" subtitle="Explore Prediction Markets" />
+              </Link>
+              <Link href="https://adjacentresearch.substack.com">
+                <NavigationButton title="Research" subtitle="Ramblings on Markets" />
+              </Link>
               <Link href="/pricing">
-                <NavigationButton title="Pricing" subtitle="Refeed Pricing" />
+                <NavigationButton title="Pricing" subtitle="Subscribe" />
               </Link>
-              <Link href="https://github.com/michaelkremenetsky/Refeed">
-                <NavigationButton
-                  title="Github"
-                  subtitle="Refeed Source Code"
-                />
-              </Link>
-              <Link href="https://github.com/users/michaelkremenetsky/projects/3">
-                <NavigationButton title="Roadmap" subtitle="Our Roadmap" />
-              </Link>
-              <Link href="/about">
-                <NavigationButton title="About" subtitle="About Us" />
-              </Link>
-              <Link href="https://github.com/michaelkremenetsky/Refeed?tab=readme-ov-file#self-hosting-with-docker">
+              {/* <Link href="https://github.com/michaelkremenetsky/Refeed?tab=readme-ov-file#self-hosting-with-docker">
                 <NavigationButton
                   title="Self Host"
                   subtitle="Self Host Refeed"
@@ -150,7 +95,7 @@ const MobileNav = () => {
                   title="Privacy Policy"
                   subtitle="Refeed Privacy Policy"
                 />
-              </Link>
+              </Link> */}
             </NavigationMenuContent>
           </NavigationMenuItem>
         </NavigationMenuList>

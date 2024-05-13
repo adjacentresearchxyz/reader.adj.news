@@ -34,15 +34,15 @@ PrivacyPolicyPage.theme = "light";
 const PricacyPolicy = () => (
   <div className="text-lg">
     <p>
-      Refeed (“us”, “we”, or “our”) operates{" "}
-      <a href="https://refeedreader.com">https://refeedreader.com</a>{" "}
+      Adjacent (“us”, “we”, or “our”) operates{" "}
+      <a href="https://adj.news">https://adj.news</a>{" "}
       (hereinafter referred to as “Service”).
     </p>
     <h2 className="my-6 text-2xl font-bold" id="introduction">
       Introduction
     </h2>
     <p>
-      This Privacy Policy (the “Policy”) explains how Refeed collects, uses, and
+      This Privacy Policy (the “Policy”) explains how Adjacent collects, uses, and
       discloses personal information through its online platform (the
       “Platform”). By using or accessing the Platform in any manner, you
       acknowledge that you accept the practices and policies outlined in this
@@ -69,8 +69,8 @@ const PricacyPolicy = () => (
     <p>
       We may collect information you provide to us when, for example, you sign
       up for an account or contact us or use the Services. We may also collect
-      information from our customers about you if you are a Refeed end user or
-      if you are an employee, contractor, or service provider of a Refeed
+      information from our customers about you if you are a Adjacent end user or
+      if you are an employee, contractor, or service provider of a Adjacent
       customer. The information we collect may include:
     </p>
     <ul className="ml-8">
@@ -81,7 +81,7 @@ const PricacyPolicy = () => (
       </li>
       <li className="keep">
         Payment information such as credit card information, which is collected
-        and processed by a third party payment processor, not Refeed; and
+        and processed by a third party payment processor, not Adjacent; and
       </li>
       <li className="keep">
         Any information you otherwise provide us such as information you include
@@ -161,8 +161,8 @@ const PricacyPolicy = () => (
     <p>
       If you have any questions about this Privacy Policy, please contact us by
       email at{" "}
-      <a href="mailto:michaelkremenetsky@refeed.dev" className="text-sky-500">
-        michaelkremenetsky@refeed.dev
+      <a href="mailto:lucas@adjacentresearch.xyz" className="text-sky-500">
+        lucas@adjacentresearch.xyz
       </a>
     </p>
   </div>
