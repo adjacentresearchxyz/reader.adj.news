@@ -18,8 +18,8 @@ const Landing: NextPage = () => {
   return (
     <LandingWrapper>
       <NextSeo
-        title="Refeed Reader - Open Source RSS Reader"
-        description="Refeed is an Open Source RSS Reader. It allows you to consume better content faster."
+        title="Adjacent News - Read the news with a market lens"
+        description="Adjacent News let's you read the news with a market lens. We provide a robust RSS reader that allows you to read news from your favorite sources and also see prediction / information markets live."
       />
       <div className="background-pattern overscroll-hidden z-10 rounded-b-xl border-b border-[#D9D9D9] bg-[#fafafa]">
         <NavBar />
