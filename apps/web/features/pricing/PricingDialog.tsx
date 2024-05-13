@@ -38,9 +38,8 @@ export const PricingDialog = (props: { setDialogUndefined: () => void }) => {
         onPointerDownOutside={() => {
           setDialogUndefined();
         }}
-        className={`${
-          theme == "dark" ? "dark dark:bg-[#0f0f10]" : "bg-white"
-        }  text-optimize-legibility data-[state=open]:animate-content ] fixed z-50 h-[650px] w-[710px] rounded-[6px] text-[#282a30] subpixel-antialiased shadow-[rgba(0,0,0,0.05)_0px_0px_1px,rgba(0,0,0,0.04)_0px_15px_30px]  focus:outline-none dark:text-neutral-300`}
+        className={`${theme == "dark" ? "dark dark:bg-[#0f0f10]" : "bg-white"
+          }  text-optimize-legibility data-[state=open]:animate-content ] fixed z-50 h-[650px] w-[710px] rounded-[6px] text-[#282a30] subpixel-antialiased shadow-[rgba(0,0,0,0.05)_0px_0px_1px,rgba(0,0,0,0.04)_0px_15px_30px]  focus:outline-none dark:text-neutral-300`}
       >
         <h1 className="mx-auto mb-2 mt-2 flex justify-center text-3xl font-[775] leading-none tracking-tight md:w-[700px]">
           <span className="py-2  text-neutral-700">Upgrade</span>
@@ -136,8 +135,7 @@ export const ProPlan = (props: {
       )}
     >
       <h1 className="ml-5 flex pt-5 text-lg font-bold dark:text-stone-500/80">
-        <Sparkle className="mr-1 fill-[#0496FF] stroke-sky-500" />
-        Refeed Pro
+        Pro
       </h1>
       <div className="flex">
         <h1 className="ml-5 mt-4 flex pb-4 text-5xl font-bold text-[#38383d] dark:text-stone-200">
@@ -355,15 +353,19 @@ export const FreePlan = ({ className }: { className?: string }) => (
     <ul className="mx-2 mt-2 flex flex-col">
       <li className="px-4 py-[3px] text-lg hover:bg-neutral-50 dark:text-stone-200 dark:hover:bg-[#121212]">
         <CheckboxGray />
-        Up to <span className="font-[550]">100</span> Feeds
+        Inline Prediction Markets
       </li>
       <li className="px-4 py-[3px] text-lg hover:bg-neutral-50 dark:text-stone-200 dark:hover:bg-[#121212]">
         <CheckboxGray />
-        Up to <span className="font-[550]">1000</span> Unread Items
+        Summarized Articles
       </li>
       <li className="px-4 py-[3px] text-lg hover:bg-neutral-50 dark:text-stone-200 dark:hover:bg-[#121212]">
         <CheckboxGray />
-        Unlimited Bookmarks
+        Up to 100 Feeds
+      </li>
+      <li className="px-4 py-[3px] text-lg hover:bg-neutral-50 dark:text-stone-200 dark:hover:bg-[#121212]">
+        <CheckboxGray />
+        Up to 1000 Unread Items
       </li>
       <li className="px-4 py-[3px] text-lg hover:bg-neutral-50 dark:text-stone-200 dark:hover:bg-[#121212]">
         <CheckboxGray />
@@ -376,14 +378,6 @@ export const FreePlan = ({ className }: { className?: string }) => (
       <li className="px-4 py-[3px] text-lg hover:bg-neutral-50 dark:text-stone-200 dark:hover:bg-[#121212]">
         <CheckboxGray />
         Follow any Public Feed
-      </li>
-      <li className="px-4 py-[3px] text-lg hover:bg-neutral-50 dark:text-stone-200 dark:hover:bg-[#121212]">
-        <CheckboxGray />
-        Self Host Yourself
-      </li>
-      <li className="px-4 py-[3px] text-lg hover:bg-neutral-50 dark:text-stone-200 dark:hover:bg-[#121212]">
-        <CheckboxGray />
-        Always Ad Free and Open source
       </li>
     </ul>
   </div>

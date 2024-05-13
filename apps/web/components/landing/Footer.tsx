@@ -6,15 +6,6 @@ export const BottomFooter = () => {
     <footer className="bg-white pt-6 dark:bg-neutral-900">
       <div className="w-full max-w-screen-xl p-4 py-6 sm:mx-2 md:mx-auto md:w-[825px] md:py-8 xl:w-[1252px]">
         <div className="md:flex md:justify-between">
-          <div className="mb-6 flex flex-col md:mb-0">
-            <span className="select-none text-base text-neutral-500 sm:text-center">
-              © 2023{" "}
-              <a href="https://refeedreader.com/" className="hover:underline">
-                Refeed
-              </a>
-            </span>
-          </div>
-
           <div className="grid grid-cols-2 gap-8 sm:grid-cols-4 sm:gap-6">
             <div>
               <h2 className="mb-6 text-base font-medium text-neutral-900 dark:text-white">
@@ -22,51 +13,21 @@ export const BottomFooter = () => {
               </h2>
               <ul className="font-medium text-neutral-450">
                 <li className="mb-4">
-                  <Link href="/pricing" className="hover:underline">
-                    Pricing
+                  <Link href="/opensource" className="hover:underline">
+                    Open Source
                   </Link>
                 </li>
-
+                
                 <li className="mb-4">
-                  <a href="/mobile" className="hover:underline">
-                    Mobile App
-                  </a>
-                </li>
-                <li>
                   <a href="/about" className="hover:underline">
                     About
                   </a>
                 </li>
-              </ul>
-            </div>
-            <div>
-              <h2 className="mb-6 text-base font-medium text-neutral-900 dark:text-white">
-                Developers
-              </h2>
-              <ul className="font-medium text-neutral-450">
+
                 <li className="mb-4">
-                  <Link
-                    href="https://github.com/michaelkremenetsky/Refeed?tab=readme-ov-file#self-hosting-with-docker"
-                    className="hover:underline"
-                  >
-                    Self Hosting
+                  <Link href="/pricing" className="hover:underline">
+                    Pricing
                   </Link>
-                </li>
-                <li className="mb-4">
-                  <a
-                    href="https://github.com/michaelkremenetsky/Refeed/issues"
-                    className="hover:underline"
-                  >
-                    Report an Issue
-                  </a>
-                </li>
-                <li className="mb-4">
-                  <a
-                    href="https://github.com/users/michaelkremenetsky/projects/3"
-                    className="hover:underline"
-                  >
-                    Roadmap
-                  </a>
                 </li>
               </ul>
             </div>
@@ -77,26 +38,10 @@ export const BottomFooter = () => {
               <ul className="font-medium text-neutral-450">
                 <li className="mb-4">
                   <a
-                    href="https://github.com/michaelkremenetsky/Refeed/issues"
-                    className="hover:underline"
-                  >
-                    Github
-                  </a>
-                </li>
-                <li className="mb-4">
-                  <a
-                    href="https://twitter.com/mkremenetsky"
+                    href="https://twitter.com/adjacent___"
                     className="hover:underline"
                   >
                     Twitter
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="https://github.com/michaelkremenetsky/Refeed?tab=readme-ov-file#contributing"
-                    className="hover:underline"
-                  >
-                    Contributing
                   </a>
                 </li>
               </ul>

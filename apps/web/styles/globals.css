@@ -137,8 +137,10 @@
   .title-conic-gradient {
     background: conic-gradient(
       from 250deg at 70.47% 50%,
-      #0496ff 0deg,
-      #1a3b52 360deg
+      #000000 0deg,
+      #333333 120deg,
+      #666666 240deg,
+      #999999 360deg
     );
   }
 
@@ -220,4 +222,15 @@ a:focus {
 /* Fallback for older browsers */
 .max-h-screen {
   max-height: calc(var(--vh, 1vh) * 100);
+}
+
+a:link.dotted,
+a:visited.dotted {
+  border-bottom: 1px dotted var(--theme-foreground-muted);
+  text-decoration: none;
+}
+
+a:hover.dotted {
+  border-bottom: 1.5px dotted var(--theme-foreground-muted);
+  text-decoration: none;
 }

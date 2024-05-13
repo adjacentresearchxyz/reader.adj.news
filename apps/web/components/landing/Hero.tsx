@@ -16,20 +16,15 @@ export default function Hero() {
                 <Banner />
               </div> */}
               <h1 className="z-10 text-[60px] font-[775] leading-none tracking-tight sm:text-[100px] md:text-[130px] lg:w-[900px]">
-                <span className="text-sky-500">Everything in </span>
-                <span className="title-conic-gradient bg-clip-text text-transparent">
-                  One Place
+                <span className="text-black-500">News through the </span>
+                <span className="text-black-500">
+                  Markets
                 </span>
               </h1>
-              <p className="z-10 mt-6 text-[18.5px] leading-[30px] tracking-normal text-neutral-700 lg:w-[500px]">
-                Refeed is an
-                <b className="font-[525]"> Open Source RSS Reader</b>. It allows
-                you to consume better content faster.
-              </p>
               <div className="z-10 mt-6">
-                <Link href="/signup">
+                <Link href="https://getwaitlist.com/waitlist/16399" target="_blank">
                   <button className="rounded-md bg-white px-6 py-2 text-base font-medium shadow-[0_0_0_1px_rgba(18,55,105,0.08),0_1px_2px_0_rgba(18,55,105,0.12)]">
-                    Try Now -&gt;{" "}
+                    Join the Waitlist -&gt;{" "}
                   </button>
                 </Link>
               </div>
@@ -38,13 +33,14 @@ export default function Hero() {
               <div
                 className="rounded-lg shadow-[0px_0px_50px_100px_rgba(30,161,255,0.02)]"
                 onClick={() => {
-                  router.push("/signup");
+                  // router.push("/signup");
+                  router.push("https://getwaitlist.com/waitlist/16399")
                 }}
               >
                 <Tilt scale={1.01} tiltMaxAngleY={0} tiltMaxAngleX={1.5}>
                   <Image
-                    src="Hero.avif"
-                    alt="App screenshot"
+                    src="markets.png"
+                    alt="Markets"
                     priority
                     width={1920}
                     height={995}
