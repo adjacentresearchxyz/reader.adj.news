@@ -24,11 +24,11 @@ export const BottomFooter = () => {
                   </a>
                 </li>
 
-                <li className="mb-4">
+                {/* <li className="mb-4">
                   <Link href="/pricing" className="hover:underline">
                     Pricing
                   </Link>
-                </li>
+                </li> */}
               </ul>
             </div>
             <div>
