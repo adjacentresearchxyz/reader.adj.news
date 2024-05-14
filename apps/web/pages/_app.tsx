@@ -54,8 +54,8 @@ const App = ({
         <JotaiProvider>
           <StrictMode>
             <Head>
-              <title>Refeed</title>
-              <meta name="description" content="Refeed RSS Reader" />
+              <title>Adjacent News</title>
+              <meta name="description" content="Prediction Market Driven News" />
               <meta
                 name="viewport"
                 content="width=device-width, initial-scale=1.0"

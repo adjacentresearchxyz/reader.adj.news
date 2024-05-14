@@ -1,5 +1,5 @@
 {
-  "name": "refeed",
+  "name": "adjacent-news",
   "private": true,
   "engines": {
     "node": ">=v18.17.1"
