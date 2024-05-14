@@ -93,7 +93,7 @@ const MobileNav = () => {
               <Link href="/privacy">
                 <NavigationButton
                   title="Privacy Policy"
-                  subtitle="Refeed Privacy Policy"
+                  subtitle="Privacy Policy"
                 />
               </Link> */}
             </NavigationMenuContent>

@@ -36,12 +36,12 @@ function Login() {
               Sign Up
             </button>
           </div>
-          <AppleButton />
+          {/* <AppleButton /> */}
           <GoogleButton />
           <EmailButton type="login" />
           <h4 className="pt-1 text-center text-[13px] text-neutral-500">
             By clicking “Continue” above, you acknowledge that you have read and
-            understood, and agree to Refeed's{" "}
+            understood, and agree to Adjacent's{" "}
             <Link href="/terms" className="underline">
               Terms of Service
             </Link>{" "}

@@ -14,11 +14,6 @@ COPY ./prisma-cli ./prisma-cli
 COPY ./prisma ./prisma
 COPY ./src ./src
 
-RUN apt-get update && apt-get install -y \
-    libssl-dev \
-    ca-certificates \
-    && rm -rf /var/lib/apt/lists/*
-
 RUN cargo run -p prisma-cli --release -- generate
 RUN cargo build --release 
 

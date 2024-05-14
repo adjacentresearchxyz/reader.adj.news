@@ -161,13 +161,11 @@ export const SettingsDialog = (props: {
               </div>
             )}
             {page == "general" && <GeneralSettingsPage />}
-            {page == "sharing" && <SharingSettingsPage />}
             {page == "filters" && <FiltersSettingsPage />}
             {page == "bookmarks" && <BookmarksSettingsPage />}
             {page == "feeds" && <FeedsSettingsPage />}
             {page == "organize" && <OrganizeFeeds />}
             {page == "account" && <AccountSettingsPage />}
-            {page == "feedback" && <FeedbackSettingsPage />}
             {page == "developer" && <DeveloperSettingsPage />}
           </div>
         </motion.div>

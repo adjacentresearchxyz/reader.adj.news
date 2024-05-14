@@ -117,7 +117,7 @@ export const AccountSettingsPage = () => {
             </h1>
             <div className="mt-1">
               <h1 className="text-sm leading-5 text-neutral-450 dark:text-stone-500">
-                Email us at michaelkremenetsky@refeed.dev
+                Email us at lucas@adjacentresearch.xyz
               </h1>
             </div>
           </div>
