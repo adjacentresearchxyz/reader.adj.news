@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import router, { useRouter } from "next/router";
 import { DropdownMenuSeparator } from "@components/ui/DropDownMenu";
+import { UpgradeDrawer } from "@components/upgrade/Drawer";
 import {
   useSupabaseClient,
   useUser as useSupabaseUser,
@@ -33,11 +34,11 @@ export const AccountDropdown = ({ width }: { width: number }) => {
 
   const widthStyle = { maxWidth: `${width - 75}px` };
 
-  useHotkeys("f+b", () => replace("/bookmarks"));
-  useHotkeys("f+f", () => replace("/feed/all"));
-  useHotkeys("f+n", () => replace("/discover"));
-  useHotkeys("f+s", () => replace("/search"));
-  useHotkeys("g+s", () => {
+  useHotkeys("b", () => replace("/bookmarks"));
+  useHotkeys("f", () => replace("/feed/all"));
+  useHotkeys("n", () => replace("/discover"));
+  useHotkeys("k", () => replace("/search"));
+  useHotkeys("s", () => {
     setDialogType("Settings"), setPage("general");
   });
 
@@ -190,7 +191,7 @@ export const AccountDropdown = ({ width }: { width: number }) => {
           {data?.inbox && <Newsletters />}
           <OpenDiscovery />
           <DropdownMenuSeparator />
-          <OpenMobileApps />
+          <UpgradeDrawer />
           <LogOutButton />
         </DropdownMenuContent>
       </DropdownMenu>

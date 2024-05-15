@@ -11,7 +11,7 @@ interface Settings {
 }
 
 export const settingsAtom = atomWithStorage<Settings>("settings", {
-  MarkReadOnScroll: false,
+  MarkReadOnScroll: true,
   OpenReaderInFullScreenByDefault: false,
   PromptWhenMarkingAllItemsRead: true,
   DefaultTimedBookmarkTime: 360,
