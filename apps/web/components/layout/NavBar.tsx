@@ -42,7 +42,7 @@ export default function NavBar(props: NavBarTypes) {
       >
         <PanelLeft
           size={18}
-          onClick={() => (width != 240 ? setWidth(240) : setWidth(0))}
+          onClick={() => (width != 240 ? setWidth(0) : setWidth(240))}
           className={clsx(
             "left-3 top-2.5 stroke-neutral-400 stroke-[2] dark:stroke-stone-400",
             "absolute md:hidden",

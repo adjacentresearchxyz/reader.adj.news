@@ -63,7 +63,7 @@ const MobileNav = () => {
               <span>Links</span>
             </NavigationMenuTrigger>
             <NavigationMenuContent className="min-w-[200px] bg-white py-2">
-              <Link href="https://data.adj.news">
+              <Link href="https://data.adj.news/markets">
                 <NavigationButton title="Data" subtitle="Explore Prediction Markets" />
               </Link>
               <Link href="https://adjacentresearch.substack.com">
