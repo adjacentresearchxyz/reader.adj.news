@@ -6,7 +6,7 @@ import { PricingPage } from "./PricingPage";
 
 export const UpgradeDrawer = () => {
   return (
-    <Drawer.Root shouldScaleBackground>
+    <Drawer.Root shouldScaleBackground className="z-50">
       <Drawer.Trigger className="my-1 ml-2 rounded-md text-sm font-medium text-sky-500 hover:text-sky-500/30">
         Upgrade
       </Drawer.Trigger>

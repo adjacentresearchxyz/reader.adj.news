@@ -4,8 +4,7 @@ import { useWindowSize } from "usehooks-ts";
 import { trpc } from "utils/trpc";
 
 import {
-  BusinessDiscoverItems,
-  TechDiscoverFeeds,
+  DiscoverFeeds
 } from "@refeed/lib/DiscoveryFeeds";
 import type { EventFor } from "@refeed/lib/EventFor";
 import type { ItemType } from "@refeed/types/item";
@@ -22,8 +21,7 @@ import { AddFolderDialog } from "../dialog/AddFolderDialog";
 import { CustomCard } from "./CustomCard";
 
 const DiscoveryFeeds = [
-  { feeds: TechDiscoverFeeds, name: "Tech" },
-  { feeds: BusinessDiscoverItems, name: "Business" },
+  { feeds: DiscoverFeeds, name: "Feeds" },,
 ];
 
 export const DiscoverLayout = () => {

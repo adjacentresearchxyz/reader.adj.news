@@ -35,7 +35,7 @@ export const NavBarButtons = (props: NavBarTypes) => {
             <FeedLayoutButtonNew />
           </div>
         ) : null}
-        {plan == "free" && <UpgradeDrawer />}
+        {/* {plan == "free" && <UpgradeDrawer />} */}
       </div>
     </div>
   );

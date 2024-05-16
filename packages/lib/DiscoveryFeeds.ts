@@ -5,10 +5,7 @@ export interface Feed {
   id?: string;
 }
 
-// TODO: Write a script to check stuff on these like if the icon works or not.
-// NOTE: The ids were for a prevoius version of the app. They are not used anymore.
-
-export const TechDiscoverFeeds: Feed[] = [
+export const DiscoverFeeds: Feed[] = [
   {
     title: "The Verge",
     feed_url: "https://www.theverge.com/rss/full.xml",
@@ -47,9 +44,6 @@ export const TechDiscoverFeeds: Feed[] = [
     logo_url: "https://next.tnwcdn.com/assets/img/favicon/favicon-96x96.png",
     id: "",
   },
-];
-
-export const BusinessDiscoverItems: Feed[] = [
   {
     title: "Bloomberg",
     feed_url: "https://feeds.bloomberg.com/markets/news.rss",
@@ -86,9 +80,6 @@ export const BusinessDiscoverItems: Feed[] = [
     logo_url: "https://www.theatlantic.com/favicon.ico",
     id: "",
   },
-];
-
-export const ScienceDiscoverItems: Feed[] = [
   {
     title: "Nature",
     feed_url: "http://www.nature.com/nature/current_issue/rss",
