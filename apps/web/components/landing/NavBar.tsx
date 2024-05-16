@@ -25,7 +25,7 @@ export default function NavBar() {
         <div className="flex items-center space-x-5 text-sm font-[550]">
           <Link
             className={`hidden md:block`}
-            href="https://data.adj.news/markets"
+            href="https://data.adj.news/"
           >
             Data
           </Link>
@@ -63,7 +63,7 @@ const MobileNav = () => {
               <span>Links</span>
             </NavigationMenuTrigger>
             <NavigationMenuContent className="min-w-[200px] bg-white py-2">
-              <Link href="https://data.adj.news/markets">
+              <Link href="https://data.adj.news/">
                 <NavigationButton title="Data" subtitle="Explore Prediction Markets" />
               </Link>
               <Link href="https://adjacentresearch.substack.com">
