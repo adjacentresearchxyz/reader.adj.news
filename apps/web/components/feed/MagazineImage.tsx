@@ -34,15 +34,13 @@ export const MagazineImage = (props: {
         {!item?.image_url ? (
           <div className="w-min-screen h-[105px] rounded-md" />
         ) : (
-          // @TODO disable images for now
-          // <ImageWithFallback
-          //   alt="Feed"
-          //   fill={true}
-          //   src={item?.image_url ?? item?.logo_url}
-          //   unoptimized
-          //   className={`rounded-md border border-neutral-50 object-cover dark:border-stone-800`}
-          // />
-          <div className="w-min-screen h-[105px] rounded-md" />
+          <ImageWithFallback
+            alt="Feed"
+            fill={true}
+            src={item?.image_url ?? ""}
+            unoptimized
+            className={`rounded-md border border-neutral-50 object-cover dark:border-stone-800`}
+          />
         )}
       </>
     </div>
