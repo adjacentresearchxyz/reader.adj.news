@@ -147,6 +147,12 @@ export default function NavBar(props: NavBarTypes) {
                 )}
               </div>
               <div className="md:w-[250px]" />
+              <div className="flex-grow sm:hidden">
+                <SearchSelect />
+              </div>
+              <div className="sm:flex-grow hidden">
+                <SearchSelect />
+              </div>
             </LayoutTypes>
           </div>
         )}
