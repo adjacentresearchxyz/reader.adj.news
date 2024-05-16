@@ -19,6 +19,7 @@ import { AddNewButtonBottom } from "./AddNewButton";
 import { NoFoldersMessage } from "./NoFolderMessage";
 import { TreeView } from "./TreeView";
 
+
 export const SideBarFolded = atom(false);
 export const SideBarWidth = atomWithStorage("SideBarWidth", 240);
 
@@ -64,9 +65,6 @@ export default function SideBar() {
           <div className={`ml-2.5 mr-1.5 mt-1.5`}>
             <div className="ml-1">
               <AccountDropdown width={width} />
-            </div>
-            <div className="mt-2">
-              <SearchSelect />
             </div>
           </div>
           <div className="ml-2.5">
@@ -116,6 +114,13 @@ export default function SideBar() {
               {isFetched && feedsInFolders?.length != 0 && (
                 <AddNewButtonBottom />
               )}
+              {/* <RecentlyRead />
+              <Bookmarks />
+              <OpenDiscovery /> */}
+              <Link href="/recentlyread" className="relative select-none items-center items-center rounded-[6px] px-2 py-1.5 text-sm font-medium text-[#38383d] outline-none data-[disabled]:pointer-events-none data-[disabled]:opacity-50 focus:bg-[#f7f7f7] dark:text-stone-200 dark:focus:bg-[#19191a]" target="_blank" rel="noopener noreferrer">Recently Read</Link><br />
+              <Link href="/bookmarks" className="relative select-none items-center items-center rounded-[6px] px-2 py-1.5 text-sm font-medium text-[#38383d] outline-none data-[disabled]:pointer-events-none data-[disabled]:opacity-50 focus:bg-[#f7f7f7] dark:text-stone-200 dark:focus:bg-[#19191a]" target="_blank" rel="noopener noreferrer">Bookmarks</Link><br />
+              <Link href="/discover" className="relative select-none items-center items-center rounded-[6px] px-2 py-1.5 text-sm font-medium text-[#38383d] outline-none data-[disabled]:pointer-events-none data-[disabled]:opacity-50 focus:bg-[#f7f7f7] dark:text-stone-200 dark:focus:bg-[#19191a]" target="_blank" rel="noopener noreferrer">Discover</Link><br />
+              <Link href="https://data.adj.news" className="relative select-none items-center items-center rounded-[6px] px-2 py-1.5 text-sm font-medium text-[#38383d] outline-none data-[disabled]:pointer-events-none data-[disabled]:opacity-50 focus:bg-[#f7f7f7] dark:text-stone-200 dark:focus:bg-[#19191a]" target="_blank" rel="noopener noreferrer">Explore Data</Link><br />
             </DialogRoot>
           </div>
           <div className={`ml-2.5 mr-1.5 mt-auto`}></div>

@@ -39,13 +39,13 @@ export const SettingsDialog = (props: {
 
   const pageTypes = [
     "general",
-    "sharing",
+    // "sharing",
     "filters",
     "bookmarks",
     "feeds",
     "organize",
     "account",
-    "feedback",
+    // "feedback",
   ];
 
   // Prefetch queries to preven pop in

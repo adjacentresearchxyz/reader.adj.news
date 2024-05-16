@@ -86,7 +86,7 @@ export async function middleware(req: NextRequest) {
   // Check if the user is on a page they aren't supposed to be on
   // @TODO: re-enable auth and/or allow for an un-authed feed
   if (
-    !session &&
+    false &&
     req.nextUrl.pathname !== "/" &&
     req.nextUrl.pathname !== "/login" &&
     req.nextUrl.pathname !== "/signup" &&
