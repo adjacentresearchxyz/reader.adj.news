@@ -37,7 +37,7 @@ export const MagazineImage = (props: {
           <ImageWithFallback
             alt="Feed"
             fill={true}
-            src={item?.image_url ?? ""}
+            src={item?.image_url ?? item?.logo_url}
             unoptimized
             className={`rounded-md border border-neutral-50 object-cover dark:border-stone-800`}
           />
