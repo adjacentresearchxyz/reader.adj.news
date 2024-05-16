@@ -191,7 +191,7 @@ export const AccountDropdown = ({ width }: { width: number }) => {
           {data?.inbox && <Newsletters />}
           <OpenDiscovery />
           <DropdownMenuSeparator />
-          <UpgradeDrawer />
+          <Link href="/pricing" className="my-1 ml-2 rounded-md text-sm font-medium text-sky-500 hover:text-sky-500/30">Upgrade</Link>
           <LogOutButton />
         </DropdownMenuContent>
       </DropdownMenu>

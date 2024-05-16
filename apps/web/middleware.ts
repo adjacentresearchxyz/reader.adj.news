@@ -43,11 +43,6 @@ export function generateCsp() {
 }
 
 export async function middleware(req: NextRequest) {
-  // Waitlist is whitelisted
-  if (req.nextUrl.pathname.startsWith("/api/form/waitlist")) {
-    return NextResponse.next();
-  }
-
   const { csp, nonce } = generateCsp();
   const requestHeaders = new Headers(req.headers);
   requestHeaders.set("x-nonce", nonce);
@@ -74,7 +69,7 @@ export async function middleware(req: NextRequest) {
     data: { session },
   } = await supabase.auth.getSession();
 
-  // // if user is signed in and the current path is /login the user to the app
+  // if user is signed in and the current path is /login the user to the app
   if (session && req.nextUrl.pathname === "/login") {
     return NextResponse.redirect(new URL("/discover", req.url));
   }
@@ -89,8 +84,9 @@ export async function middleware(req: NextRequest) {
   }
 
   // Check if the user is on a page they aren't supposed to be on
+  // @TODO: re-enable auth and/or allow for an un-authed feed
   if (
-    !session &&
+    false &&
     req.nextUrl.pathname !== "/" &&
     req.nextUrl.pathname !== "/login" &&
     req.nextUrl.pathname !== "/signup" &&
@@ -105,7 +101,6 @@ export async function middleware(req: NextRequest) {
 export const config = {
   matcher: [
     "/",
-    "/api/form/waitlist",
     "/feed/:path*",
     "/discover",
     "/folder",

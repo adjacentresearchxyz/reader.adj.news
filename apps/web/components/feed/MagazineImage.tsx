@@ -12,6 +12,8 @@ export const MagazineImage = (props: {
   const { item } = props;
   const { theme } = useTheme();
 
+  console.log("item", item)
+
   return (
     <div
       className={`
