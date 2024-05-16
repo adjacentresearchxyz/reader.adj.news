@@ -14,12 +14,12 @@ export const SharingSettingsPage = () => {
 
   const SharingOptions = [
     "Twitter",
-    "Email",
-    "Facebook",
     "Telegram",
-    "Pocket",
-    "Mastodon",
-    "Linkedin",
+    "Email",
+    // "Facebook",
+    // "Pocket",
+    // "Mastodon",
+    // "Linkedin",
   ];
 
   const updateActiveSharing = trpc.settings.updateShareProviders.useMutation();

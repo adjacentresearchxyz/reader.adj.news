@@ -26,12 +26,12 @@ const Sharing = () => {
 
   const includesAll =
     providers?.includes("Twitter") &&
-    providers?.includes("Email") &&
-    providers?.includes("Facebook") &&
     providers?.includes("Telegram") &&
-    providers?.includes("Pocket") &&
-    providers?.includes("Mastodon") &&
-    providers?.includes("Linkedin");
+    providers?.includes("Email")
+    // providers?.includes("Facebook") &&
+    // providers?.includes("Pocket") &&
+    // providers?.includes("Mastodon") &&
+    // providers?.includes("Linkedin");
 
   return (
     <div className="flex">

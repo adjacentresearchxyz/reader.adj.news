@@ -162,7 +162,7 @@ export const Article = (props: ArticleProps) => {
               </TooltipTrigger>
               <TooltipContent>Fetch Full Content</TooltipContent>
             </Tooltip>
-            <Tooltip>
+            {/* <Tooltip>
               <TooltipTrigger>
                 <div
                   onClick={() => setNotesOpen(!notesOpen)}
@@ -184,7 +184,7 @@ export const Article = (props: ArticleProps) => {
                   </svg>
                 </div>
               </TooltipTrigger>
-              <TooltipContent>Write Note</TooltipContent>
+              <TooltipContent>Write Note</TooltipContent> */}
             </Tooltip>
             {props.Type != "Article View" && (
               <Tooltip>
