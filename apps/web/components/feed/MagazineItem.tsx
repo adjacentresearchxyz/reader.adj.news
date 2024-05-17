@@ -50,7 +50,7 @@ export const NonLinkedMagazineItem = ({
           ${item?.marked_read ? "opacity-80" : ""}
         `}
   >
-    {/* <MagazineImage item={item!} FeedType={FeedType} /> */}
+    <MagazineImage item={item!} FeedType={FeedType} />
     <div className="flex w-full flex-col">
       <Title FeedType={FeedType} title={item?.title ?? ""} />
       <FeedInfo FeedType={FeedType} item={item!} />

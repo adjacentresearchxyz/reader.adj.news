@@ -5,7 +5,7 @@ export const MagazineSkeleton = ({ i }: { i: number }) => {
     <>
       <DateInfoSkelton i={i} />
       <div className="relative mx-1 mt-1 flex cursor-pointer flex-row space-x-[4px] rounded-md pb-2 pt-2">
-        {/* <ImageSkelton /> */}
+        <ImageSkelton />
         <div className="flex w-full flex-col pl-2">
           <TitleSkelton />
           <FeedInfoSkelton />

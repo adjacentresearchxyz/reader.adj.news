@@ -61,6 +61,7 @@ const App = ({
                 content="width=device-width, initial-scale=1.0"
               ></meta>
               <link rel="icon" href="/favicon.ico" />
+              <link rel="apple-touch-icon" href="/favicon.ico" />
             </Head>
             <ThemeProvider
               attribute="class"
