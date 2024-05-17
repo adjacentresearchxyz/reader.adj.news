@@ -120,7 +120,7 @@ export const GeneralSettingsPage = () => {
               />
             </div>
           </div>
-          <div className="flex w-full items-start">
+          {/* <div className="flex w-full items-start">
             <div className="flex w-full flex-col">
               <h1 className="mb-1 text-sm font-medium leading-5">
                 Default Note Template
@@ -144,7 +144,7 @@ export const GeneralSettingsPage = () => {
                 }}
               />
             </div>
-          </div>
+          </div> */}
         </div>
       </div>
     </div>

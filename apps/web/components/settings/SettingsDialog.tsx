@@ -40,10 +40,10 @@ export const SettingsDialog = (props: {
   const pageTypes = [
     "general",
     // "sharing",
-    "filters",
-    "bookmarks",
     "feeds",
     "organize",
+    "filters",
+    "bookmarks",
     "account",
     // "feedback",
   ];
