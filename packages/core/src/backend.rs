@@ -88,7 +88,6 @@ async fn refreshfeeds(Json(request): Json<RefreshFeedsRequest>) {
 }
 
 async fn healthcheck(uri: Uri) -> &'static str {
-    println!("The request is: {}", uri);
     println!("{:?}", "Healthcheck");
 
     "Healthy"
