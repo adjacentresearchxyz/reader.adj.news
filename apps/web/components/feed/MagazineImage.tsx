@@ -35,7 +35,7 @@ export const MagazineImage = (props: {
           <ImageWithFallback
             alt="Feed"
             fill={true}
-            src={item?.image_url ?? `https://source.boringavatars.com/marble/120/${item?.title}?square`}
+            src={item?.image_url ?? ""}
             unoptimized
             className={`rounded-md border border-neutral-50 object-cover dark:border-stone-800`}
           />

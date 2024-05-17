@@ -56,19 +56,25 @@ async fn refreshfeeds(Json(request): Json<RefreshFeedsRequest>) {
 
     // Convert the items into a Vector of items into the format prisma expects
     let items = items
-        .into_iter()
-        .map(|item| {
-            item::create_unchecked(
-                item.title.clone(),
-                item.url.clone(),
-                vec![
-                    item::SetParam::SetWebsiteContent(Some(item.website_content)),
-                    item::SetParam::SetImageUrl(Some(item.image_url)),
-                    item::SetParam::SetFeedId(Some(item.feed_id)),
-                ],
-            )
-        })
-        .collect::<Vec<_>>();
+    .into_iter()
+    .map(|item| {
+        let image_url = if item.image_url.trim().is_empty() {
+            format!("https://source.boringavatars.com/marble/120/{}?square", item.title)
+        } else {
+            item.image_url.clone()
+        };
+
+        item::create_unchecked(
+            item.title.clone(),
+            item.url.clone(),
+            vec![
+                item::SetParam::SetWebsiteContent(Some(item.website_content)),
+                item::SetParam::SetImageUrl(Some(image_url)),
+                item::SetParam::SetFeedId(Some(item.feed_id)),
+            ],
+        )
+    })
+    .collect::<Vec<_>>();
 
     client
         .item()
