@@ -31,15 +31,14 @@ export const CustomCard = ({
         />
       </div>
       <div className="flex items-start">
-        <h2 className="mx-2.5 line-clamp-3 text-sm font-medium text-neutral-700 dark:text-stone-200">
+        <h2 className="mx-2.5 line-clamp-3 text-sm font-medium text-neutral-700 dark:text-stone-200 text-left">
           {decodeHtmlEntities(item.title as string)}
         </h2>
       </div>
       <div className="flex h-full flex-col gap-2.5">
-        <BlurredText className="mx-3 mt-3 h-2.5 rounded-sm " />
-        <BlurredText className="mx-3 h-2.5 rounded-sm " />
-        <BlurredText className="mx-3 h-2.5 rounded-sm " />
-        <BlurredText className="mx-3 h-2.5 rounded-sm " />
+        <h3 className="mx-2.5 line-clamp-5 text-sm font-small text-neutral-700 dark:text-stone-200 text-left">
+          {item.description}
+        </h3>
       </div>
     </div>
   );
