@@ -78,7 +78,7 @@ export const FeedsSettingsPage = () => {
           id="airplane-mode"
         />
       </div>
-      {settings.flagEnableNewsleters && (
+      {/* {settings.flagEnableNewsleters && (
         <>
           <div className="mt-4 flex w-full items-start">
             <div className="flex flex-col">
@@ -147,7 +147,7 @@ export const FeedsSettingsPage = () => {
             />
           )}
         </>
-      )}
+      )} */}
 
       <div className="mt-4 flex items-center space-x-2">
         <div className="flex flex-col">
