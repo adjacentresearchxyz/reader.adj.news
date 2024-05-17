@@ -92,14 +92,14 @@ export default function NavBar(props: NavBarTypes) {
       <div
         className={`sticky top-0 z-10 flex h-10 border-b border-[#f0f0f0] bg-white/95 backdrop-blur dark:border-[#24252A] dark:bg-[#0f0f10]`}
       >
-        <PanelLeft
+        {/* <PanelLeft
           size={18}
           onClick={() => (width != 240 ? setWidth(0) : setWidth(240))}
           className={clsx(
             "left-3 top-2.5 stroke-neutral-400 stroke-[2] dark:stroke-stone-400",
             "absolute md:hidden",
           )}
-        />
+        /> */}
         {title == "Discover" ? (
           <div className={`flex w-full items-center overflow-x-auto scrollbar-hide`}>
             <motion.div
@@ -114,10 +114,7 @@ export default function NavBar(props: NavBarTypes) {
                   Discover
                 </h1>
               </div>
-              <div className="flex-grow">
-                <SearchSelect />
-              </div>
-              <div className="sm:flex-grow hidden">
+              <div className="flex-grow lg:block hidden">
                 <SearchSelect />
               </div>
             </motion.div>
@@ -147,13 +144,10 @@ export default function NavBar(props: NavBarTypes) {
                 )}
               </div>
               <div className="md:w-[250px]" />
-              <div className="flex-grow sm:hidden">
-                <SearchSelect />
-              </div>
-              <div className="sm:flex-grow hidden">
-                <SearchSelect />
-              </div>
             </LayoutTypes>
+            <div className="flex-grow lg:block hidden w-full mr-10">
+              <SearchSelect />
+            </div>
           </div>
         )}
         <NavBarButtons {...props} />

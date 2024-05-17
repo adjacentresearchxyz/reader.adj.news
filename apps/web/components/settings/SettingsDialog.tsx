@@ -42,7 +42,7 @@ export const SettingsDialog = (props: {
     // "sharing",
     "feeds",
     "organize",
-    "filters",
+    // "filters",
     "bookmarks",
     "account",
     // "feedback",

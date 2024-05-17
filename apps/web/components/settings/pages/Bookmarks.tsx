@@ -30,7 +30,7 @@ export const BookmarksSettingsPage = () => {
   return (
     <div>
       <SettingsHeader title="Bookmarks" subtitle="Bookmark Preferences" />
-      <div className="mt-6 flex items-center space-x-2 pt-2">
+      {/* <div className="mt-6 flex items-center space-x-2 pt-2">
         <div className="flex w-full items-start pb-1">
           <div className="flex flex-col">
             <h1 className="mb-1 select-none text-sm font-medium leading-5">
@@ -71,7 +71,7 @@ export const BookmarksSettingsPage = () => {
             </Select>
           </div>
         </div>
-      </div>
+      </div> */}
       <div className="mt-4 flex items-center space-x-2">
         <div className="flex w-full items-start">
           <div className="flex flex-col">
