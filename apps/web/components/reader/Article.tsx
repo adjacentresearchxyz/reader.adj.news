@@ -184,8 +184,8 @@ export const Article = (props: ArticleProps) => {
                   </svg>
                 </div>
               </TooltipTrigger>
-              <TooltipContent>Write Note</TooltipContent> */}
-            </Tooltip>
+              <TooltipContent>Write Note</TooltipContent>
+            </Tooltip> */}
             {props.Type != "Article View" && (
               <Tooltip>
                 <TooltipTrigger>
