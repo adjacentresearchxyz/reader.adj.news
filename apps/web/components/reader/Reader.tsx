@@ -64,7 +64,7 @@ const Reader = () => {
             >
               <Topbar className={!fullscreen ? "ml-1" : ""} />
               <div className="flex">
-                <button
+                {/* <button
                   onClick={() => {
                     setIsAIPromptOpen(!isAIPromptOpen);
                     setAIDrawerOpen(!aIDrawerOpen);
@@ -79,8 +79,8 @@ const Reader = () => {
                     shapeRendering="geometricPrecision"
                     className="mr-5 h-[22px] w-[22px] stroke-neutral-500/75 stroke-[1.5] dark:stroke-stone-400"
                   />
-                </button>
-                <Sharing />
+                </button> */}
+                <Sharing/>
               </div>
             </div>
           </div>

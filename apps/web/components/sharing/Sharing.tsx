@@ -178,20 +178,6 @@ const Sharing = () => {
                 </EmailShareButton>
               </DropdownMenuItem>
             ) : null}
-            {!providers?.includes("Facebook") ? (
-              <DropdownMenuItem>
-                <FacebookShareButton
-                  className="flex items-center"
-                  url={openItem?.url!}
-                >
-                  <Facebook
-                    shapeRendering="geometricPrecision"
-                    className="mr-2 stroke-neutral-450 stroke-[1.25] dark:stroke-stone-400"
-                  />
-                  <span>Facebook</span>
-                </FacebookShareButton>
-              </DropdownMenuItem>
-            ) : null}
             {!providers?.includes("Telegram") ? (
               <DropdownMenuItem>
                 <TelegramShareButton
@@ -210,25 +196,6 @@ const Sharing = () => {
 
                   <span>Telegram</span>
                 </TelegramShareButton>
-              </DropdownMenuItem>
-            ) : null}
-            {!providers?.includes("Pocket") ? (
-              <DropdownMenuItem>
-                <PocketShareButton
-                  className="flex items-center"
-                  url={openItem?.url!}
-                >
-                  <svg
-                    shapeRendering="geometricPrecision"
-                    fill="transparent"
-                    className="mr-2 h-[22px] w-[22px] stroke-neutral-450 stroke-[1.25] dark:stroke-stone-400"
-                  >
-                    <path d="M5 4h14a2 2 0 0 1 2 2v6a9 9 0 0 1 -18 0v-6a2 2 0 0 1 2 -2" />
-                    <path d="M8 11l4 4l4 -4" />
-                  </svg>
-
-                  <span>Pocket</span>
-                </PocketShareButton>
               </DropdownMenuItem>
             ) : null}
             {!providers?.includes("Mastodon") ? (
@@ -254,21 +221,6 @@ const Sharing = () => {
 
                   <span>Mastodon</span>
                 </PocketShareButton>
-              </DropdownMenuItem>
-            ) : null}
-            {!providers?.includes("Linkedin") ? (
-              <DropdownMenuItem>
-                <LinkedinShareButton
-                  className="flex items-center"
-                  url={openItem?.url!}
-                >
-                  <Linkedin
-                    shapeRendering="geometricPrecision"
-                    className="mr-2 h-[22px] w-[22px] overflow-visible stroke-neutral-450 stroke-[1.5] dark:stroke-stone-400"
-                  />
-
-                  <span>Linkedin</span>
-                </LinkedinShareButton>
               </DropdownMenuItem>
             ) : null}
           </DropdownMenuContent>
