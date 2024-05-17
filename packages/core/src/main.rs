@@ -59,8 +59,6 @@ async fn run_refresher() {
 
     let items = get_items(flat_items).await;
 
-    println!("{:?}", items.len());
-
     // Convert the items into a Vector of items into the format prisma expects
     let items = items
         .into_iter()
