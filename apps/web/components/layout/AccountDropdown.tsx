@@ -185,12 +185,12 @@ export const AccountDropdown = ({ width }: { width: number }) => {
           <DropdownMenuLabel className="max-w-[225px] truncate">
             {user?.email}
           </DropdownMenuLabel>
-          <RecentlyRead />
+          {/* <RecentlyRead />
           <Bookmarks />
           {data?.inbox && <Newsletters />}
           <OpenDiscovery />
           <Link href="https://data.adj.news" className="relative select-none items-center items-center rounded-[6px] px-2 py-1.5 text-sm font-medium text-[#38383d] outline-none data-[disabled]:pointer-events-none data-[disabled]:opacity-50 focus:bg-[#f7f7f7] dark:text-stone-200 dark:focus:bg-[#19191a]" target="_blank" rel="noopener noreferrer">Explore Data</Link><br />
-          <DropdownMenuSeparator />
+          <DropdownMenuSeparator /> */}
           <Link href="/pricing" className="my-1 ml-2 rounded-md text-sm font-medium text-sky-500 hover:text-sky-500/30">Upgrade</Link>
           <SettingsTrigger />
           <LogOutButton />
