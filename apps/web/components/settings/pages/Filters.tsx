@@ -15,7 +15,7 @@ export const FiltersSettingsPage = () => {
         <div className="mt-6 flex flex-col">
           <h1 className="mb-1 select-none text-sm font-medium leading-5">
             Filters
-            <ProBadge className="ml-1.5" />
+            {/* <ProBadge className="ml-1.5" /> */}
           </h1>
           <h4 className="mb-2.5 select-none text-sm leading-5 text-neutral-450 dark:text-stone-500">
             Filter out items based on conditions
@@ -24,7 +24,8 @@ export const FiltersSettingsPage = () => {
       </div>
       <div>
         <ToggleFilters />
-        {plan == "pro" ? <AddFilterButton /> : <AddFilterUpgradeMessage />}
+        <AddFilterButton />
+        {/* {plan == "pro" ? <AddFilterButton /> : <AddFilterUpgradeMessage />} */}
       </div>
     </div>
   );
