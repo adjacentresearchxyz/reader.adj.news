@@ -27,7 +27,7 @@ export const SideBarWidth = atomWithStorage("SideBarWidth", 240);
 export default function SideBar() {
   const { feedsInFolders, totalItemAmount, OpenState, isFetched } =
     useFeedsInFolders();
-
+  
   const isFolded = useAtomValue(SideBarFolded);
   const [width, setWidth] = useAtom(SideBarWidth);
 
@@ -42,10 +42,7 @@ export default function SideBar() {
     }
   }
 
-  const { width: windowWidth } = useWindowSize();
-  const isMobile = windowWidth < 500;
-
-  if (!isFolded && !isMobile) {
+  if (!isFolded) {
     return (
       <Resizable
         // @ts-ignore: The height needs to be set in the CSS to match the screen height instead of the full height
@@ -72,6 +69,9 @@ export default function SideBar() {
             </div>
           </div>
           <div className="ml-2.5">
+            <div className="mx-2 my-2">
+              <SearchSelect />
+            </div>
             <Link href="/recentlyread" className="relative select-none items-center items-center rounded-[6px] px-2 py-1.5 text-sm font-medium text-[#38383d] outline-none data-[disabled]:pointer-events-none data-[disabled]:opacity-50 focus:bg-[#f7f7f7] dark:text-stone-200 dark:focus:bg-[#19191a]">Recently Read</Link><br />
             <Link href="/bookmarks" className="relative select-none items-center items-center rounded-[6px] px-2 py-1.5 text-sm font-medium text-[#38383d] outline-none data-[disabled]:pointer-events-none data-[disabled]:opacity-50 focus:bg-[#f7f7f7] dark:text-stone-200 dark:focus:bg-[#19191a]">Bookmarks</Link><br />
             <Link href="/discover" className="relative select-none items-center items-center rounded-[6px] px-2 py-1.5 text-sm font-medium text-[#38383d] outline-none data-[disabled]:pointer-events-none data-[disabled]:opacity-50 focus:bg-[#f7f7f7] dark:text-stone-200 dark:focus:bg-[#19191a]">Discover</Link><br />
@@ -196,30 +196,3 @@ const SideBarSkeleton = () => (
     <ThemedSkeleton className="h-8 max-w-full py-2 dark:bg-[#1a1a1a]" />
   </div>
 );
-
-const MobileNav = () => {
-  return (
-    <div className="md:hidden">
-      <NavigationMenu>
-        <NavigationMenuList className="center">
-          <NavigationMenuItem>
-            <NavigationMenuTrigger>
-              <span>Links</span>
-            </NavigationMenuTrigger>
-            <NavigationMenuContent className="min-w-[200px] bg-white py-2">
-              <Link href="https://data.adj.news/">
-                <NavigationButton title="Data" subtitle="Explore Prediction Markets" />
-              </Link>
-              <Link href="https://adjacentresearch.substack.com">
-                <NavigationButton title="Research" subtitle="Ramblings on Markets" />
-              </Link>
-              <Link href="/pricing">
-                <NavigationButton title="Pricing" subtitle="Subscribe" />
-              </Link>
-            </NavigationMenuContent>
-          </NavigationMenuItem>
-        </NavigationMenuList>
-      </NavigationMenu>
-    </div>
-  );
-};
