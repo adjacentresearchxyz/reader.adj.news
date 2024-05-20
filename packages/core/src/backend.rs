@@ -58,7 +58,7 @@ async fn refreshfeeds(Json(request): Json<RefreshFeedsRequest>) {
     let items = items
     .into_iter()
     .map(|item| {
-        let image_url = if item.image_url.trim().is_empty() {
+        let image_url = if item.image_url.trim().is_empty() || item.image_url.trim() == "" {
             format!("https://source.boringavatars.com/marble/120/{}?square", item.title)
         } else {
             item.image_url.clone()
