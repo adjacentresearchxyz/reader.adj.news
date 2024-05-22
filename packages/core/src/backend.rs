@@ -62,8 +62,9 @@ async fn refreshfeeds(Json(request): Json<RefreshFeedsRequest>) {
             format!("https://source.boringavatars.com/marble/120/{}?square", item.title)
         } else {
             item.image_url.clone()
-            println!("Image URL: {:?}", item.image_url);
         };
+
+        println!("Image URL: {}", image_url);
 
         item::create_unchecked(
             item.title.clone(),
