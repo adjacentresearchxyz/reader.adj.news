@@ -55,7 +55,8 @@ pub async fn get_items(items: Vec<CustomEntry>) -> Vec<Item> {
                             utils::upload_to_s3("images", &image_hash, optimized_image.as_ref())
                                 .await
                         }
-                        Err(_) => String::from(""),
+                        // If error on upload use boring image
+                        Err(_) => String::from(format!("https://source.boringavatars.com/marble/120/{}?square", item.title)),
                     }
                 }
                 None => String::from(""),
