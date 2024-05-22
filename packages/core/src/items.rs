@@ -56,7 +56,7 @@ pub async fn get_items(items: Vec<CustomEntry>) -> Vec<Item> {
                                 .await
                         }
                         // If error on upload use boring image
-                        Err(_) => String::from(format!("https://source.boringavatars.com/marble/120/{}?square", item.title)),
+                        Err(_) => String::from("https://source.boringavatars.com/marble/120?square"),
                     }
                 }
                 None => String::from(""),
