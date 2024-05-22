@@ -64,8 +64,6 @@ async fn refreshfeeds(Json(request): Json<RefreshFeedsRequest>) {
             item.image_url.clone()
         };
 
-        println!("Image URL: {}", image_url);
-
         item::create_unchecked(
             item.title.clone(),
             item.url.clone(),
