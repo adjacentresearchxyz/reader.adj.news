@@ -30,7 +30,7 @@ export default function NavBar() {
             Data
           </Link>
           <Link href="https://adjacentresearch.substack.com" className="hidden md:block">
-            Research
+            Press
           </Link>
           {/* <Link href="/pricing" className="hidden md:block">
             Pricing
