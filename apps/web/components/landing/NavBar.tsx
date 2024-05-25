@@ -29,8 +29,11 @@ export default function NavBar() {
           >
             Data
           </Link>
-          <Link href="https://adjacentresearch.substack.com" className="hidden md:block">
+          <Link href="https://press.adjacentresearch.xyz" className="hidden md:block">
             Press
+          </Link>
+          <Link href="/about" className="hidden md:block">
+            FAQ
           </Link>
           {/* <Link href="/pricing" className="hidden md:block">
             Pricing
@@ -66,11 +69,11 @@ const MobileNav = () => {
               <Link href="https://data.adj.news/">
                 <NavigationButton title="Data" subtitle="Explore Prediction Markets" />
               </Link>
-              <Link href="https://adjacentresearch.substack.com">
+              <Link href="https://press.adjacentresearch.xyz">
                 <NavigationButton title="Research" subtitle="Ramblings on Markets" />
               </Link>
-              <Link href="/pricing">
-                <NavigationButton title="Pricing" subtitle="Subscribe" />
+              <Link href="/about">
+                <NavigationButton title="FAQ" subtitle="About" />
               </Link>
               {/* <Link href="https://github.com/michaelkremenetsky/Refeed?tab=readme-ov-file#self-hosting-with-docker">
                 <NavigationButton

@@ -25,7 +25,7 @@ const Landing: NextPage = () => {
         <NavBar />
         <Hero />
         <div className="-z-10 bg-white">
-          <div className="pb-20" />
+          {/* <div className="pb-20" /> */}
           {/* <div className="mx-auto mt-24 flex w-full justify-center px-1.5">
             <div className="mx-4 grid grid-cols-1 gap-6 md:mx-0 md:grid-cols-2 xl:grid-cols-3">
               <TimeBookmarksCard />
