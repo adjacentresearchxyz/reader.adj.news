@@ -116,7 +116,7 @@ async fn get_image_url(client: &Client, entry: &CustomEntry) -> String {
 
     let image_url = match image_url {
         Ok(url) => url,
-        Err(_) => String::from(""),
+        Err(_) => String::from("https://source.boringavatars.com/marble/120?square"),
     };
 
     return image_url;
