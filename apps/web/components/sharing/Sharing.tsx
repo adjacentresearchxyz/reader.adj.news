@@ -139,7 +139,7 @@ const Sharing = () => {
               viewBox="0 0 24 24"
               strokeWidth={1.5}
               shapeRendering="geometricPrecision"
-              className="h-6 w-6 fill-neutral-450 stroke-neutral-450"
+              className="h-6 w-6 fill-neutral-450 stroke-neutral-450 sm:mr-4"
             >
               <path
                 strokeLinecap="round"
