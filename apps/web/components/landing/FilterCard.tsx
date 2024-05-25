@@ -183,7 +183,7 @@ export const FilterCard = () => {
       >
         <Card
           description="Filter out items based on conditions"
-          title="Filtering System"
+          title="Filtering System via Refeed"
           multipler={2}
         >
           <>
@@ -194,7 +194,7 @@ export const FilterCard = () => {
                 <div className="mb-1 ml-1.5 flex flex-col">
                   <h1 className="mb-1 select-none text-sm font-medium leading-5">
                     Filters
-                    <ProBadge className="ml-1.5" />
+                    {/* <ProBadge className="ml-1.5" /> */}
                   </h1>
                   <h4 className="mb-2.5 select-none text-sm leading-5 text-neutral-450 dark:text-stone-500">
                     Filter out items based on conditions

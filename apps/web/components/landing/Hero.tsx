@@ -2,13 +2,22 @@ import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import Tilt from "react-parallax-tilt";
+import {
+  BookmarkFolderCard,
+  FullContentCard,
+  NotesCard,
+  PredictionMarketCard,
+  APICard,
+} from "./Cards";
+import { FilterCard } from "./FilterCard";
+import TimeBookmarksCard from "./TimeBookmarksCard";
 
 export default function Hero() {
   const router = useRouter();
 
   return (
     <div className="background-pattern border-b border-neutral-200/80 bg-[#fafafa]">
-      <main className="z-10">
+      <main className="z-10 m-5">
         <div className="mt-20">
           <div className="mx-auto max-w-4xl px-5 lg:px-8 xl:max-w-7xl">
             <div className="mx-auto flex flex-col items-center text-center ">
@@ -16,11 +25,13 @@ export default function Hero() {
                 <Banner />
               </div> */}
               <h1 className="z-10 text-[60px] font-[775] leading-none tracking-tight sm:text-[100px] md:text-[130px] lg:w-[900px]">
-                <span className="text-black-500">News through the </span>
-                <span className="text-black-500">
-                  Markets
-                </span>
+                <span className="text-black-500">Market driven News</span>
               </h1>
+              <h3 className="z-10 mt-4 text-[16px] font-[400] leading-none tracking-tight sm:text-[24px] md:text-[30px] lg:w-[700px]">
+                <span className="text-black-500">
+                  A robust RSS reader alongside prediction market data
+                </span>
+              </h3>
               <div className="z-10 mt-6">
                 <Link href="https://getwaitlist.com/waitlist/16399" target="_blank">
                   <button className="rounded-md bg-white px-6 py-2 text-base font-medium shadow-[0_0_0_1px_rgba(18,55,105,0.08),0_1px_2px_0_rgba(18,55,105,0.12)]">
@@ -29,7 +40,26 @@ export default function Hero() {
                 </Link>
               </div>
             </div>
-            <div className="lg-[2000px] z-10 mt-6 translate-y-12 transform">
+            <div className="mx-auto mt-24 flex w-full justify-center px-1.5">
+              <div className="mx-4 grid grid-cols-1 gap-6 md:mx-0 md:grid-cols-2 xl:grid-cols-2">
+                <PredictionMarketCard />
+                <APICard />
+              </div>
+            </div>
+            <div className="mx-auto mt-4 w-full justify-center px-1.5 sm:flex">
+              <div className="mx-4 grid grid-cols-1 gap-6 md:mx-0 md:grid-cols-2 xl:grid-cols-2">
+                <BookmarkFolderCard />
+                <FullContentCard />
+              </div>
+            </div>
+            <div className="mx-auto mt-4 w-full justify-center px-1.5 sm:flex">
+              <div className="mx-4 grid grid-cols-1 gap-6 md:mx-0 lg:grid-cols-2 xl:grid-cols-1">
+                <div className="lg:col-span-2">
+                  <FilterCard />
+                </div>
+              </div>
+            </div>
+            {/* <div className="lg-[2000px] z-10 mt-6 translate-y-12 transform">
               <div
                 className="rounded-lg shadow-[0px_0px_50px_100px_rgba(30,161,255,0.02)]"
                 onClick={() => {
@@ -49,7 +79,7 @@ export default function Hero() {
                   />
                 </Tilt>
               </div>
-            </div>
+            </div> */}
           </div>
         </div>
       </main>
