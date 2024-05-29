@@ -53,14 +53,14 @@ export const NonLinkedCardItem = ({
       <div className={`relative h-28 w-full dark:bg-[#0f0f10] `}>
         {item?.image_url === "" || !item?.image_url === null ? (
           <Image
-          src="https://source.boringavatars.com/marble/120?square"
+          src={`https://source.boringavatars.com/marble/120/${item?.title}?square`}
           alt="image"
           layout="fill"
           className="rounded-t-md object-cover"
         />
         ) : (
           <Image
-            src={item?.image_url ?? "https://source.boringavatars.com/marble/120?square"}
+            src={item?.image_url ?? `https://source.boringavatars.com/marble/120/${item?.title}?square`}
             alt="image"
             layout="fill"
             className="rounded-t-md object-cover"
