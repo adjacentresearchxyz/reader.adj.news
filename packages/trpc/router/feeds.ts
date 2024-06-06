@@ -11,36 +11,7 @@ import { toHttps } from "@refeed/lib/toHttps";
 import { addFeed } from "../../features/feed/addFeed";
 import { createTRPCRouter, protectedProcedure } from "../trpc";
 
-import { similarity } from 'string-similarity-js';
-
 // Tip - use the VSCode Outline View feature to see the APIs defined in here without having to scroll through the file
-
-async function fetchAndCombineJsonFiles() {
-  try {
-    const response = await fetch('https://data.adj.news/data/raw');
-    const data = await response.text();
-    const fileLines = data.split('\n');
-    const filteredFiles = fileLines
-      .filter(line => line.includes('"path"'))
-      .map(line => {
-        const pathStartIndex = line.indexOf('"path":"') + 8;
-        const pathEndIndex = line.indexOf('"', pathStartIndex);
-        const filePath = `https://data.adj.news/${line.substring(pathStartIndex, pathEndIndex)}`;
-        return fetch(filePath)
-          .then(response => response.json())
-          .catch(error => console.error('Error fetching JSON file:', error));
-      });
-
-    const jsonFiles = await Promise.all(filteredFiles);
-    const combinedJson = jsonFiles.reduce((acc, json) => {
-      return { ...acc, ...json };
-    }, {});
-    
-    return combinedJson;
-  } catch (error) {
-    console.error('Error fetching data:', error);
-  }
-}
 
 export const feedRouter = createTRPCRouter({
   getFeedsInFolders: protectedProcedure.query(async ({ ctx }) => {
@@ -71,8 +42,6 @@ export const feedRouter = createTRPCRouter({
             user_id: ctx.user.id,
           },
         },
-        /* Should be able to optmize this query later because of:
-         https://github.com/prisma/prisma-engines/pull/4678 */
         items: {
           where: {
             user_items: {
@@ -95,7 +64,13 @@ export const feedRouter = createTRPCRouter({
             created_at: true,
           },
         },
+        // What we are trying to do is get the count of all the items added after pagination_start_timestamp
+        // with a max limit of 1000 items or 30 days
       },
+      // This helps bring it down but it is still take 100ms+ right now.
+      // Only way to speed up this query is by going raw. Which won't be to bad
+      // but thats for another day
+      relationLoadStrategy: "query",
       take: plan == "free" ? 150 : 1000,
     });
 
@@ -449,8 +424,6 @@ export const feedRouter = createTRPCRouter({
         const BACKEND_URL =
           process.env.REFEED_BACKEND_URL ?? "http://0.0.0.0:4050";
 
-        console.log("Backend URL:" + BACKEND_URL);
-
         await fetch(BACKEND_URL + "/refreshfeeds", {
           method: "POST",
           headers: {
@@ -518,25 +491,13 @@ export const feedRouter = createTRPCRouter({
       return [];
     }
 
-    // get markets 
-    const allMarkets = await fetchAndCombineJsonFiles();
-
     // Convert _count to amount
-    const feeds = query.map((feed: any) => {
+    const feeds = query.map((feed) => {
       const { _count, logo_url, ...rest } = feed;
-      let relatedMarket = '';
-
-      allMarkets.forEach((market: { title: string }) => {
-        if (similarity(feed.title, market.title) > 0.8) { // Adjust the threshold as needed
-          relatedMarket = market.title;
-          console.log('Found related market! title:', feed.title, ' market:', market.title);
-        }
-      });
-
       if (logo_url) {
-        return { ...rest, amount: _count.items, logo_url: logo_url, relatedMarket: relatedMarket };
+        return { ...rest, amount: _count.items, logo_url: logo_url };
       }
-      return { ...rest, amount: _count.items, logo_url: "", relatedMarket: relatedMarket };
+      return { ...rest, amount: _count.items, logo_url: "" };
     });
 
     return feeds;
