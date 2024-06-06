@@ -2,6 +2,7 @@ FROM --platform=linux/amd64 node:20-alpine AS builder
 
 	RUN apk add --no-cache libc6-compat openssl && apk update
 	WORKDIR /app
+	RUN yarn policies set-version 1.22.1
 	RUN yarn global add turbo@"^1.10.12"
 	COPY . . 
 	RUN turbo prune --scope=@refeed/nextjs --docker
