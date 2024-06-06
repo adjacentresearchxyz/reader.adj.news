@@ -11,6 +11,7 @@ import {
 } from "./Cards";
 import { FilterCard } from "./FilterCard";
 import TimeBookmarksCard from "./TimeBookmarksCard";
+import SignUpFormReact from "./SignUpForm";
 
 export default function Hero() {
   const router = useRouter();
@@ -33,11 +34,7 @@ export default function Hero() {
                 </span>
               </h3>
               <div className="z-10 mt-6">
-                <Link href="https://getwaitlist.com/waitlist/16399" target="_blank">
-                  <button className="rounded-md bg-white px-6 py-2 text-base font-medium shadow-[0_0_0_1px_rgba(18,55,105,0.08),0_1px_2px_0_rgba(18,55,105,0.12)]">
-                    Join the Waitlist -&gt;{" "}
-                  </button>
-                </Link>
+                <SignUpFormReact />
               </div>
             </div>
             <div className="mx-auto mt-24 flex w-full justify-center px-1.5">

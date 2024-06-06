@@ -2,7 +2,8 @@ FROM --platform=linux/amd64 node:20-alpine AS builder
 
 	RUN apk add --no-cache libc6-compat openssl && apk update
 	WORKDIR /app
-	RUN yarn global add turbo
+	RUN yarn policies set-version 1.22.1
+	RUN yarn global add turbo@"^1.10.12"
 	COPY . . 
 	RUN turbo prune --scope=@refeed/nextjs --docker
 
@@ -20,6 +21,8 @@ FROM --platform=linux/amd64 node:20-alpine AS installer
 	ENV NEXT_PUBLIC_SUPABASE_ANON_KEY=$NEXT_PUBLIC_SUPABASE_ANON_KEY
 	ENV NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY=${NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY}
 
+	ENV SKIP_YARN_COREPACK_CHECK=0
+
 	RUN apk add --no-cache libc6-compat openssl && apk update
 	WORKDIR /app
 
@@ -30,6 +33,7 @@ FROM --platform=linux/amd64 node:20-alpine AS installer
 	COPY --from=builder /app/out/json .
 	COPY --from=builder /app/out/pnpm-lock.yaml\* ./
 
+	RUN yarn policies set-version 1.22.1
 	RUN yarn global add pnpm@8.15.7 && pnpm fetch --prod && pnpm install -r --offline
 
 	COPY --from=builder /app/out/full .
