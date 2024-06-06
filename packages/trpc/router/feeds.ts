@@ -1,6 +1,6 @@
 import { TRPCError } from "@trpc/server";
 import { Innertube } from "youtubei.js";
-import { similarity } from 'string-similarity-js';
+// import { similarity } from 'string-similarity-js';
 import { z } from "zod";
 
 import { addFeedToUser } from "@refeed/features/discovery/addFeedToUser";
@@ -526,12 +526,13 @@ export const feedRouter = createTRPCRouter({
       const { _count, logo_url, ...rest } = feed;
       let relatedMarket = '';
 
-      allMarkets.forEach((market: { title: string }) => {
-        if (similarity(feed.title, market.title) > 0.8) { // Adjust the threshold as needed
-          relatedMarket = market.title;
-          console.log('Found related market! title:', feed.title, ' market:', market.title);
-        }
-      });
+      console.log("market length: ", allMarkets.length)
+      // allMarkets.forEach((market: { title: string }) => {
+        // if (similarity(feed.title, market.title) > 0.8) { // Adjust the threshold as needed
+        //   relatedMarket = market.title;
+        //   console.log('Found related market! title:', feed.title, ' market:', market.title);
+        // }
+      // });
 
       if (logo_url) {
         return { ...rest, amount: _count.items, logo_url: logo_url, relatedMarket: relatedMarket };
