@@ -19,7 +19,8 @@ export default function NavBar() {
           href="/"
           className="ml-4 mr-5 flex items-start text-base font-[650]"
         >
-          <img src="https://pbs.twimg.com/profile_images/1668357289747554304/7NSJ60Fd_400x400.jpg" alt="Adjacent News Logo" className="h-8 w-auto" />
+          <img src="/logo.svg" alt="Adjacent News Logo" className="h-8 w-auto" />
+
         </Link>
         <MobileNav />
         <div className="flex items-center space-x-5 text-sm font-[550]">
