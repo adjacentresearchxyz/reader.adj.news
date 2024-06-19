@@ -16,7 +16,7 @@ export const CopyLinkButton = () => {
         <TooltipTrigger asChild>
           <button
             onClick={() => {
-              navigator.clipboard.writeText(openItem?.url!);
+              navigator.clipboard.writeText(window.location.href);
             }}
           >
             <svg
