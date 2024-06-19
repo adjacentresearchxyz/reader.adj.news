@@ -57,7 +57,7 @@ export const Article = (props: ArticleProps) => {
         <title>Adjacent News Article</title>
         <meta name="description" content="Description of Adjacent News" />
         <meta property="og:title" content="Opengraph Title" />
-        <meta property="og:description" content="OpenGraph Description" />
+        <meta property="og:description" content="OpenGraph Desc" />
         <meta property="og:image" content="https://adj.news/logo.svg" />
 
         <meta name="twitter:card" content="summary_large_image" />
