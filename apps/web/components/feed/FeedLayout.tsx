@@ -39,7 +39,6 @@ export const FeedLayout = (props: FeedLayoutTypes) => {
   const { item: itemParam, search } = query;
 
   const user = useUser();
-  console.log(user)
 
   const data = useItemData();
   const { items } = data;

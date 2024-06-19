@@ -6,6 +6,7 @@ import type { AppProps } from "next/app";
 import Head from "next/head";
 import { useRouter } from "next/router";
 import type { Session } from "@supabase/auth-helpers-nextjs";
+import { createClient } from "@supabase/supabase-js";
 import { createPagesBrowserClient } from "@supabase/auth-helpers-nextjs";
 import { SessionContextProvider } from "@supabase/auth-helpers-react";
 import {
@@ -17,8 +18,11 @@ import { ThemeProvider } from "next-themes";
 import posthog from "posthog-js";
 import { PostHogProvider } from "posthog-js/react";
 import { trpc } from "utils/trpc";
+import { getFirstParagraphs } from "@lib/getFirstParagraph";
 
 import { Toaster } from "@refeed/ui";
+
+import type { ItemType } from "@refeed/types/item";
 
 if (typeof window !== "undefined") {
   if (NEXT_PUBLIC_POSTHOG_KEY && NEXT_PUBLIC_POSTHOG_HOST) {
@@ -36,6 +40,8 @@ const App = ({
   const [supabaseClient] = useState(() => createPagesBrowserClient());
   const router = useRouter();
 
+  const [item, setItem] = useState<ItemType | null>(null);
+
   useEffect(() => {
     const handleRouteChange = () => posthog?.capture("$pageview");
     router.events.on("routeChangeComplete", handleRouteChange);
@@ -44,6 +50,25 @@ const App = ({
       router.events.off("routeChangeComplete", handleRouteChange);
     };
   }, []);
+
+  const supabase = createClient(
+    process.env.NEXT_PUBLIC_SUPABASE_URL!,
+    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
+  );
+
+  const url = router.asPath.split("?")[1];
+  const id = url?.split("=")[1];
+  useEffect(() => {
+    if (id) {
+      supabase.from("item").select("*").eq("id", id).then((res) => {
+        if (res.data) {
+          setItem(res.data[0]);
+        }
+      });
+    } else {
+      setItem(null);
+    }
+  }, [id]);
 
   return (
     <PostHogProvider client={posthog}>
@@ -54,14 +79,23 @@ const App = ({
         <JotaiProvider>
           <StrictMode>
             <Head>
-              <title>Adjacent News</title>
-              <meta name="description" content="Prediction Market Driven News" />
+              <title>{item ? item.title : 'Adjacent News'}</title>
+              <meta name="description" content={"Prediction Market Driven News"} />
               <meta
                 name="viewport"
                 content="width=device-width, initial-scale=1.0"
               ></meta>
               <link rel="icon" href="/favicon.ico" />
               <link rel="apple-touch-icon" href="/favicon.ico" />
+              
+              <meta property="og:title" content={item ? item.title : 'Adjacent News'} />
+              <meta property="og:description" content="Prediction Market Driven News" />
+              <meta property="og:image" content={item?.image_url ? item.image_url : "https://adj.news/logo.svg"} />
+
+              <meta name="twitter:title" content={item ? item.title : 'Adjacent News'} />
+              <meta name="twitter:card" content="summary_large_image" />
+              <meta name="twitter:description" content="Prediction Market Driven News" />
+              <meta name="twitter:image" content={item?.image_url ? item.image_url : "https://adj.news/logo.svg"} />
             </Head>
             <ThemeProvider
               attribute="class"

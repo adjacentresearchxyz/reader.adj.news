@@ -1,5 +1,4 @@
-import { useState } from "react";
-import Head from 'next/head'
+import { useState, useEffect } from "react";
 import { ArticleTopbar } from "@components/reader/Reader";
 import {
   Tooltip,
@@ -36,6 +35,7 @@ export const Article = (props: ArticleProps) => {
   const [fullContentExpanded, setFullContentExpanded] = useState(false);
   const [fullscreen, setFullscreen] = useAtom(fullscreenAtom);
   const settings = useAtomValue(settingsAtom);
+  const [itemTitle, setItemTitle] = useState('');
 
   const updateNoteinDB = trpc.pro.updateNote.useMutation();
   const updateNote = (note: string) => {
@@ -51,21 +51,12 @@ export const Article = (props: ArticleProps) => {
 
   const { plan } = useUser();
 
-  return (
-    <div>
-      <Head>
-        <title>Adjacent News Article</title>
-        <meta name="description" content="Description of Adjacent News" />
-        <meta property="og:title" content="Opengraph Title" />
-        <meta property="og:description" content="OpenGraph Desc" />
-        <meta property="og:image" content="https://adj.news/logo.svg" />
+  useEffect(() => {
+    setItemTitle(decodeHtmlEntities(item.title));
+  }, [item]);
 
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Twitter Embed Title" />
-        <meta name="twitter:description" content="Twitter description embed" />
-        <meta name="twitter:image" content="https://adj.news/logo.svg" />
-      </Head>
-      <div
+  return (
+    <div
         className={`mx-auto select-text break-words text-[#38383d] subpixel-antialiased dark:border-neutral-700 dark:text-[#F3F5F7] ${
           props.Type == "Popup"
             ? "w-[94.5%]"
@@ -107,7 +98,7 @@ export const Article = (props: ArticleProps) => {
             rel="noopener noreferrer"
             href={url}
           >
-            {decodeHtmlEntities(title)}
+            {itemTitle}
           </a>
           <div className="mb-5 mt-3 flex">
             <h4 className="font-base text-sm tracking-wide text-neutral-500/90 dark:text-stone-500">
@@ -238,6 +229,5 @@ export const Article = (props: ArticleProps) => {
           )}
         </div>
       </div>
-    </div>
   );
 };

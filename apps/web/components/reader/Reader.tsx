@@ -5,7 +5,7 @@ import clsx from "clsx";
 import useEmblaCarousel from "embla-carousel-react";
 import { motion } from "framer-motion";
 import { atom, useAtom, useSetAtom } from "jotai";
-import { Sparkles } from "lucide-react";
+import Head from 'next/head'
 
 import { useUser } from "@refeed/features/hooks/useUser";
 import { useItemData, useOpenItem } from "@refeed/features/item/useItemDataWeb";
@@ -28,6 +28,7 @@ import { useReaderNavigation } from "./useReaderNavigation";
 export const fullscreenAtom = atom(false);
 export const AIDrawerOpen = atom(false);
 export const AIPromptOpen = atom(false);
+export const titleAtom = atom("Title");
 
 const Reader = () => {
   const { width: windowWidth } = useWindowSize();
