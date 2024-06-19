@@ -20,7 +20,7 @@ export const useItemData = () => {
     isFetchingNextPage,
   } = trpc.item.getUnreadItems.useInfiniteQuery(
     {
-      amount: 25,
+      amount: 100,
       sort,
       type: FeedType,
       feed_id: feedId as string | undefined,
@@ -78,7 +78,7 @@ export const useUpdateWebItemData = () => {
   const updateItemData = (newItems: ItemType[]) => {
     utils.item.getUnreadItems.setInfiniteData(
       {
-        amount: 25,
+        amount: 100,
         sort,
         type: FeedType,
         feed_id: feedId as string,

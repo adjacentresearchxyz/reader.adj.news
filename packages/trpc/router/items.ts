@@ -63,9 +63,7 @@ export const itemRouter = createTRPCRouter({
                   date_added: true,
                   pagination_start_timestamp: true,
                 },
-                where: {
-                  user_id: ctx.user.id,
-                },
+                where: ctx.user ? { user_id: ctx.user.id } : {},
               },
             },
           },

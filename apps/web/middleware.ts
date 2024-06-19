@@ -74,26 +74,30 @@ export async function middleware(req: NextRequest) {
     return NextResponse.redirect(new URL("/discover", req.url));
   }
 
-  // Redirect straight to app if they are on landing page
-  if (session && req.nextUrl.pathname === "/") {
-    return NextResponse.redirect(new URL("/feed/all", req.url));
-  }
-
   if (session && req.nextUrl.pathname === "/signup") {
     return NextResponse.redirect(new URL("/discover", req.url));
   }
 
-  // Check if the user is on a page they aren't supposed to be on
-  // @TODO: re-enable auth and/or allow for an un-authed feed
-  if (
-    false &&
-    req.nextUrl.pathname !== "/" &&
-    req.nextUrl.pathname !== "/login" &&
-    req.nextUrl.pathname !== "/signup" &&
-    req.nextUrl.pathname !== "/pricing"
-  ) {
-    return NextResponse.redirect(new URL("/login", req.url));
+  if (!session && req.nextUrl.pathname === "/bookmarks" || req.nextUrl.pathname === "/recentlyread") {
+    return NextResponse.redirect(new URL("/feed/all", req.url));
   }
+
+  // Unauthenticated users can read the feed but not custom 
+  // Redirect straight to app if they are on landing page
+  if (req.nextUrl.pathname === "/feed") {
+    return NextResponse.redirect(new URL("/feed/all", req.url));
+  }
+
+  // Check if the user is on a page they aren't supposed to be on
+  // if (
+  //   session &&
+  //   req.nextUrl.pathname !== "/" &&
+  //   req.nextUrl.pathname !== "/login" &&
+  //   req.nextUrl.pathname !== "/signup" &&
+  //   req.nextUrl.pathname !== "/pricing"
+  // ) {
+  //   return NextResponse.redirect(new URL("/login", req.url));
+  // }
 
   return res;
 }
@@ -101,6 +105,7 @@ export async function middleware(req: NextRequest) {
 export const config = {
   matcher: [
     "/",
+    "/feed", 
     "/feed/:path*",
     "/discover",
     "/folder",

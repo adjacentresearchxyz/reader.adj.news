@@ -1,6 +1,6 @@
 import { UpgradeDrawer } from "@components/upgrade/Drawer";
 import { atom, useSetAtom } from "jotai";
-import { AArrowDown, AArrowUp, MoreHorizontal } from "lucide-react";
+import { AArrowDown, AArrowUp, MoreHorizontal, RotateCcw } from "lucide-react";
 
 import { useUser } from "@refeed/features/hooks/useUser";
 
@@ -32,6 +32,9 @@ export const NavBarButtons = (props: NavBarTypes) => {
       <div className="flex items-center self-center">
         {!hideButtons ? (
           <div className={`flex self-center`}>
+            <button className='mx-3' onClick={() => window.location.reload()}>
+              <RotateCcw size={16} color="#888888" strokeWidth={2} />
+            </button>
             <FeedLayoutButtonNew />
           </div>
         ) : null}

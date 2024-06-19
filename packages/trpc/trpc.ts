@@ -27,10 +27,23 @@ export const createTRPCContext = async (opts: CreateNextContextOptions) => {
 
   const user = token
     ? await supabase.auth.getUser(token)
-    : await supabase.auth.getUser();
+    : null;
+
+    // If the user is not authenticated, we'll create a user object using our ID
+    const unauthorizedUser: User = {
+      id: "f4186f3b-2c2a-45a8-88cf-18e9c9ed8910",
+      aud: "unauthenticated",
+      created_at: "2021-10-06T00:00:00.000000Z",
+      app_metadata: {
+        provider: "email",
+      },
+      user_metadata: {
+        full_name: "Anonymous User",
+      },
+    }
 
   return createInnerTRPCContext({
-    user: user.data.user,
+    user: user ? user.data.user : unauthorizedUser,
   });
 };
 

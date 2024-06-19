@@ -7,6 +7,7 @@ import clsx from "clsx";
 import { motion } from "framer-motion";
 import { useAtom, useAtomValue } from "jotai";
 import { useWindowSize } from "usehooks-ts";
+import { useUser } from "@supabase/auth-helpers-react";
 
 import { bookmarkFolderSortAtom } from "@refeed/atoms/bookmarkAtom";
 import { useItemData } from "@refeed/features/item/useItemDataWeb";
@@ -36,6 +37,9 @@ export const FeedLayout = (props: FeedLayoutTypes) => {
   const router = useRouter();
   const { query, route } = useRouter();
   const { item: itemParam, search } = query;
+
+  const user = useUser();
+  console.log(user)
 
   const data = useItemData();
   const { items } = data;
@@ -137,7 +141,7 @@ export const FeedLayout = (props: FeedLayoutTypes) => {
                           item={item}
                           i={i}
                           FeedType={FeedType}
-                          markRead={() => markRead(item)}
+                          markRead={() => {!user || user?.aud === 'unauthenticated' ? null : markRead(item) }}
                         />
                       </>
                     )}
@@ -176,7 +180,7 @@ export const FeedLayout = (props: FeedLayoutTypes) => {
                         items={itemsThatAreNotFromSearch}
                         FeedType={FeedType}
                         key={item.id}
-                        markRead={() => markRead(item)}
+                        markRead={() => {!user || user?.aud === 'unauthenticated' ? null : markRead(item) }}
                       />
                     )}
                   </motion.div>
