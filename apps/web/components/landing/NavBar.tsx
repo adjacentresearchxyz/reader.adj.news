@@ -42,12 +42,12 @@ export default function NavBar() {
         </div>
         {/** md:ml-32 */}
         <div className="mx-auto ml-auto mr-1.5 space-x-3 md:ml-44">
+          <Link href="/feed">
+            <TryNowButton />
+          </Link>
           {/* <Link href="/login">
             <LoginButton />
           </Link>
-          <Link href="/signup">
-            <TryNowButton />
-          </Link> */}
           {/* <Link href="https://getwaitlist.com/waitlist/16399" target="_blank">
             <WaitlistButton />
           </Link> */}

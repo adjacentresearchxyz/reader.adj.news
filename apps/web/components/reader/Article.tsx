@@ -122,7 +122,7 @@ export const Article = (props: ArticleProps) => {
             }
           />
         </div>
-        <div className="flex">
+        <div className="flex my-10">
           <button className="w-full rounded-md border border-neutral-200 text-base font-medium hover:border-gray-300 dark:border-neutral-700 dark:hover:border-neutral-700/90">
             <a
               target="_blank"

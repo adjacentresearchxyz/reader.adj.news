@@ -31,7 +31,7 @@ export const NavBarButtons = (props: NavBarTypes) => {
     <div className="item-center absolute right-2 top-1.5 justify-end rounded text-xl font-bold">
       <div className="flex items-center self-center">
         {!hideButtons ? (
-          <div className={`flex self-center`}>
+          <div className={`flex self-center mx-3`}>
             <button className='mx-3' onClick={() => window.location.reload()}>
               <RotateCcw size={16} color="#888888" strokeWidth={2} />
             </button>
