@@ -64,7 +64,7 @@ export default function SideBar() {
         <Drawer.Root direction="right" shouldScaleBackground>
           <div className={`ml-2.5 mr-1.5 mt-1.5`}>
             <div className="ml-1">
-              {!user || user?.aud === 'unauthenticated' && (
+              {user && user?.aud === 'authenticated' && (
                 <AccountDropdown width={width} />
               )}
             </div>
@@ -73,7 +73,7 @@ export default function SideBar() {
             <div className="mx-2 my-2">
               <SearchSelect />
             </div>
-            {!user || user?.aud === 'unauthenticated' && (
+            {user && user?.aud === 'authenticated' && (
               <>
                 <Link href="/recentlyread" className="relative select-none items-center items-center rounded-[6px] px-2 py-1.5 text-sm font-medium text-[#38383d] outline-none data-[disabled]:pointer-events-none data-[disabled]:opacity-50 focus:bg-[#f7f7f7] dark:text-stone-200 dark:focus:bg-[#19191a]">Recently Read</Link><br />
                 <Link href="/bookmarks" className="relative select-none items-center items-center rounded-[6px] px-2 py-1.5 text-sm font-medium text-[#38383d] outline-none data-[disabled]:pointer-events-none data-[disabled]:opacity-50 focus:bg-[#f7f7f7] dark:text-stone-200 dark:focus:bg-[#19191a]">Bookmarks</Link><br />
@@ -130,8 +130,8 @@ export default function SideBar() {
                 show={isFetched && feedsInFolders?.length == 0}
               />
               <AddFolderDialog link={undefined} title="Add Folder" />
-              {isFetched && feedsInFolders?.length != 0 && (
-                <AddNewButtonBottom />
+              {(isFetched && feedsInFolders?.length != 0) && (user && user?.aud === 'authenticated') && (
+                  <AddNewButtonBottom />
               )}
               {/* <RecentlyRead />
               <Bookmarks />

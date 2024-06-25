@@ -2,6 +2,7 @@ import Image from "next/legacy/image";
 import Link from "next/link";
 import router from "next/router";
 import { FeedInfo } from "@components/feed/FeedInfo";
+import { useUser } from "@supabase/auth-helpers-react";
 
 import type { ItemType } from "@refeed/types/item";
 
@@ -18,6 +19,8 @@ export const CardItem = (props: {
   const { item, markRead, FeedType } = props;
   const pathWithoutQuery = router.asPath.split("?")[0];
 
+  const user = useUser()
+
   return (
     <Link
       href={
@@ -29,7 +32,7 @@ export const CardItem = (props: {
       shallow
       scroll
       onClick={() => {
-        markRead();
+        {user && user?.aud === 'authenticated' ? markRead() : null }
       }}
     >
       <NonLinkedCardItem item={item} FeedType={FeedType} />

@@ -25,6 +25,8 @@ const config = {
         hostname: "**",
       },
     ],
+    dangerouslyAllowSVG: true,
+    domains: ['source.boringavatars.com'],
   },
 };
 

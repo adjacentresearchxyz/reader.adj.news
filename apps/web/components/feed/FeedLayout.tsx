@@ -140,7 +140,7 @@ export const FeedLayout = (props: FeedLayoutTypes) => {
                           item={item}
                           i={i}
                           FeedType={FeedType}
-                          markRead={() => {!user || user?.aud === 'unauthenticated' ? null : markRead(item) }}
+                          markRead={() => {user && user?.aud === 'authenticated' ? null : markRead(item) }}
                         />
                       </>
                     )}
@@ -179,7 +179,7 @@ export const FeedLayout = (props: FeedLayoutTypes) => {
                         items={itemsThatAreNotFromSearch}
                         FeedType={FeedType}
                         key={item.id}
-                        markRead={() => {!user || user?.aud === 'unauthenticated' ? null : markRead(item) }}
+                        markRead={() => {user && user?.aud === 'authenticated' ? null : markRead(item) }}
                       />
                     )}
                   </motion.div>

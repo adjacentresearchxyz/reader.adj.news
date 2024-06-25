@@ -31,6 +31,30 @@ export const FAQ = ({ removeTitle }: { removeTitle?: boolean }) => (
       <li className="py-[3px] text-lg dark:text-stone-200">
         <a href="https://observablehq.com/framework" className="underline-dotted" target="_blank">Observable Framework</a>
       </li>
+      <li className="py-[3px] text-lg dark:text-stone-200">
+        <a href="https://thegraph.com/" className="underline-dotted" target="_blank">The Graph</a>
+      </li>
+      <li className="py-[3px] text-lg dark:text-stone-200">
+        <a href="https://nextjs.org/" className="underline-dotted" target="_blank">Next.js</a>
+      </li>
+      <li className="py-[3px] text-lg dark:text-stone-200">
+        <a href="https://trpc.io/" className="underline-dotted" target="_blank">tRPC</a>
+      </li>
+      <li className="py-[3px] text-lg dark:text-stone-200">
+        <a href="https://reactjs.org/" className="underline-dotted" target="_blank">React</a>
+      </li>
+      <li className="py-[3px] text-lg dark:text-stone-200">
+        <a href="https://tailwindcss.com/" className="underline-dotted" target="_blank">Tailwind CSS</a>
+      </li>
+      <li className="py-[3px] text-lg dark:text-stone-200">
+        <a href="https://prisma.io/" className="underline-dotted" target="_blank">Prisma</a>
+      </li>
+      <li className="py-[3px] text-lg dark:text-stone-200">
+        <a href="https://turborepo.org/" className="underline-dotted" target="_blank">Turborepo</a>
+      </li>
+      <li className="py-[3px] text-lg dark:text-stone-200">
+        <a href="https://supabase.com/" className="underline-dotted" target="_blank">Supabase</a>
+      </li>
     </ul>
   </div>
 );

@@ -12,6 +12,11 @@ export const BottomFooter = () => {
                 Resources
               </h2>
               <ul className="font-medium text-neutral-450">
+              <li className="mb-4">
+                  <Link href="https://observablehq.com/collection/@adjacent/adjacent-news" target="_blank" className="hover:underline">
+                    Notebooks
+                  </Link>
+                </li>
                 <li className="mb-4">
                   <Link href="/opensource" className="hover:underline">
                     Open Source
@@ -42,6 +47,14 @@ export const BottomFooter = () => {
                     className="hover:underline"
                   >
                     Twitter
+                  </a>
+                </li>
+                <li className="mb-4">
+                  <a
+                    href="https://t.me/m/VhSEJb5LYjYx"
+                    className="hover:underline"
+                  >
+                    Telegram
                   </a>
                 </li>
               </ul>

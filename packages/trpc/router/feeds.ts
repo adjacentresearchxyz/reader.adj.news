@@ -13,34 +13,6 @@ import { addFeed } from "../../features/feed/addFeed";
 import { createTRPCRouter, protectedProcedure } from "../trpc";
 
 // Tip - use the VSCode Outline View feature to see the APIs defined in here without having to scroll through the file
-
-async function fetchAndCombineJsonFiles() {
-  try {
-    const response = await fetch('https://data.adj.news/data/raw');
-    const data = await response.text();
-    const fileLines = data.split('\n');
-    const filteredFiles = fileLines
-      .filter(line => line.includes('"path"'))
-      .map(line => {
-        const pathStartIndex = line.indexOf('"path":"') + 8;
-        const pathEndIndex = line.indexOf('"', pathStartIndex);
-        const filePath = `https://data.adj.news/${line.substring(pathStartIndex, pathEndIndex)}`;
-        return fetch(filePath)
-          .then(response => response.json())
-          .catch(error => console.error('Error fetching JSON file:', error));
-      });
-
-    const jsonFiles = await Promise.all(filteredFiles);
-    const combinedJson = jsonFiles.reduce((acc, json) => {
-      return { ...acc, ...json };
-    }, {});
-    
-    return combinedJson;
-  } catch (error) {
-    console.error('Error fetching data:', error);
-  }
-}
-
 export const feedRouter = createTRPCRouter({
   getFeedsInFolders: protectedProcedure.query(async ({ ctx }) => {
     // Eventually when creating the API add a option to not sort it right at the api level so third party apps can sort it themselves if they would like.
@@ -519,21 +491,10 @@ export const feedRouter = createTRPCRouter({
       return [];
     }
 
-    const allMarkets = await fetchAndCombineJsonFiles();
-
     // Convert _count to amount
     const feeds = query.map((feed: any) => {
       const { _count, logo_url, ...rest } = feed;
       let relatedMarket = '';
-
-      console.log("market length: ", allMarkets.length)
-      // allMarkets.forEach((market: { title: string }) => {
-        // if (similarity(feed.title, market.title) > 0.8) { // Adjust the threshold as needed
-        //   relatedMarket = market.title;
-        //   console.log('Found related market! title:', feed.title, ' market:', market.title);
-        // }
-      // });
-
       if (logo_url) {
         return { ...rest, amount: _count.items, logo_url: logo_url, relatedMarket: relatedMarket };
       }

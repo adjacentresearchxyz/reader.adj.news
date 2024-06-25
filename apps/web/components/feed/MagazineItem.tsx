@@ -1,4 +1,4 @@
-import { memo } from "react";
+import { memo, useState, useEffect } from "react";
 import Link from "next/link";
 import router from "next/router";
 
@@ -8,6 +8,7 @@ import type { FeedTypes } from "../../types/feed";
 import { FeedInfo } from "./FeedInfo";
 import { Title } from "./FeedTitle";
 import { MagazineImage } from "./MagazineImage";
+import { useUser } from "@supabase/auth-helpers-react";
 
 export const MagazineItem = memo(
   (props: {
@@ -20,6 +21,8 @@ export const MagazineItem = memo(
 
     const pathWithoutQuery = router.asPath.split("?")[0];
 
+    const user = useUser()
+
     return (
       <Link
         href={`${pathWithoutQuery}/?item=` + item?.id}
@@ -27,7 +30,7 @@ export const MagazineItem = memo(
         shallow
         scroll
         onClick={() => {
-          markRead();
+          {user && user?.aud === 'authenticated' ? markRead() : null }
         }}
       >
         <NonLinkedMagazineItem item={item} FeedType={FeedType} />
@@ -54,6 +57,8 @@ export const NonLinkedMagazineItem = ({
     <div className="flex w-full flex-col">
       <Title FeedType={FeedType} title={item?.title ?? ""} />
       <FeedInfo FeedType={FeedType} item={item!} />
+      {/* @TODO add this in */}
+      {/* <Markets FeedType={FeedType} title={"3 Related Markets" ?? ""} /> */}
     </div>
   </div>
 );
