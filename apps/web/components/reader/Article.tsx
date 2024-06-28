@@ -20,6 +20,9 @@ import { TextArea } from "@refeed/ui";
 import { settingsAtom } from "../../stores/settings";
 import Sharing from "../sharing/Sharing";
 import { fullscreenAtom } from "./Reader";
+import MarketCard from "./MarketCard";
+
+import { useSupabaseClient } from "@supabase/auth-helpers-react";
 
 interface ArticleProps {
   item: ItemType;
@@ -36,6 +39,37 @@ export const Article = (props: ArticleProps) => {
   const [fullscreen, setFullscreen] = useAtom(fullscreenAtom);
   const settings = useAtomValue(settingsAtom);
   const [itemTitle, setItemTitle] = useState('');
+
+  const supabase = useSupabaseClient();
+  const [itemData, setItemData] = useState(null);
+
+  useEffect(() => {
+    // Extract the 'item' query parameter from the URL
+    const queryParams = new URLSearchParams(window.location.search);
+    const itemId = queryParams.get('item');
+
+    if (itemId) {
+      // Perform the Supabase query to get the item that matches the itemId
+      const fetchItem = async () => {
+        const { data, error } = await supabase
+          .from('item')
+          .select('*')
+          .eq('id', itemId)
+          .single(); // Assuming 'id' is the column you want to match against
+
+        if (error) {
+          console.error('Error fetching item:', error);
+          return;
+        }
+
+        setItemData(data);
+      };
+
+      fetchItem();
+    }
+  }, []); // Empty dependency array to run only once on component mount
+
+  console.log("ItemData: ", itemData)
 
   const updateNoteinDB = trpc.pro.updateNote.useMutation();
   const updateNote = (note: string) => {
@@ -132,11 +166,11 @@ export const Article = (props: ArticleProps) => {
               <a
                 target="_blank"
                 rel="noopener noreferrer"
-                href={`https://data.adj.news/search?q=${item.title}`}
+                href={`https://data.adj.news/?q=${item.title}`}
                 className="no-underline"
               >
                 <h2 className="py-2 text-center font-[450] text-neutral-600/80 shadow-sm dark:text-gray-200">
-                  Search Related Markets
+                  Related Markets
                 </h2>
               </a>
             </button>
@@ -223,6 +257,13 @@ export const Article = (props: ArticleProps) => {
               )}
             </TooltipProvider>
           </div>
+          {itemData && (
+            <div className="flex my-10">
+              <MarketCard
+                item={itemData}
+              />
+            </div>
+          )}
           {notesOpen || (item.note && plan == "pro") ? (
             <TextArea
               className="z-10 mt-4 w-full"
