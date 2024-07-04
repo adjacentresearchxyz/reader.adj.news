@@ -21,14 +21,15 @@ export const useReaderNavigation = (items: ItemType[]) => {
 
   // TODO: Add ability to fetch the open id from here
   const initialIndex = useMemo(() => {
-    if (searchItem && items) {
+    if (!items) return -1; // Return -1 or any other default value when items is null
+    if (searchItem) {
       return items.findIndex((i) => i.id == searchItem.id);
     } else {
       return items.findIndex((i) => i.id == item);
     }
   }, [items, item, searchItem]);
 
-  const isLoaded = items.length > 0 && initialIndex !== -1;
+  const isLoaded = items?.length > 0 && initialIndex !== -1;
 
   const closeReader = () => {
     // TODO: Fix clicking esc causes it to removes parems in other parts of the app

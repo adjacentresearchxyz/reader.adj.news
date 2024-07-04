@@ -1,4 +1,5 @@
 use std::sync::Arc;
+use serde_json::{self, Value};
 
 use crate::{
     cache_fetch_info,
@@ -12,6 +13,9 @@ use prisma_client_rust::NewClientError;
 use serde::Deserialize;
 use tower_http::cors::CorsLayer;
 
+use std::process::{Command, Stdio};
+use std::io::{self, Write};
+
 pub async fn start_http() {
     tracing_subscriber::fmt::init();
 
@@ -21,7 +25,7 @@ pub async fn start_http() {
         .route("/healthcheck", get(healthcheck))
         .layer(CorsLayer::permissive());
 
-    let listener = tokio::net::TcpListener::bind("0.0.0.0:4050").await.unwrap();
+    let listener = tokio::net::TcpListener::bind("0.0.0.0:4051").await.unwrap();
     axum::serve(listener, app).await.unwrap();
 }
 
@@ -52,30 +56,24 @@ async fn refreshfeeds(Json(request): Json<RefreshFeedsRequest>) {
 
     let items = get_items(flat_items).await;
 
-    println!("{:?}", items.len());
+    // @ TODO add in creation of embedding with edge function
 
     // Convert the items into a Vector of items into the format prisma expects
     let items = items
-    .into_iter()
-    .map(|item| {
-        let image_url = if item.image_url.trim().is_empty() || item.image_url.trim() == "" {
-            format!("https://source.boringavatars.com/marble/120/{}?square", item.title)
-        } else {
-            item.image_url.clone()
-        };
-
-        item::create_unchecked(
-            item.title.clone(),
-            item.url.clone(),
-            vec![
-                item::SetParam::SetWebsiteContent(Some(item.website_content)),
-                item::SetParam::SetImageUrl(Some(image_url)),
-                item::SetParam::SetFeedId(Some(item.feed_id)),
-            ],
-        )
-    })
-    .collect::<Vec<_>>();
-
+        .into_iter()
+        .map(|item| {
+            item::create_unchecked(
+                item.title.clone(),
+                item.url.clone(),
+                vec![
+                    item::SetParam::SetWebsiteContent(Some(item.website_content)),
+                    item::SetParam::SetImageUrl(Some(item.image_url)),
+                    item::SetParam::SetFeedId(Some(item.feed_id)),
+                ],
+            )
+        })
+        .collect::<Vec<_>>();
+    
     client
         .item()
         .create_many(items)

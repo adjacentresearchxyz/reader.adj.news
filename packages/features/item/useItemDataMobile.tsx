@@ -50,6 +50,8 @@ export const useItemData = () => {
 
   const filteredItems = filterItems(items);
 
+  // @TODO pass related markets here
+
   return {
     items: filteredItems,
     fetchNextPage,

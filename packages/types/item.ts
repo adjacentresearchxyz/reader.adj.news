@@ -1,3 +1,21 @@
+export interface Market {
+  ticker: string;
+  adj_ticker: string;
+  reported_date: Date | null;
+  end_date: Date | null;
+  market_slug: string | null;
+  open_interest: number | null;
+  volume: number | null;
+  probability: number | null;
+  question: string | null;
+  description: string | null;
+  forecasts: number | null;
+  link: string | null;
+  platform: string | null;
+  status: string | null;
+  question_embedding: any | null;
+}
+
 export interface ItemType {
   id: string;
   title: string;
@@ -18,4 +36,6 @@ export interface ItemType {
   readibility_score: number | null;
   content_length: number | null;
   note: string | null | undefined;
+  markets: Market[] | null;
+  embedding: any | null;
 }

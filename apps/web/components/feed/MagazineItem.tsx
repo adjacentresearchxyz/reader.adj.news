@@ -9,6 +9,7 @@ import { FeedInfo } from "./FeedInfo";
 import { Title } from "./FeedTitle";
 import { MagazineImage } from "./MagazineImage";
 import { useUser } from "@supabase/auth-helpers-react";
+import { Markets } from "./Markets";
 
 export const MagazineItem = memo(
   (props: {
@@ -58,7 +59,7 @@ export const NonLinkedMagazineItem = ({
       <Title FeedType={FeedType} title={item?.title ?? ""} />
       <FeedInfo FeedType={FeedType} item={item!} />
       {/* @TODO add this in */}
-      {/* <Markets FeedType={FeedType} title={"3 Related Markets" ?? ""} /> */}
+      {item?.markets?.length > 0 && <Markets FeedType={FeedType} title={`${item?.markets?.length} Related Markets`} />}
     </div>
   </div>
 );

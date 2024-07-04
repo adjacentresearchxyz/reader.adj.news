@@ -131,7 +131,7 @@ pub async fn fetch_feeds(feeds: Vec<Data>) -> Vec<FeedWrapper> {
 
             // Cap it at 25 items per feed per refresh
             let parsed = Feed {
-                entries: parsed.entries.into_iter().take(25).collect(),
+                entries: parsed.entries.into_iter().take(50).collect(),
                 ..parsed
             };
 

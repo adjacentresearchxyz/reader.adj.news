@@ -1,27 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { ExternalLink } from 'lucide-react';
+import type { Market } from "@refeed/types/item";
 
-import type { ItemType } from "@refeed/types/item";
-import useRelatedMarkets from "@utils/relatedMarkets";
-
-const MarketCard = (item: ItemType ) => {
-  const [markets, setMarkets]  = useState([])
-
-  const queryParams = new URLSearchParams(window.location.search);
-  const itemId = queryParams.get('item');
-
-  useEffect(() => {
-    const fetchRelatedMarkets = async () => {
-      const relatedMarkets = await useRelatedMarkets(item);
-      setMarkets(relatedMarkets);
-    };
-  
-    fetchRelatedMarkets();
-  }, [itemId]);
-
+const MarketCard = (markets: Market[]) => {
+  const marketsArray = Object.values(markets);
+  console.log(marketsArray)
   return (
     <div className="flex flex-wrap flex-col -m-4">
-      {markets.map((market) => (
+      {marketsArray.map((market) => (
         <div key={market.adj_ticker} className="p-4 w-full">
           <div className="max-w-l border border-gray-200 rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-300" style={{ height: "150px" }}>
             <a href={`https://data.adj.news/explore/market?question=${market.ticker}`} target="_blank" rel="noopener noreferrer" className="block">

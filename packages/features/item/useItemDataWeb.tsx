@@ -1,3 +1,4 @@
+import React, { useEffect, useState } from 'react';
 import { useRouter } from "next/router";
 
 import { divideArray } from "@refeed/lib/divideArray";
@@ -42,6 +43,8 @@ export const useItemData = () => {
     items = [];
   }
 
+  console.log(items)
+
   const filteredItems = filterItems(items);
 
   return {
@@ -63,7 +66,7 @@ export const useOpenItem = () => {
   const { items } = useItemData();
   const { item } = query;
 
-  const openItem = items.find((i) => {
+  const openItem = items?.find((i) => {
     return i.id == item;
   });
 

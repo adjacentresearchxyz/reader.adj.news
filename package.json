@@ -22,8 +22,6 @@
   },
   "dependencies": {
     "@manypkg/cli": "^0.21.0",
-    "@refeed/atoms": "^0.1.0",
-    "@refeed/eslint-config": "^0.1.0",
     "@refeed/prettier-config": "^0.1.0",
     "dotenv-cli": "^7.3.0",
     "eslint": "^8.56.0",
