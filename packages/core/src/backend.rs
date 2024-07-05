@@ -1,16 +1,21 @@
 use std::sync::Arc;
+use serde_json::{self, Value};
 
 use crate::{
     cache_fetch_info,
     feeds::flatten_feeds,
     fetch_feeds, get_items,
     prisma::{feed, item, user, PrismaClient},
+    utils
 };
 use axum::{extract::Json, http::Uri, routing::post};
 use axum::{routing::get, Router};
 use prisma_client_rust::NewClientError;
 use serde::Deserialize;
 use tower_http::cors::CorsLayer;
+
+use std::process::{Command, Stdio};
+use std::io::{self, Write};
 
 pub async fn start_http() {
     tracing_subscriber::fmt::init();
@@ -21,7 +26,7 @@ pub async fn start_http() {
         .route("/healthcheck", get(healthcheck))
         .layer(CorsLayer::permissive());
 
-    let listener = tokio::net::TcpListener::bind("0.0.0.0:4050").await.unwrap();
+    let listener = tokio::net::TcpListener::bind("0.0.0.0:4051").await.unwrap();
     axum::serve(listener, app).await.unwrap();
 }
 
@@ -31,11 +36,10 @@ struct RefreshFeedsRequest {
 }
 
 async fn refreshfeeds(Json(request): Json<RefreshFeedsRequest>) {
-    println!("{:?}", request.feed_ids);
-    println!("{:?}", request.feed_ids.len());
-
     let client: Result<PrismaClient, NewClientError> = PrismaClient::_builder().build().await;
     let client = Arc::new(client.unwrap());
+
+    println!("Starting API refresh");
 
     let feeds = client
         .feed()
@@ -44,38 +48,31 @@ async fn refreshfeeds(Json(request): Json<RefreshFeedsRequest>) {
         .await
         .expect("Failed to execute query");
 
-    println!("{:?}", feeds);
-
     let feeds = fetch_feeds(feeds).await;
 
     let flat_items = flatten_feeds(&feeds);
 
     let items = get_items(flat_items).await;
 
-    println!("{:?}", items.len());
-
     // Convert the items into a Vector of items into the format prisma expects
     let items = items
-    .into_iter()
-    .map(|item| {
-        let image_url = if item.image_url.trim().is_empty() || item.image_url.trim() == "" {
-            format!("https://source.boringavatars.com/marble/120/{}?square", item.title)
-        } else {
-            item.image_url.clone()
-        };
-
-        item::create_unchecked(
-            item.title.clone(),
-            item.url.clone(),
-            vec![
-                item::SetParam::SetWebsiteContent(Some(item.website_content)),
-                item::SetParam::SetImageUrl(Some(image_url)),
-                item::SetParam::SetFeedId(Some(item.feed_id)),
-            ],
-        )
-    })
-    .collect::<Vec<_>>();
-
+        .into_iter()
+        .map(|item| {
+            item::create_unchecked(
+                item.title.clone(),
+                item.url.clone(),
+                vec![
+                    item::SetParam::SetWebsiteContent(Some(item.website_content)),
+                    item::SetParam::SetImageUrl(Some(item.image_url)),
+                    item::SetParam::SetFeedId(Some(item.feed_id)),
+                    item::SetParam::SetEmbeddingJson(Some(
+                        serde_json::from_str(&item.embedding_json).unwrap_or_else(|_| serde_json::Value::Null)
+                    ))
+                ],
+            )
+        })
+        .collect::<Vec<_>>();
+    
     client
         .item()
         .create_many(items)
@@ -90,7 +87,7 @@ async fn refreshfeeds(Json(request): Json<RefreshFeedsRequest>) {
         println!("Failed to cache fetch info: {:?}", e);
     }
 
-    println!("Finished refresh");
+    println!("Finished api refresh");
 }
 
 async fn healthcheck(uri: Uri) -> &'static str {

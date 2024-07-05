@@ -9,7 +9,9 @@ import { createTRPCRouter, protectedProcedure } from "../trpc";
 import { removeDuplicates } from "./utils/removeDuplicates";
 import { transformItems } from "./utils/transformItems";
 
-// Tip - use the VSCode Outline View feature to see the APIs defined in here without having to scroll through the file
+import useRelatedMarkets from "../../features/item/relatedMarkets";
+import { fetchItemEmbedding } from "./utils/getEmbeddings";
+import type { ItemType } from "@refeed/types/item";
 
 export const itemRouter = createTRPCRouter({
   getUnreadItems: protectedProcedure
@@ -63,7 +65,9 @@ export const itemRouter = createTRPCRouter({
                   date_added: true,
                   pagination_start_timestamp: true,
                 },
-                where: ctx.user ? { user_id: ctx.user.id } : {},
+                where: {
+                  user_id: ctx.user.id,
+                },
               },
             },
           },
@@ -88,6 +92,7 @@ export const itemRouter = createTRPCRouter({
               : undefined,
         },
       };
+
       if (input.type == "bookmarks") {
         const withBookmarkFolder = {
           bookmark_folders:
@@ -178,13 +183,20 @@ export const itemRouter = createTRPCRouter({
 
         const nextCursor = getNextPrismaCursor(items, input.amount);
 
-        const transformedItems = transformItems(convertedItems);
+        let transformedItems = transformItems(convertedItems);
+
+        // map over transformedItems, call useRelatedMarkets, and add the returned array to the markets field for the item
+        transformedItems = await Promise.all(transformedItems.map(async (item) => {
+          const markets = await useRelatedMarkets(item);
+          return { ...item, markets };
+        }));
 
         return {
           transformedItems,
           nextCursor,
         };
       }
+
       if (input.type == "recentlyread") {
         const items = await ctx.prisma.user_item.findMany({
           where: {
@@ -260,6 +272,12 @@ export const itemRouter = createTRPCRouter({
         let transformedItems = transformItems(convertedItems);
         const nextCursor = getNextPrismaCursor(items, input.amount);
 
+        // map over transformedItems, call useRelatedMarkets, and add the returned array to the markets field for the item
+        transformedItems = await Promise.all(transformedItems.map(async (item) => {
+          const markets = await useRelatedMarkets(item);
+          return { ...item, markets };
+        }));
+
         transformedItems = removeDuplicates(
           transformedItems,
           ctx.user.id,
@@ -305,6 +323,12 @@ export const itemRouter = createTRPCRouter({
           ctx.prisma,
           false,
         );
+
+        // map over transformedItems, call useRelatedMarkets, and add the returned array to the markets field for the item
+        transformedItems = await Promise.all(transformedItems.map(async (item) => {
+          const markets = await useRelatedMarkets(item);
+          return { ...item, markets };
+        }));
 
         return {
           transformedItems,
@@ -366,6 +390,12 @@ export const itemRouter = createTRPCRouter({
           true,
         );
 
+        // map over transformedItems, call useRelatedMarkets, and add the returned array to the markets field for the item
+        transformedItems = await Promise.all(transformedItems.map(async (item) => {
+          const markets = await useRelatedMarkets(item);
+          return { ...item, markets };
+        }));
+
         return {
           transformedItems,
           nextCursor,
@@ -373,8 +403,6 @@ export const itemRouter = createTRPCRouter({
       }
 
       if (input.type == "one" || input.type == "multiple") {
-        console.log(input);
-
         const items = await ctx.prisma.item.findMany({
           where: {
             created_at: {
@@ -435,6 +463,12 @@ export const itemRouter = createTRPCRouter({
         let transformedItems = transformItems(itemsAfterDate);
         const nextCursor = getNextPrismaCursor(transformedItems, input.amount);
 
+        // map over transformedItems, call useRelatedMarkets, and add the returned array to the markets field for the item
+        transformedItems = await Promise.all(transformedItems.map(async (item) => {
+          const markets = await useRelatedMarkets(item);
+          return { ...item, markets };
+        }));
+
         transformedItems = removeDuplicates(
           transformedItems,
           ctx.user.id,
@@ -447,6 +481,7 @@ export const itemRouter = createTRPCRouter({
           nextCursor,
         };
       }
+
       if (input.type == "newsletters") {
         const items = await ctx.prisma.item.findMany({
           where: {
@@ -464,6 +499,12 @@ export const itemRouter = createTRPCRouter({
           ctx.prisma,
           true,
         );
+
+        // map over transformedItems, call useRelatedMarkets, and add the returned array to the markets field for the item
+        transformedItems = await Promise.all(transformedItems.map(async (item) => {
+          const markets = await useRelatedMarkets(item);
+          return { ...item, markets };
+        }));
 
         return {
           transformedItems,

@@ -34,7 +34,13 @@ export default function NavBar() {
             Press
           </Link>
           <Link href="/about" className="hidden md:block">
-            FAQ
+            About
+          </Link>
+          <Link href="https://adjacent.canny.io/" className="hidden md:block">
+            Feedback
+          </Link>
+          <Link href="https://www.notion.so/62beb3cc57d042af89c9ef1b3b5f758f?v=999ae1d0e5a749949d593c50f4647a73&pvs=4" className="hidden md:block">
+            Roadmap
           </Link>
           {/* <Link href="/pricing" className="hidden md:block">
             Pricing
@@ -74,7 +80,13 @@ const MobileNav = () => {
                 <NavigationButton title="Research" subtitle="Ramblings on Markets" />
               </Link>
               <Link href="/about">
-                <NavigationButton title="FAQ" subtitle="About" />
+                <NavigationButton title="About" subtitle="FAQ and Resources" />
+              </Link>
+              <Link href="https://adjacent.canny.io/">
+                <NavigationButton title="Feedback" subtitle="Submit Feature Requests" />
+              </Link>
+              <Link href="https://www.notion.so/62beb3cc57d042af89c9ef1b3b5f758f?v=999ae1d0e5a749949d593c50f4647a73&pvs=4">
+                <NavigationButton title="Roadmap" subtitle="Backlog and Feature Roadmap" />
               </Link>
               {/* <Link href="https://github.com/michaelkremenetsky/Refeed?tab=readme-ov-file#self-hosting-with-docker">
                 <NavigationButton

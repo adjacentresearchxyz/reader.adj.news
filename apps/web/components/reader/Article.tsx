@@ -20,6 +20,7 @@ import { TextArea } from "@refeed/ui";
 import { settingsAtom } from "../../stores/settings";
 import Sharing from "../sharing/Sharing";
 import { fullscreenAtom } from "./Reader";
+import MarketCard from "./MarketCard";
 
 interface ArticleProps {
   item: ItemType;
@@ -132,11 +133,11 @@ export const Article = (props: ArticleProps) => {
               <a
                 target="_blank"
                 rel="noopener noreferrer"
-                href={`https://data.adj.news/search?q=${item.title}`}
+                href={`https://data.adj.news/?q=${item.title}`}
                 className="no-underline"
               >
                 <h2 className="py-2 text-center font-[450] text-neutral-600/80 shadow-sm dark:text-gray-200">
-                  Search Related Markets
+                  Related Markets
                 </h2>
               </a>
             </button>
@@ -222,6 +223,13 @@ export const Article = (props: ArticleProps) => {
                 </Tooltip>
               )}
             </TooltipProvider>
+          </div>
+          <div className="flex my-10">
+          {item.markets && item.markets.length > 0 && (
+            <MarketCard
+              {...item.markets}
+            />
+          )}
           </div>
           {notesOpen || (item.note && plan == "pro") ? (
             <TextArea

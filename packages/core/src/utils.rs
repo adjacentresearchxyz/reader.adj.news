@@ -98,3 +98,16 @@ pub fn generate_nano_id() -> String {
     let id = nanoid!(10, &alphabet);
     return id;
 }
+
+pub async fn fetch_embedding(title: &String, supabase_key: &str, supabase_url: &str) -> Result<String, reqwest::Error> {
+    let client = reqwest::Client::new();
+    let res = client.post(format!("{}/functions/v1/embed", supabase_url))
+        .header("Authorization", format!("Bearer {}", supabase_key))
+        .json(&serde_json::json!({"name": title}))
+        .send()
+        .await?
+        .json::<serde_json::Value>()
+        .await?;
+
+    Ok(res.to_string())
+}

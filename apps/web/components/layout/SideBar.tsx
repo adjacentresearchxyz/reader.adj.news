@@ -33,7 +33,6 @@ export default function SideBar() {
   const utils = trpc.useUtils();
 
   const user = useUser()
-
   // Needed to fix it not fetching right when you first sign up, will remove this soon
   if (user) {
     if (feedsInFolders == undefined) {

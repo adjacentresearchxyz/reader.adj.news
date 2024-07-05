@@ -3048,6 +3048,7 @@ dependencies = [
  "rust-s3",
  "scraper",
  "serde",
+ "serde_json",
  "thiserror",
  "tokio",
  "tower-http",

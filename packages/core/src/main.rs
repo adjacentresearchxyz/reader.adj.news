@@ -31,8 +31,8 @@ async fn main() {
 }
 
 async fn start_refresh_cron() {
-    // Refresh every 30 minutes
-    let mut interval = interval(Duration::from_secs(1800));
+    // Refresh every 15 minutes
+    let mut interval = interval(Duration::from_secs(900));
     loop {
         interval.tick().await;
         tokio::spawn(async move { run_refresher().await });
@@ -52,12 +52,12 @@ async fn run_refresher() {
 
     let feeds = fetch_feeds(feeds).await;
 
-    println!("Fetching {:} feeds ...", feeds.len());
-
     // Convert the feeds into a flat list of entries and add a feed_id to each entry
     let flat_items = flatten_feeds(&feeds);
 
     let items = get_items(flat_items).await;
+
+    println!("Main");
 
     // Convert the items into a Vector of items into the format prisma expects
     let items = items
@@ -70,6 +70,9 @@ async fn run_refresher() {
                     item::SetParam::SetWebsiteContent(Some(item.website_content)),
                     item::SetParam::SetImageUrl(Some(item.image_url)),
                     item::SetParam::SetFeedId(Some(item.feed_id)),
+                    item::SetParam::SetEmbeddingJson(Some(
+                        serde_json::from_str(&item.embedding_json).unwrap_or_else(|_| serde_json::Value::Null)
+                    ))
                 ],
             )
         })
@@ -90,7 +93,7 @@ async fn run_refresher() {
         println!("Failed to cache fetch info: {:?}", e);
     }
 
-    println!("Finished refresh");
+    println!("Finished main refresh");
 }
 
 // This takes alot to run I need to make it faster

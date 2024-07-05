@@ -34,6 +34,7 @@ const Reader = () => {
   const { width: windowWidth } = useWindowSize();
 
   const { items, FeedType, fetchNextPage } = useItemData();
+  
   const { closeReader, initialIndex, isLoaded, searchItem } =
     useReaderNavigation(items);
   const { fullscreen, widthStyle, transitionDuration } = useReaderAnimation();

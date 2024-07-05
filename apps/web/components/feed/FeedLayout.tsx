@@ -217,7 +217,7 @@ export const FeedLayout = (props: FeedLayoutTypes) => {
           </div>
           {!isPending &&
           !isFetching &&
-          itemsThatAreNotFromSearch.length == 0 ? (
+          itemsThatAreNotFromSearch?.length == 0 ? (
             <EmptyMessage className="pt-14" FeedType={FeedType} />
           ) : null}
         </div>

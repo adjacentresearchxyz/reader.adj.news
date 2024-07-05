@@ -125,6 +125,7 @@ model item {
   user_items         user_item[]
   created_at         DateTime   @default(now()) @db.Timestamp(6)
   updated_at         DateTime   @updatedAt
+  embedding_json     Json?
 
   @@unique([url, title, feed_id])
   @@index([id, created_at])

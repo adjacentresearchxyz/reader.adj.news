@@ -72,9 +72,9 @@ pub fn optimize_image(image_data: Vec<u8>, quality: u8) -> Vec<u8> {
     let mut resizer = fr::Resizer::new(fr::ResizeAlg::Convolution(fr::FilterType::Lanczos3));
 
     // Make sure its set to avx2
-    unsafe {
-        resizer.set_cpu_extensions(fr::CpuExtensions::Avx2);
-    }
+    // unsafe {
+    //     resizer.set_cpu_extensions(fr::CpuExtensions::Avx2);
+    // }
 
     // Perform the resizing, return empty Vec on failure
     if resizer.resize(&src_image.view(), &mut dst_view).is_err() {

@@ -2,7 +2,6 @@ version: "3"
 
 services:
   refeed-web:
-    image: refeed-web
     build:
       context: .
       dockerfile: ./apps/web/Dockerfile
@@ -31,24 +30,23 @@ services:
       nofile:
         soft: 20000
         hard: 40000
-  # refeed-backend:
-  #   image: refeed-backend
-  #   build:
-  #     context: ./packages/core/
-  #     dockerfile: ./Dockerfile
-  #   env_file:
-  #     - .env
-  #   restart: always
-  #   ports:
-  #     - 4050:4050
-  #   ulimits:
-  #     nproc: 65535
-  #     nofile:
-  #       soft: 100000
-  #       hard: 150000
-  #   environment:
-  #     - DATABASE_URL=${DATABASE_URL}
-  #     - IMAGE_ACCOUNT_ID=${IMAGE_ACCOUNT_ID}
-  #     - IMAGE_ACCESS_KEY_ID=${IMAGE_ACCESS_KEY_ID}
-  #     - IMAGE_ACCESS_KEY_SECRET=${IMAGE_ACCESS_KEY_SECRET}
-  #     - IMAGE_BUCKET_URL=${IMAGE_BUCKET_URL}
+  refeed-backend:
+    build:
+      context: ./packages/core/
+      dockerfile: ./Dockerfile
+    env_file:
+      - .env
+    restart: always
+    ports:
+      - 4050:4050
+    ulimits:
+      nproc: 65535
+      nofile:
+        soft: 100000
+        hard: 150000
+    environment:
+      - DATABASE_URL=${DATABASE_URL}
+      - IMAGE_ACCOUNT_ID=${IMAGE_ACCOUNT_ID}
+      - IMAGE_ACCESS_KEY_ID=${IMAGE_ACCESS_KEY_ID}
+      - IMAGE_ACCESS_KEY_SECRET=${IMAGE_ACCESS_KEY_SECRET}
+      - IMAGE_BUCKET_URL=${IMAGE_BUCKET_URL}
