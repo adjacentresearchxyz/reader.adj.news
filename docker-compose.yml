@@ -32,7 +32,6 @@ services:
   #       soft: 20000
   #       hard: 40000
   refeed-backend:
-    # image: refeed-backend
     build:
       context: ./packages/core/
       dockerfile: ./Dockerfile

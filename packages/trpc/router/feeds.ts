@@ -422,7 +422,7 @@ export const feedRouter = createTRPCRouter({
 
         // If its a new feed then refresh it
         const BACKEND_URL =
-          process.env.REFEED_BACKEND_URL ?? "http://0.0.0.0:4050";
+          process.env.REFEED_BACKEND_URL ?? "http://0.0.0.0:4051";
 
         await fetch(BACKEND_URL + "/refreshfeeds", {
           method: "POST",

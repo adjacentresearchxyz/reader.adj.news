@@ -55,7 +55,7 @@ export const transformItems = (rawItems: TODO) => {
         note: rawItem.user_items ? rawItem.user_items[0]?.note : null,
         logo_url: rawItem.feed ? rawItem.feed.logo_url : null,
         from_search: false,
-        embedding: rawItem.embedding_json ? rawItem.embedding_json : null
+        embedding: rawItem.embedding_json ? rawItem.embedding_json.embedding : null,
       };
 
       transformedItems.push(transformedItem);

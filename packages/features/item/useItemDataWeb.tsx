@@ -43,9 +43,8 @@ export const useItemData = () => {
     items = [];
   }
 
-  console.log(items)
-
   const filteredItems = filterItems(items);
+  // console.log(filteredItems)
 
   return {
     items: filteredItems,

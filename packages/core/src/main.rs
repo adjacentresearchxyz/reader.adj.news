@@ -70,6 +70,9 @@ async fn run_refresher() {
                     item::SetParam::SetWebsiteContent(Some(item.website_content)),
                     item::SetParam::SetImageUrl(Some(item.image_url)),
                     item::SetParam::SetFeedId(Some(item.feed_id)),
+                    item::SetParam::SetEmbeddingJson(Some(
+                        serde_json::from_str(&item.embedding_json).unwrap_or_else(|_| serde_json::Value::Null)
+                    ))
                 ],
             )
         })
@@ -90,7 +93,7 @@ async fn run_refresher() {
         println!("Failed to cache fetch info: {:?}", e);
     }
 
-    println!("Finished refresh");
+    println!("Finished main refresh");
 }
 
 // This takes alot to run I need to make it faster

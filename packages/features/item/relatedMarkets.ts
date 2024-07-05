@@ -9,8 +9,8 @@ export default function useRelatedMarkets(item: ItemType) {
 
   if (item && item.embedding) {
     return supabase.rpc('match_documents', {
-      query_embedding: item.embedding.embedding, // pass the query embedding
-      match_threshold: 0.75, // choose an appropriate threshold for your data
+      query_embedding: item.embedding, // pass the query embedding
+      match_threshold: 0.85, // choose an appropriate threshold for your data
       match_count: 3, // choose the number of matches
     }).then(({ data: documents }) => {
       return documents;

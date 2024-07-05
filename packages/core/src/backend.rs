@@ -6,6 +6,7 @@ use crate::{
     feeds::flatten_feeds,
     fetch_feeds, get_items,
     prisma::{feed, item, user, PrismaClient},
+    utils
 };
 use axum::{extract::Json, http::Uri, routing::post};
 use axum::{routing::get, Router};
@@ -35,11 +36,10 @@ struct RefreshFeedsRequest {
 }
 
 async fn refreshfeeds(Json(request): Json<RefreshFeedsRequest>) {
-    println!("{:?}", request.feed_ids);
-    println!("{:?}", request.feed_ids.len());
-
     let client: Result<PrismaClient, NewClientError> = PrismaClient::_builder().build().await;
     let client = Arc::new(client.unwrap());
+
+    println!("Starting API refresh");
 
     let feeds = client
         .feed()
@@ -48,15 +48,11 @@ async fn refreshfeeds(Json(request): Json<RefreshFeedsRequest>) {
         .await
         .expect("Failed to execute query");
 
-    println!("{:?}", feeds);
-
     let feeds = fetch_feeds(feeds).await;
 
     let flat_items = flatten_feeds(&feeds);
 
     let items = get_items(flat_items).await;
-
-    // @ TODO add in creation of embedding with edge function
 
     // Convert the items into a Vector of items into the format prisma expects
     let items = items
@@ -69,6 +65,9 @@ async fn refreshfeeds(Json(request): Json<RefreshFeedsRequest>) {
                     item::SetParam::SetWebsiteContent(Some(item.website_content)),
                     item::SetParam::SetImageUrl(Some(item.image_url)),
                     item::SetParam::SetFeedId(Some(item.feed_id)),
+                    item::SetParam::SetEmbeddingJson(Some(
+                        serde_json::from_str(&item.embedding_json).unwrap_or_else(|_| serde_json::Value::Null)
+                    ))
                 ],
             )
         })
@@ -88,7 +87,7 @@ async fn refreshfeeds(Json(request): Json<RefreshFeedsRequest>) {
         println!("Failed to cache fetch info: {:?}", e);
     }
 
-    println!("Finished refresh");
+    println!("Finished api refresh");
 }
 
 async fn healthcheck(uri: Uri) -> &'static str {

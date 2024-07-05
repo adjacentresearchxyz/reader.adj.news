@@ -1,80 +1,40 @@
-generator client {
-  provider        = "prisma-client-js"
-  previewFeatures = ["fullTextSearch", "views", "relationJoins"] 
-}
-
 datasource db {
   provider = "postgresql"
   url = env("DATABASE_URL")
-  directUrl = env("DIRECT_URL")
 }
 
-// Supabase Generated
-view AuthUser {
-  instance_id                 String?   @db.Uuid
-  id                          String    @id @unique @db.Uuid
-  aud                         String?   @db.VarChar(255)
-  role                        String?   @db.VarChar(255)
-  email                       String?   @db.VarChar(255)
-  encrypted_password          String?   @db.VarChar(255)
-  email_confirmed_at          DateTime? @db.Timestamptz(6)
-  invited_at                  DateTime? @db.Timestamptz(6)
-  confirmation_token          String?   @db.VarChar(255)
-  confirmation_sent_at        DateTime? @db.Timestamptz(6)
-  recovery_token              String?   @db.VarChar(255)
-  recovery_sent_at            DateTime? @db.Timestamptz(6)
-  email_change_token_new      String?   @db.VarChar(255)
-  email_change                String?   @db.VarChar(255)
-  email_change_sent_at        DateTime? @db.Timestamptz(6)
-  last_sign_in_at             DateTime? @db.Timestamptz(6)
-  raw_app_meta_data           Json?
-  raw_user_meta_data          Json?
-  is_super_admin              Boolean?
-  created_at                  DateTime? @db.Timestamptz(6)
-  updated_at                  DateTime? @db.Timestamptz(6)
-  phone                       String?   @unique
-  phone_confirmed_at          DateTime? @db.Timestamptz(6)
-  phone_change                String?   @default("")
-  phone_change_token          String?   @default("") @db.VarChar(255)
-  phone_change_sent_at        DateTime? @db.Timestamptz(6)
-  confirmed_at                DateTime? @default(dbgenerated("LEAST(email_confirmed_at, phone_confirmed_at)"))     @db.Timestamptz(6)
-  email_change_token_current  String?   @default("") @db.VarChar(255)
-  email_change_confirm_status Int?      @default(0) @db.SmallInt
-  banned_until                DateTime? @db.Timestamptz(6)
-  reauthentication_token      String?   @default("") @db.VarChar(255)
-  reauthentication_sent_at    DateTime? @db.Timestamptz(6)
-  is_sso_user                 Boolean   @default(false)
-  deleted_at                  DateTime? @db.Timestamptz(6)
+// This separate file is necessary because prisma-client-rust does not support views and JSON cause it to not compile properly. Make sure to keep this up to date with the actual prisma schema in @refeed/db
+// This file just removes and JSON or enums as the client output has errors with them
+// Might be able to remove this when https://github.com/Brendonovich/prisma-client-rust/issues/297 is fixed
 
-  @@index([instance_id])
-  @@map("auth_users")
+generator rust {
+  provider = "cargo prisma"
+  output = "../src/prisma.rs"
+
+  previewFeatures = ["fullTextSearch"]
 }
 
 // Refeed stuff
-
 model user {
   id                       String      @id @default(cuid())
   name                     String?
   email                    String
   email_verified           DateTime?
   image                    String?
-  sharing                  String[]    @default(["twitter", "facebook", "linkedin", "email"])
-  default_temp_time        Int         @default(1440) // In local storage for now
+  sharing                  String[]    @default([])
+  default_temp_time        Int         @default(1440)
   feeds                    user_feeds[]
   items                    user_item[]
   plan                     plan        @default(free)
   filters                  filter[]
   user_id                  String      @db.Uuid
   created_at               DateTime    @default(now())
-  feed_order               Json? // [folder_name: string, order: number]: [feedId: string, order: number]];
   bookmark_folders         bookmark_folder[]
   custom_items             item[]
   inbox                    Boolean?    @default(false)
   inbox_email              String?
   stripeCustomerId         String?
   stripeSubscriptionId     String?
-  stripeSubscriptionStatus StripeSubscriptionStatus?
-
   @@unique([name, email])
   @@index([user_id, id])
 }
@@ -87,7 +47,6 @@ enum plan {
 
 model filter {
   id         String   @id @default(cuid())
-  filter     Json
   enabled    Boolean  @default(true)
   User       user?    @relation(fields: [user_id], references: [id], onDelete: Cascade)
   user_id    String?
@@ -166,7 +125,7 @@ model item {
   user_items         user_item[]
   created_at         DateTime   @default(now()) @db.Timestamp(6)
   updated_at         DateTime   @updatedAt
-  embedding          Unsupported("vector")?
+  embedding_json     Json?
 
   @@unique([url, title, feed_id])
   @@index([id, created_at])
@@ -196,28 +155,4 @@ model bookmark_folder_items {
   user_item  user_item        @relation(fields: [item_id, user_id], references: [item_id, user_id])
 
   @@id([folder_id, item_id, user_id])
-}
-
-model StripeEvent {
-    id               String   @id @unique
-    api_version      String?
-    data             Json
-    request          Json?
-    type             String
-    object           String
-    account          String?
-    created          DateTime
-    livemode         Boolean
-    pending_webhooks Int
-}
-
-enum StripeSubscriptionStatus {
-    incomplete
-    incomplete_expired
-    trialing
-    active
-    past_due
-    canceled
-    unpaid
-    paused
 }

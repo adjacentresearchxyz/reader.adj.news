@@ -183,7 +183,13 @@ export const itemRouter = createTRPCRouter({
 
         const nextCursor = getNextPrismaCursor(items, input.amount);
 
-        const transformedItems = transformItems(convertedItems);
+        let transformedItems = transformItems(convertedItems);
+
+        // map over transformedItems, call useRelatedMarkets, and add the returned array to the markets field for the item
+        transformedItems = await Promise.all(transformedItems.map(async (item) => {
+          const markets = await useRelatedMarkets(item);
+          return { ...item, markets };
+        }));
 
         return {
           transformedItems,
@@ -266,6 +272,12 @@ export const itemRouter = createTRPCRouter({
         let transformedItems = transformItems(convertedItems);
         const nextCursor = getNextPrismaCursor(items, input.amount);
 
+        // map over transformedItems, call useRelatedMarkets, and add the returned array to the markets field for the item
+        transformedItems = await Promise.all(transformedItems.map(async (item) => {
+          const markets = await useRelatedMarkets(item);
+          return { ...item, markets };
+        }));
+
         transformedItems = removeDuplicates(
           transformedItems,
           ctx.user.id,
@@ -311,6 +323,12 @@ export const itemRouter = createTRPCRouter({
           ctx.prisma,
           false,
         );
+
+        // map over transformedItems, call useRelatedMarkets, and add the returned array to the markets field for the item
+        transformedItems = await Promise.all(transformedItems.map(async (item) => {
+          const markets = await useRelatedMarkets(item);
+          return { ...item, markets };
+        }));
 
         return {
           transformedItems,
@@ -481,6 +499,12 @@ export const itemRouter = createTRPCRouter({
           ctx.prisma,
           true,
         );
+
+        // map over transformedItems, call useRelatedMarkets, and add the returned array to the markets field for the item
+        transformedItems = await Promise.all(transformedItems.map(async (item) => {
+          const markets = await useRelatedMarkets(item);
+          return { ...item, markets };
+        }));
 
         return {
           transformedItems,

@@ -12,6 +12,7 @@ pub struct Item {
     pub feed_id: String,
     pub website_content: String,
     pub image_url: String,
+    pub embedding_json: String,
 }
 
 pub async fn get_items(items: Vec<CustomEntry>) -> Vec<Item> {
@@ -88,12 +89,20 @@ pub async fn get_items(items: Vec<CustomEntry>) -> Vec<Item> {
                 website_content
             };
 
+            let supabase_key = std::env::var("NEXT_PUBLIC_SUPABASE_ANON_KEY").expect("NEXT_PUBLIC_SUPABASE_ANON_KEY must be set");
+            let supabase_url = std::env::var("NEXT_PUBLIC_SUPABASE_URL").expect("NEXT_PUBLIC_SUPABASE_URL must be set");
+            
+            let embedding_json = utils::fetch_embedding(&title, &supabase_key, &supabase_url).await.unwrap_or_default();
+
+            // println!("Updating {}", &title);
+    
             Some(Item {
                 title,
                 image_url,
                 url,
                 feed_id: item.feed_id,
                 website_content,
+                embedding_json,
             })
         })
     });

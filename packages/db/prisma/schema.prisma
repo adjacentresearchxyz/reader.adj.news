@@ -114,7 +114,6 @@ model item {
   user_id           String?
   created_at        DateTime               @default(now()) @db.Timestamp(6)
   updated_at        DateTime               @updatedAt
-  embedding         Unsupported("vector")?
   feed              feed?                  @relation(fields: [feed_id], references: [id], onDelete: Cascade)
   user              user?                  @relation(fields: [user_id], references: [id], onDelete: Cascade)
   user_items        user_item[]

@@ -58,7 +58,6 @@ export const NonLinkedMagazineItem = ({
     <div className="flex w-full flex-col">
       <Title FeedType={FeedType} title={item?.title ?? ""} />
       <FeedInfo FeedType={FeedType} item={item!} />
-      {/* @TODO add this in */}
       {item?.markets?.length > 0 && <Markets FeedType={FeedType} title={`${item?.markets?.length} Related Markets`} />}
     </div>
   </div>
