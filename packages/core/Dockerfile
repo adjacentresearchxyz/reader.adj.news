@@ -14,7 +14,7 @@ COPY ./prisma-cli ./prisma-cli
 COPY ./prisma ./prisma
 COPY ./src ./src
 
-RUN cargo run -p prisma-cli --release -- generate
+# RUN cargo run -p prisma-cli --release -- generate
 RUN cargo build --release 
 
 FROM rust:1.76-slim-bookworm AS runtime
