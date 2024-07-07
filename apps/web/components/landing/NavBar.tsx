@@ -48,9 +48,9 @@ export default function NavBar() {
         </div>
         {/** md:ml-32 */}
         <div className="mx-auto ml-auto mr-1.5 space-x-3 md:ml-44">
-          <Link href="/feed">
+          {/* <Link href="/feed">
             <TryNowButton />
-          </Link>
+          </Link> */}
           {/* <Link href="/login">
             <LoginButton />
           </Link>
