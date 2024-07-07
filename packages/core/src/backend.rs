@@ -26,7 +26,7 @@ pub async fn start_http() {
         .route("/healthcheck", get(healthcheck))
         .layer(CorsLayer::permissive());
 
-    let listener = tokio::net::TcpListener::bind("0.0.0.0:4051").await.unwrap();
+    let listener = tokio::net::TcpListener::bind("0.0.0.0:4050").await.unwrap();
     axum::serve(listener, app).await.unwrap();
 }
 
