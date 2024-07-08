@@ -103,7 +103,7 @@ pub async fn fetch_embedding(title: &String, supabase_key: &str, supabase_url: &
     let client = reqwest::Client::new();
     let res = client.post(format!("{}/functions/v1/embed", supabase_url))
         .header("Authorization", format!("Bearer {}", supabase_key))
-        .json(&serde_json::json!({"name": title}))
+        .json(&serde_json::json!({"input": title}))
         .send()
         .await?
         .json::<serde_json::Value>()
