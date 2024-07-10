@@ -80,7 +80,6 @@ export default function SideBar() {
             )}
             <Link href="/discover" className="relative select-none items-center items-center rounded-[6px] px-2 py-1.5 text-sm font-medium text-[#38383d] outline-none data-[disabled]:pointer-events-none data-[disabled]:opacity-50 focus:bg-[#f7f7f7] dark:text-stone-200 dark:focus:bg-[#19191a]">Discover</Link><br />
             <Link href="https://data.adj.news" className="relative select-none items-center items-center rounded-[6px] px-2 py-1.5 text-sm font-medium text-[#38383d] outline-none data-[disabled]:pointer-events-none data-[disabled]:opacity-50 focus:bg-[#f7f7f7] dark:text-stone-200 dark:focus:bg-[#19191a]">Explore Data</Link><br />
-            <Link href="https://press.adjacentresearch.xyz" className="relative select-none  items-center items-center rounded-[6px] px-2 py-1.5 text-sm font-medium text-[#38383d] outline-none data-[disabled]:pointer-events-none data-[disabled]:opacity-50 focus:bg-[#f7f7f7] dark:text-stone-200 dark:focus:bg-[#19191a]">Adjacent Press</Link><br />
             {!user && (
               <div className="z-10 mt-3 mx-3">
                 <SignUpFormReact />

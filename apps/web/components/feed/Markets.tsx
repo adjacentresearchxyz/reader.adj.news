@@ -14,7 +14,7 @@ export const Markets = (props: { title: string; FeedType: FeedTypes }) => (
     preferNative={false}
     ratio={0.4}
   >
-    {decodeHtmlEntities(props.title)}
+    <span className="underline decoration-dotted">{decodeHtmlEntities(props.title)}</span>
   </Balancer>
 );
 
