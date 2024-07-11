@@ -1,7 +1,6 @@
 # *
 User-agent: *
 Allow: /
-Allow: https://fyeyeurwgxklumxgpcgz.supabase.co/functions/v1/*
 
 # Host
 Host: https://adj.news
