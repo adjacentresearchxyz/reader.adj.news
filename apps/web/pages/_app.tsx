@@ -42,6 +42,13 @@ const App = ({
 
   const [item, setItem] = useState<ItemType | null>(null);
 
+  const { item: urlItem } = router.query; // Extracting `id` from the URL query parameters
+
+// Constructing the og:image URL based on the presence of `id`
+const ogImageUrl = urlItem
+  ? `https://fyeyeurwgxklumxgpcgz.supabase.co/functions/v1/og-image?id=${urlItem}`
+  : "https://adj.news/logo.svg";
+
   useEffect(() => {
     const handleRouteChange = () => posthog?.capture("$pageview");
     router.events.on("routeChangeComplete", handleRouteChange);
@@ -90,12 +97,7 @@ const App = ({
               
               <meta property="og:title" content={item ? item.title : 'Adjacent News'} />
               <meta property="og:description" content="Prediction Market Driven News" />
-              <meta property="og:image" content={item?.image_url ? item.image_url : "https://adj.news/logo.svg"} />
-
-              <meta name="twitter:title" content={item ? item.title : 'Adjacent News'} />
-              <meta name="twitter:card" content="summary_large_image" />
-              <meta name="twitter:description" content="Prediction Market Driven News" />
-              <meta name="twitter:image" content={item?.image_url ? item.image_url : "https://adj.news/logo.svg"} />
+              <meta property="og:image" content={ogImageUrl} />
             </Head>
             <ThemeProvider
               attribute="class"
