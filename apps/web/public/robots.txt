@@ -1,9 +1,10 @@
 # *
 User-agent: *
 Allow: /
+Allow: https://fyeyeurwgxklumxgpcgz.supabase.co/functions/v1/*
 
 # Host
-Host: https://refeedreader.com
+Host: https://adj.news
 
 # Sitemaps
-Sitemap: https://refeedreader.com/sitemap.xml
+Sitemap: https://adj.news/sitemap.xml
