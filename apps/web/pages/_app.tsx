@@ -18,7 +18,6 @@ import { ThemeProvider } from "next-themes";
 import posthog from "posthog-js";
 import { PostHogProvider } from "posthog-js/react";
 import { trpc } from "utils/trpc";
-import { getFirstParagraphs } from "@lib/getFirstParagraph";
 
 import { Toaster } from "@refeed/ui";
 
@@ -95,14 +94,14 @@ const App = ({
               <meta property="og:title" content={item ? item.title : 'Adjacent News'} />
               {/* <meta property="og:url" content= /> */}
               <meta property="og:description" content="Prediction Market Driven News" />
-              <meta property="og:image" content={item ? `https://fyeyeurwgxklumxgpcgz.supabase.co/functions/v1/og-image?id=${item.id}` : 'https://adj.news/logo.svg'} />
+              <meta property="og:image" content={item ? `https://adj.news/api/og?id=${item.id}` : 'https://adj.news/logo.svg'} />
 
               {/* Twitter */}
               <meta property="twitter:card" content="summary_large_image" />
               {/* <meta property="twitter:url" content="https://adj.news/feed/all?item=clygk5cyd071vmc07glrelii2" /> */}
               <meta property="twitter:title" content={item ? item.title : 'Adjacent News'} />
               <meta property="twitter:description" content="Prediction Market Driven News" />
-              <meta property="twitter:image" content={item ? `https://fyeyeurwgxklumxgpcgz.supabase.co/functions/v1/og-image?id=${item.id}` : 'https://adj.news/logo.svg'} />
+              <meta property="twitter:image" content={item ? `https://adj.news/api/og?id=${item.id}` : 'https://adj.news/logo.svg'} />
             </Head>
             <ThemeProvider
               attribute="class"
