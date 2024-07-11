@@ -40,14 +40,9 @@ const App = ({
   const [supabaseClient] = useState(() => createPagesBrowserClient());
   const router = useRouter();
 
+  const { item: urlItem } = router.query;
+  
   const [item, setItem] = useState<ItemType | null>(null);
-
-  const { item: urlItem } = router.query; // Extracting `id` from the URL query parameters
-
-// Constructing the og:image URL based on the presence of `id`
-const ogImageUrl = urlItem
-  ? `https://fyeyeurwgxklumxgpcgz.supabase.co/functions/v1/og-image?id=${urlItem}`
-  : "https://adj.news/logo.svg";
 
   useEffect(() => {
     const handleRouteChange = () => posthog?.capture("$pageview");
@@ -63,11 +58,9 @@ const ogImageUrl = urlItem
     process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
   );
 
-  const url = router.asPath.split("?")[1];
-  const id = url?.split("=")[1];
   useEffect(() => {
-    if (id) {
-      supabase.from("item").select("*").eq("id", id).then((res) => {
+    if (urlItem) {
+      supabase.from("item").select("*").eq("id", urlItem).then((res) => {
         if (res.data) {
           setItem(res.data[0]);
         }
@@ -75,7 +68,7 @@ const ogImageUrl = urlItem
     } else {
       setItem(null);
     }
-  }, [id]);
+  }, [urlItem]);
 
   return (
     <PostHogProvider client={posthog}>
@@ -86,18 +79,30 @@ const ogImageUrl = urlItem
         <JotaiProvider>
           <StrictMode>
             <Head>
+              {/* Primary */}
               <title>{item ? item.title : 'Adjacent News'}</title>
               <meta name="description" content={"Prediction Market Driven News"} />
               <meta
                 name="viewport"
                 content="width=device-width, initial-scale=1.0"
               ></meta>
+
+              {/* Mobile */}
               <link rel="icon" href="/favicon.ico" />
               <link rel="apple-touch-icon" href="/favicon.ico" />
               
+              {/* Open Graph */}
               <meta property="og:title" content={item ? item.title : 'Adjacent News'} />
+              {/* <meta property="og:url" content= /> */}
               <meta property="og:description" content="Prediction Market Driven News" />
-              <meta property="og:image" content={ogImageUrl} />
+              <meta property="og:image" content={item ? `https://fyeyeurwgxklumxgpcgz.supabase.co/functions/v1/og-image?id=${item.id}` : 'https://adj.news/logo.svg'} />
+
+              {/* Twitter */}
+              <meta property="twitter:card" content="summary_large_image" />
+              {/* <meta property="twitter:url" content="https://adj.news/feed/all?item=clygk5cyd071vmc07glrelii2" /> */}
+              <meta property="twitter:title" content={item ? item.title : 'Adjacent News'} />
+              <meta property="twitter:description" content="Prediction Market Driven News" />
+              <meta property="twitter:image" content={item ? `https://fyeyeurwgxklumxgpcgz.supabase.co/functions/v1/og-image?id=${item.id}` : 'https://adj.news/logo.svg'} />
             </Head>
             <ThemeProvider
               attribute="class"
