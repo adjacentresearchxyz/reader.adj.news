@@ -3,7 +3,7 @@ User-agent: *
 Allow: /
 
 # Host
-Host: https://adj.news
+Host: https://refeedreader.com
 
 # Sitemaps
-Sitemap: https://adj.news/sitemap.xml
+Sitemap: https://refeedreader.com/sitemap.xml

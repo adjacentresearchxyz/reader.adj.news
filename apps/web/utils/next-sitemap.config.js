@@ -1,6 +1,6 @@
 /** @type {import('next-sitemap').IConfig} */
 module.exports = {
-  siteUrl: "https://refeedreader.com",
-  generateRobotsTxt: true,
+  siteUrl: "https://adj.news",
+  generateRobotsTxt: false,
   output: "standalone",
 };
