@@ -43,8 +43,6 @@ const App = ({
   // https://vercel.com/guides/dynamic-text-as-image
 
   const { item: urlItem } = router.query;
-  
-  const [item, setItem] = useState<ItemType | null>(null);
 
   useEffect(() => {
     const handleRouteChange = () => posthog?.capture("$pageview");
@@ -54,23 +52,6 @@ const App = ({
       router.events.off("routeChangeComplete", handleRouteChange);
     };
   }, []);
-
-  const supabase = createClient(
-    process.env.NEXT_PUBLIC_SUPABASE_URL!,
-    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
-  );
-
-  useEffect(() => {
-    if (urlItem) {
-      supabase.from("item").select("*").eq("id", urlItem).then((res) => {
-        if (res.data) {
-          setItem(res.data[0]);
-        }
-      });
-    } else {
-      setItem(null);
-    }
-  }, [urlItem]);
 
   return (
     <PostHogProvider client={posthog}>
@@ -112,7 +93,7 @@ const App = ({
               <meta property="og:url" content="http://bits.blogs.nytimes.com/2011/12/08/a-twitter-for-my-sister/" />
               <meta property="og:title" content="A Twitter for My Sister" />
               <meta property="og:description" content="In the early days, Twitter grew so quickly that it was almost impossible to add new features because engineers spent their time trying to keep the rocket ship from stalling." />
-              <meta property="og:image" content="https://adj.news/api/og?id=clyip2m1w05awmc07k4reqiln" />
+              <meta property="og:image" content={`https://adj.news/api/og?id=${urlItem}`} />
             </Head>
             <ThemeProvider
               attribute="class"

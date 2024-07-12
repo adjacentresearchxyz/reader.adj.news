@@ -77,8 +77,8 @@ async function fetchItemDetailsAndDisplay(id) {
           src={itemData.image_url || 'https://source.boringavatars.com/marble/120?square'} 
           alt="Article Image" 
           onError={(e) => e.currentTarget.src = 'https://source.boringavatars.com/marble/120?square'}
-          width="750"
-          height="256"
+          width="550"
+          height="175"
           style={{
             objectFit: 'fit',
             borderRadius: '8px',
@@ -86,14 +86,14 @@ async function fetchItemDetailsAndDisplay(id) {
         />
 
         <div style={{
-          marginTop: '16px',
+          marginTop: '12px',
           display: 'flex',
           flexDirection: 'column',
           justifyContent: 'space-between',
           height: '40%',
         }}>
           <h1 style={{
-            fontSize: '24px',
+            fontSize: '16px',
             fontWeight: 700,
             color: '#000000',
             margin: '0 0 12px 0',
@@ -103,7 +103,7 @@ async function fetchItemDetailsAndDisplay(id) {
           </h1>
 
           <span style={{
-            fontSize: '14px',
+            fontSize: '8px',
             color: '#757575',
             marginBottom: '8px',
             textDecoration: 'underline',
@@ -113,7 +113,7 @@ async function fetchItemDetailsAndDisplay(id) {
           </span>
 
           <p style={{
-            fontSize: '16px',
+            fontSize: '12px',
             color: '#4A4A4A',
             margin: '0 0 16px 0',
             lineHeight: 1.4,
@@ -127,19 +127,19 @@ async function fetchItemDetailsAndDisplay(id) {
             justifyContent: 'space-between',
           }}>
             <span style={{
-              fontSize: '14px',
+              fontSize: '8px',
               color: '#757575',
-              marginBottom: '8px',
+              marginBottom: '2px',
             }}>
-              <span style={{ marginRight: '4px' }}><strong>adj.news</strong></span>via {feedData.title}
+              <span style={{ marginRight: '2px' }}><strong>adj.news</strong></span>via {feedData.title}
             </span>
           </div>
         </div>
       </div>
     </div>,
     {
-      width: 800,
-      height: 500,
+      width: 592,
+      height: 339,
     }
   )
 }
@@ -161,8 +161,8 @@ export default async function GET(request: Request) {
             Visit Adjacent News at adj.news
         </div>, 
         {
-            width: 1200,
-            height: 630,
+            width: 592,
+            height: 339,
         }
     );
 }
