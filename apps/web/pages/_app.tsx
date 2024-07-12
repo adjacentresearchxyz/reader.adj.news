@@ -63,7 +63,7 @@ const App = ({
           <StrictMode>
             <Head>
               {/* Primary */}
-              <title>{item ? item.title : 'Adjacent News'}</title>
+              <title>{'Adjacent News'}</title>
               <meta name="description" content={"Prediction Market Driven News"} />
               <meta
                 name="viewport"

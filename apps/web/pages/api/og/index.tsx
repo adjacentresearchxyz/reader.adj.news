@@ -3,7 +3,7 @@ import { ImageResponse } from 'next/og';
 import { createClient } from '@supabase/supabase-js';
 
 export const config = {
-  runtime: 'experimental-edge',
+  runtime: 'edge',
 };
 
 const supabase = createClient(
