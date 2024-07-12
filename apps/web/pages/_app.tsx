@@ -39,6 +39,9 @@ const App = ({
   const [supabaseClient] = useState(() => createPagesBrowserClient());
   const router = useRouter();
 
+  // remove async, useEffect, and State and move it all into functions to be consumed 
+  // https://vercel.com/guides/dynamic-text-as-image
+
   const { item: urlItem } = router.query;
   
   const [item, setItem] = useState<ItemType | null>(null);
@@ -90,18 +93,26 @@ const App = ({
               <link rel="icon" href="/favicon.ico" />
               <link rel="apple-touch-icon" href="/favicon.ico" />
               
-              {/* Open Graph */}
+              {/* Open Graph
               <meta property="og:title" content={item ? item.title : 'Adjacent News'} />
               {/* <meta property="og:url" content= /> */}
-              <meta property="og:description" content="Prediction Market Driven News" />
-              <meta property="og:image" content={item ? `https://adj.news/api/og?id=${item.id}` : 'https://adj.news/logo.svg'} />
+              {/* <meta property="og:description" content="Prediction Market Driven News" />
+              <meta property="og:image" content={item ? `https://adj.news/api/og?id=${item.id}` : 'https://adj.news/logo.svg'} /> */}
 
               {/* Twitter */}
-              <meta property="twitter:card" content="summary_large_image" />
+              {/* <meta property="twitter:card" content="summary_large_image" /> */}
               {/* <meta property="twitter:url" content="https://adj.news/feed/all?item=clygk5cyd071vmc07glrelii2" /> */}
-              <meta property="twitter:title" content={item ? item.title : 'Adjacent News'} />
+              {/* <meta property="twitter:title" content={item ? item.title : 'Adjacent News'} />
               <meta property="twitter:description" content="Prediction Market Driven News" />
-              <meta property="twitter:image" content={item ? `https://adj.news/api/og?id=${item.id}` : 'https://adj.news/logo.svg'} />
+              <meta property="twitter:image" content={item ? `https://adj.news/api/og?id=${item.id}` : 'https://adj.news/logo.svg'} /> */ }
+
+              <meta name="twitter:card" content="summary" />
+              <meta name="twitter:site" content="@nytimesbits" />
+              <meta name="twitter:creator" content="@nickbilton" />
+              <meta property="og:url" content="http://bits.blogs.nytimes.com/2011/12/08/a-twitter-for-my-sister/" />
+              <meta property="og:title" content="A Twitter for My Sister" />
+              <meta property="og:description" content="In the early days, Twitter grew so quickly that it was almost impossible to add new features because engineers spent their time trying to keep the rocket ship from stalling." />
+              <meta property="og:image" content="http://graphics8.nytimes.com/images/2011/12/08/technology/bits-newtwitter/bits-newtwitter-tmagArticle.jpg" />
             </Head>
             <ThemeProvider
               attribute="class"
