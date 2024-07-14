@@ -11,6 +11,7 @@ import CommandPalette from "../../../components/cmdk/CommandPalette";
 import { PageWrapper } from "../../../components/layout/PageWrapper";
 import Reader from "../../../components/reader/Reader";
 import { useFeedsInFolders } from "../../../features/folders/useFeedsInFolders";
+import { useUser } from "@supabase/auth-helpers-react";
 
 const Feed: NextPage = () => {
   const { query } = useRouter();
@@ -36,10 +37,12 @@ const Feed: NextPage = () => {
     title = check;
   }
 
+  const user = useUser()
+
   return (
     <PageWrapper>
       <CommandPalette />
-      <SideBar />
+      {user && <SideBar />}
       <div
         className={`flex h-screen w-full flex-col overflow-hidden bg-white dark:bg-[#0f0f10]`}
       >

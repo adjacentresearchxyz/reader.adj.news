@@ -7,16 +7,19 @@ import { useRouter } from "next/router";
 import CommandPalette from "../../components/cmdk/CommandPalette";
 import { PageWrapper } from "../../components/layout/PageWrapper";
 import Reader from "../../components/reader/Reader";
+import { useUser } from "@supabase/auth-helpers-react";
 
 const Folder: NextPage = () => {
   const { query } = useRouter();
 
   const { folder } = query;
 
+  const user = useUser()
+
   return (
     <PageWrapper>
       <CommandPalette />
-      <SideBar />
+      {user && <SideBar />}
       <div className={`flex h-screen w-full flex-col `}>
         <Reader />
         <NavBar title={folder as string} />

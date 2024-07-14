@@ -4,6 +4,7 @@ import "styles/globals.css";
 import { StrictMode, useEffect, useState } from "react";
 import type { AppProps } from "next/app";
 import Head from "next/head";
+import { GetServerSideProps, NextPage } from 'next';
 import { useRouter } from "next/router";
 import type { Session } from "@supabase/auth-helpers-nextjs";
 import { createClient } from "@supabase/supabase-js";
@@ -21,8 +22,6 @@ import { trpc } from "utils/trpc";
 
 import { Toaster } from "@refeed/ui";
 
-import type { ItemType } from "@refeed/types/item";
-
 if (typeof window !== "undefined") {
   if (NEXT_PUBLIC_POSTHOG_KEY && NEXT_PUBLIC_POSTHOG_HOST) {
     posthog.init(NEXT_PUBLIC_POSTHOG_KEY, {
@@ -38,9 +37,6 @@ const App = ({
 }: AppProps<{ initialSession: Session | null }>) => {
   const [supabaseClient] = useState(() => createPagesBrowserClient());
   const router = useRouter();
-
-  // remove async, useEffect, and State and move it all into functions to be consumed 
-  // https://vercel.com/guides/dynamic-text-as-image
 
   const { item: urlItem } = router.query;
 
