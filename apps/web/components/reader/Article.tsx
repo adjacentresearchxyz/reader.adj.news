@@ -22,6 +22,8 @@ import Sharing from "../sharing/Sharing";
 import { fullscreenAtom } from "./Reader";
 import MarketCard from "./MarketCard";
 
+import { SEO } from "../seo/SEO";
+
 interface ArticleProps {
   item: ItemType;
   FeedType: FeedType;
@@ -57,16 +59,17 @@ export const Article = (props: ArticleProps) => {
   }, [item]);
 
   return (
-    <div
-        className={`mx-auto select-text break-words text-[#38383d] subpixel-antialiased dark:border-neutral-700 dark:text-[#F3F5F7] ${
-          props.Type == "Popup"
+    <>
+      <SEO title='Test Title' description="Test Description" />
+      <div
+        className={`mx-auto select-text break-words text-[#38383d] subpixel-antialiased dark:border-neutral-700 dark:text-[#F3F5F7] ${props.Type == "Popup"
             ? "w-[94.5%]"
             : props.Type == "Full"
               ? "h-[calc(100svh-3.4rem)]"
               : props.Type == "Article View"
                 ? "overflow-hidden rounded-md"
                 : ""
-        }  `}
+          }  `}
       >
         {props.Type == "Article View" ? (
           <div className="flex items-center rounded-t-md border-b bg-[#FCFCFC] py-3.5 dark:border-[#24252A] dark:bg-[#141415]">
@@ -79,9 +82,8 @@ export const Article = (props: ArticleProps) => {
           </div>
         ) : null}
         <div
-          className={`w-full ${
-            props.Type == "Article View" ? "px-5 py-4" : "px-[4px]"
-          }`}
+          className={`w-full ${props.Type == "Article View" ? "px-5 py-4" : "px-[4px]"
+            }`}
         >
           <div
             className={
@@ -151,7 +153,7 @@ export const Article = (props: ArticleProps) => {
                     href={`https://data.adj.news/?q=${item.title}`}
                     className="ml-2 flex w-[50px] justify-center rounded-md border border-neutral-200 py-2 text-base shadow-sm  hover:border-gray-300 dark:border-neutral-700 dark:hover:border-neutral-700/90"
                   >
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#878787" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-external-link"><path d="M15 3h6v6"/><path d="M10 14 21 3"/><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#878787" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-external-link"><path d="M15 3h6v6" /><path d="M10 14 21 3" /><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" /></svg>
                   </a>
                 </TooltipTrigger>
                 <TooltipContent>Search Related Markets</TooltipContent>
@@ -226,11 +228,11 @@ export const Article = (props: ArticleProps) => {
             </TooltipProvider>
           </div>
           <div className="flex my-10">
-          {item.markets && item.markets.length > 0 && (
-            <MarketCard
-              {...item.markets}
-            />
-          )}
+            {item.markets && item.markets.length > 0 && (
+              <MarketCard
+                {...item.markets}
+              />
+            )}
           </div>
           {notesOpen || (item.note && plan == "pro") ? (
             <TextArea
@@ -253,5 +255,6 @@ export const Article = (props: ArticleProps) => {
           )}
         </div>
       </div>
+    </>
   );
 };
