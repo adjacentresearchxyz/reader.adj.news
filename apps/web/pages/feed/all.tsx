@@ -14,6 +14,7 @@ export async function getServerSideProps() {
   // Fetch your data or define your SEO content here
   const title = 'Test Title';
   const description = 'Test Description';
+  const id = "clyip2m1w05awmc07k4reqiln"
 
   // @TODO check to see if theres an id, fetch from DB and render the metadata
 
@@ -21,16 +22,17 @@ export async function getServerSideProps() {
     props: {
       title,
       description,
+      id
     },
   };
 }
 
-const All: NextPage<{ title: string; description: string }> = ({ title, description }) => {
+const All: NextPage<{ title: string; description: string, id: string }> = ({ title, description, id }) => {
   const user = useUser()
 
   return (
     <PageWrapper>
-      <SEO title={title} description={description} />
+      <SEO title={title} description={description} id={id}/>
       <CommandPalette />
       {user && <SideBar />}
       <div className={`flex h-screen w-full flex-col`}>

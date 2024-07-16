@@ -30,15 +30,12 @@ export function SEO<P extends Record<string, string | undefined>>(props: {
   title: string
   description: string
   url?: string
-  ogProps?: { props: P; endpoint: string }
+  id?: string
   image?: string
 }) {
-  const { title, description, url, image, ogProps } = props
+  const { title, description, url, id, image } = props
 
-  const imageUrl =
-    image ??
-    (ogProps &&
-      buildOgUrl((ogProps.props as any), ogProps?.endpoint))
+  const imageUrl = (id && buildOgUrl(id))
 
   const absUrl = 'https://adj.news' + url
 
