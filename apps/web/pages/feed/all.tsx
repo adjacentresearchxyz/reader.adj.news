@@ -10,19 +10,39 @@ import { useUser } from "@supabase/auth-helpers-react";
 
 import { SEO } from "../../components/seo/SEO";
 
-export async function getServerSideProps() {
-  // Fetch your data or define your SEO content here
-  const title = 'Test Title';
-  const description = 'Test Description';
-  const id = "clyip2m1w05awmc07k4reqiln"
+export async function getServerSideProps(context: any) {
+  // Extract the ID from the query parameters
+  const { item } = context.query;
 
-  // @TODO check to see if theres an id, fetch from DB and render the metadata
+  // Define the base URL for the API
+  const baseUrl = 'https://hyperdrive-adjacent-news.adjacentresearch.workers.dev/';
 
+  // Initialize default values for title and description
+  let title = 'Adjacent News';
+  let description = 'News Adjacent to Prediction Markets';
+
+  if (item) {
+    try {
+      // Fetch data from the API using the ID
+      const response = await fetch(`${baseUrl}?id=${item}`);
+      const data = await response.json();
+
+      // If the API returns a result, update title and description
+      if (data.result && data.result.length > 0) {
+        title = data.result[0].title;
+        description = data.result[0].website_content;
+      }
+    } catch (error) {
+      console.error('Failed to fetch data:', error);
+    }
+  }
+
+  // Return the title, description, and id as props
   return {
     props: {
       title,
       description,
-      id
+      id: item ?? null,
     },
   };
 }

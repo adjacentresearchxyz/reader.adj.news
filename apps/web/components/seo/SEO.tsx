@@ -2,30 +2,6 @@
 import { buildOgUrl } from '@utils/og'
 import Head from 'next/head'
 
-// export function ContractSEO(props: {
-//   contract: Contract
-//   /** Base64 encoded points */
-//   points?: string
-// }) {
-//   const { contract, points } = props
-//   const { question, creatorUsername, slug } = contract
-
-//   const seoDesc = getSeoDescription(contract)
-//   const ogCardProps = removeUndefinedProps({
-//     ...getContractOGProps(contract),
-//     points,
-//   })
-
-//   return (
-//     <SEO
-//       title={question}
-//       description={seoDesc}
-//       url={`/${creatorUsername}/${slug}`}
-//       ogProps={{ props: ogCardProps, endpoint: 'market' }}
-//     />
-//   )
-// }
-
 export function SEO<P extends Record<string, string | undefined>>(props: {
   title: string
   description: string

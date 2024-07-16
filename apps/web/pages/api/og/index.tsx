@@ -36,7 +36,7 @@ async function fetchItemDetailsAndDisplay(id) {
     const response = await fetch('https://fyeyeurwgxklumxgpcgz.supabase.co/functions/v1/embed', {
       method: 'POST',
       headers: {
-        'Authorization': `Bearer ${supabaseAnonKey}`,
+        'Authorization': `Bearer ${process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!}`,
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({ name: itemData.title })
@@ -73,18 +73,6 @@ async function fetchItemDetailsAndDisplay(id) {
         flexDirection: 'column',
         height: '100%',
       }}>
-       <img 
-          src={itemData.image_url || 'https://source.boringavatars.com/marble/120?square'} 
-          alt="Article Image" 
-          onError={(e) => e.currentTarget.src = 'https://source.boringavatars.com/marble/120?square'}
-          width="550"
-          height="175"
-          style={{
-            objectFit: 'fit',
-            borderRadius: '8px',
-          }}
-        />
-
         <div style={{
           marginTop: '12px',
           display: 'flex',
@@ -93,7 +81,7 @@ async function fetchItemDetailsAndDisplay(id) {
           height: '40%',
         }}>
           <h1 style={{
-            fontSize: '16px',
+            fontSize: '32px',
             fontWeight: 700,
             color: '#000000',
             margin: '0 0 12px 0',
@@ -103,9 +91,9 @@ async function fetchItemDetailsAndDisplay(id) {
           </h1>
 
           <span style={{
-            fontSize: '8px',
+            fontSize: '16px',
             color: '#757575',
-            marginBottom: '8px',
+            marginTop: '85px',
             textDecoration: 'underline',
             textDecorationStyle: 'dotted'
           }}>
@@ -115,7 +103,7 @@ async function fetchItemDetailsAndDisplay(id) {
           <p style={{
             fontSize: '12px',
             color: '#4A4A4A',
-            margin: '0 0 16px 0',
+            marginTop: '50px',
             lineHeight: 1.4,
           }}>
             {`${itemData.website_content.substring(0, 120)}...`}
@@ -127,11 +115,11 @@ async function fetchItemDetailsAndDisplay(id) {
             justifyContent: 'space-between',
           }}>
             <span style={{
-              fontSize: '8px',
+              fontSize: '16px',
               color: '#757575',
-              marginBottom: '2px',
+              marginTop: '100px',
             }}>
-              <span style={{ marginRight: '2px' }}><strong>adj.news</strong></span>via {feedData.title}
+              <span style={{ marginRight: '2px', fontWeight: 'bold' }}>ADJACENT NEWS</span>via {feedData.title}
             </span>
           </div>
         </div>
