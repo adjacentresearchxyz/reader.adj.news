@@ -60,7 +60,6 @@ export const Article = (props: ArticleProps) => {
 
   return (
     <>
-      <SEO title='Test Title' description="Test Description" />
       <div
         className={`mx-auto select-text break-words text-[#38383d] subpixel-antialiased dark:border-neutral-700 dark:text-[#F3F5F7] ${props.Type == "Popup"
             ? "w-[94.5%]"
