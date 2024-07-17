@@ -72,7 +72,7 @@ const Reader = ({ item }) => {
     <motion.div
       // layout="preserve-aspect"
       className={clsx(
-        "fixed z-30 w-full transform overflow-hidden bg-white py-0.5 md:left-auto md:w-[65%] dark:bg-[#0f0f10]",
+        "fixed z-30 w-full transform overflow-hidden bg-white py-0.5 md:left-auto md:w-[100%] dark:bg-[#0f0f10]",
         windowWidth! > 500 &&
         (fullscreen
           ? `left-0 right-0 top-0 h-full`
@@ -81,7 +81,7 @@ const Reader = ({ item }) => {
       transition={{
         duration: 0.2,
       }}
-      style={widthStyle}
+      // style={widthStyle}
     >
       <div className="flex flex-row items-center rounded-t border-b border-[#f0f0f0] bg-[#fcfcfc] py-2.5 font-bold dark:border-[#303030]/90 dark:bg-[#141415]">
         <div className={`${fullscreen ? "mx-auto w-[680px]" : "w-[90%]"}`}>
