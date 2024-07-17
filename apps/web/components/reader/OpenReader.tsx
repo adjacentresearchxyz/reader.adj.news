@@ -70,7 +70,7 @@ const Reader = ({ item }) => {
 
   return (
     <motion.div
-      layout="preserve-aspect"
+      // layout="preserve-aspect"
       className={clsx(
         "fixed z-30 w-full transform overflow-hidden bg-white py-0.5 md:left-auto md:w-[65%] dark:bg-[#0f0f10]",
         windowWidth! > 500 &&
@@ -89,10 +89,10 @@ const Reader = ({ item }) => {
             className={`flex  justify-between`}
           >
             <div className="flex space-x-4">
-              <CopyLinkButton />
+              {windowWidth > 500 && <CopyLinkButton />}
               {/* <Sharing/> */}
             </div>
-            <Link href="/signup">
+            <Link href="/signup" style={{ marginRight: windowWidth < 500 ? '1em' : '0' }}>
               <TryNowButton />
             </Link>
           </div>
@@ -115,7 +115,7 @@ const Reader = ({ item }) => {
                   <Article
                     FeedType="one"
                     item={item}
-                    Type={fullscreen ? "Full" : "Popup"}
+                    Type={windowWidth > 500 ? "Full" : "Popup"}
                     markets={markets}
                   />
                 </div>
@@ -123,9 +123,6 @@ const Reader = ({ item }) => {
             )}
           </div>
         </div>
-      </div>
-      <div className="absolute bottom-0 right-0 mb-4 mr-5 text-xs font-mono">
-      Updated hourly check <a href="https://data.adj.news" style={{ textDecoration: "underline dotted" }}>data.adj.news</a> for the latest data
       </div>
     </motion.div>
   );
