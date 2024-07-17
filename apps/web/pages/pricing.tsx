@@ -20,7 +20,7 @@ const Pricing: NextPage = () => {
   );
 };
 
-export const PricingPage = () => {
+export const PricingPage = ({ homepage = false }: { homepage?: boolean } = {}) => {
   const [isYearlyPlan, setIsYearlyPlan] = useState(false);
 
   // Background pattern is not supported in Safari so we remove it
@@ -32,11 +32,11 @@ export const PricingPage = () => {
   return (
     <>
       <div className="background-pattern rounded-b-xl border-b bg-[#FAFBFC]">
-        {!isSafari && <PricingBackground />}
-        <NavBar />
-        <h1 className="mx-auto mb-1 mt-20 flex justify-center text-7xl font-[750] leading-none tracking-tighter md:w-[700px]">
+        {!isSafari && !homepage && <PricingBackground />}
+        {!homepage && <NavBar />}
+        {!homepage && <h1 className="mx-auto mb-1 mt-20 flex justify-center text-7xl font-[750] leading-none tracking-tighter md:w-[700px]">
           <span className="z-10 py-2 tracking-tight text-black-500">Pricing</span>
-        </h1>
+        </h1>}
         <div className="mt-5 flex items-center justify-center">
           <Control
             isYearlyPlan={isYearlyPlan}
@@ -50,7 +50,7 @@ export const PricingPage = () => {
           </div>
         </div>
       </div>
-      <BottomFooter />
+      {!homepage && <BottomFooter />}
     </>
   );
 };

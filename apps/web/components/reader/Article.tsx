@@ -28,6 +28,7 @@ interface ArticleProps {
   item: ItemType;
   FeedType: FeedType;
   Type: "Popup" | "Article View" | "Back" | "Full";
+  markets?: any;
 }
 
 export const Article = (props: ArticleProps) => {
@@ -62,12 +63,12 @@ export const Article = (props: ArticleProps) => {
     <>
       <div
         className={`mx-auto select-text break-words text-[#38383d] subpixel-antialiased dark:border-neutral-700 dark:text-[#F3F5F7] ${props.Type == "Popup"
-            ? "w-[94.5%]"
-            : props.Type == "Full"
-              ? "h-[calc(100svh-3.4rem)]"
-              : props.Type == "Article View"
-                ? "overflow-hidden rounded-md"
-                : ""
+          ? "w-[94.5%]"
+          : props.Type == "Full"
+            ? "h-[calc(100svh-3.4rem)]"
+            : props.Type == "Article View"
+              ? "overflow-hidden rounded-md"
+              : ""
           }  `}
       >
         {props.Type == "Article View" ? (
@@ -227,10 +228,10 @@ export const Article = (props: ArticleProps) => {
             </TooltipProvider>
           </div>
           <div className="flex my-10">
-            {item.markets && item.markets.length > 0 && (
-              <MarketCard
-                {...item.markets}
-              />
+            {props.markets ? (
+              <MarketCard {...props.markets} />
+            ) : (
+              item.markets && item.markets.length > 0 && <MarketCard {...item.markets} />
             )}
           </div>
           {notesOpen || (item.note && plan == "pro") ? (

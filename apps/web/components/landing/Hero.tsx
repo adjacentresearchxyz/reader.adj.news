@@ -12,6 +12,8 @@ import {
 import { FilterCard } from "./FilterCard";
 import TimeBookmarksCard from "./TimeBookmarksCard";
 import SignUpFormReact from "./SignUpForm";
+import Banner from "./Banner";
+import { PricingPage } from "../../pages/pricing";
 
 export default function Hero() {
   const router = useRouter();
@@ -22,15 +24,15 @@ export default function Hero() {
         <div className="mt-20">
           <div className="mx-auto max-w-4xl px-5 lg:px-8 xl:max-w-7xl">
             <div className="mx-auto flex flex-col items-center text-center ">
-              {/* <div className="z-10 mb-4">
+              <div className="z-10">
                 <Banner />
-              </div> */}
-              <h1 className="z-10 text-[60px] font-[775] leading-none tracking-tight sm:text-[100px] md:text-[130px] lg:w-[900px]">
-                <span className="text-black-500">Market driven News</span>
+              </div>
+              <h1 className="z-10 text-[36px] font-[775] leading-none tracking-tight sm:text-[100px] md:text-[100px] lg:w-[900px]">
+                <span className="text-black-500">Adjacent News</span>
               </h1>
               <h3 className="z-10 mt-4 text-[16px] font-[400] leading-none tracking-tight sm:text-[24px] md:text-[30px] lg:w-[700px]">
                 <span className="text-black-500">
-                  RSS reader alongside prediction market data
+                  Robust RSS Reader for Prediction Market Enthusiasts
                 </span>
               </h3>
               <div className="z-10 mt-6">
@@ -78,6 +80,7 @@ export default function Hero() {
               </div>
             </div> */}
           </div>
+          {/* <PricingPage homepage={true}/> */}
         </div>
       </main>
     </div>

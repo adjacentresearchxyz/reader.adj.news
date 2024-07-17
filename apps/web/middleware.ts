@@ -69,9 +69,18 @@ export async function middleware(req: NextRequest) {
     data: { session },
   } = await supabase.auth.getSession();
 
+  // Match URLs of the pattern /feed/anything?item=
+  const feedItemRegex = /^\/feed\/.*\?item=/;
+  if (!session && feedItemRegex.test(req.nextUrl.pathname + req.nextUrl.search)) {
+    const urlSearchParams = new URLSearchParams(req.nextUrl.search);
+    const item = urlSearchParams.get('item');
+
+    return NextResponse.redirect(new URL(`/reader?item=${item}`, req.url));
+  }
+
   // if user is signed in and the current path is /login the user to the app
   if (session && req.nextUrl.pathname === "/login") {
-    return NextResponse.redirect(new URL("/discover", req.url));
+    return NextResponse.redirect(new URL("/feed/all", req.url));
   }
 
   if (session && req.nextUrl.pathname === "/signup") {
@@ -89,15 +98,15 @@ export async function middleware(req: NextRequest) {
   }
 
   // Check if the user is on a page they aren't supposed to be on
-  // if (
-  //   session &&
-  //   req.nextUrl.pathname !== "/" &&
-  //   req.nextUrl.pathname !== "/login" &&
-  //   req.nextUrl.pathname !== "/signup" &&
-  //   req.nextUrl.pathname !== "/pricing"
-  // ) {
-  //   return NextResponse.redirect(new URL("/login", req.url));
-  // }
+  if (
+    !session &&
+    req.nextUrl.pathname !== "/" &&
+    req.nextUrl.pathname !== "/login" &&
+    req.nextUrl.pathname !== "/signup" &&
+    req.nextUrl.pathname !== "/pricing"
+  ) {
+    return NextResponse.redirect(new URL("/signup", req.url));
+  }
 
   return res;
 }
@@ -105,7 +114,7 @@ export async function middleware(req: NextRequest) {
 export const config = {
   matcher: [
     "/",
-    "/feed", 
+    "/feed",
     "/feed/:path*",
     "/discover",
     "/folder",

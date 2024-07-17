@@ -10,8 +10,6 @@ import { removeDuplicates } from "./utils/removeDuplicates";
 import { transformItems } from "./utils/transformItems";
 
 import useRelatedMarkets from "../../features/item/relatedMarkets";
-import { fetchItemEmbedding } from "./utils/getEmbeddings";
-import type { ItemType } from "@refeed/types/item";
 
 export const itemRouter = createTRPCRouter({
   getUnreadItems: protectedProcedure

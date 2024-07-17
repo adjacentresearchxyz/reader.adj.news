@@ -267,11 +267,11 @@ export const ProPlan = (props: {
             </span>
           </li>
         </Tippy>
-        <li className=" px-4 py-[3px] text-lg hover:bg-neutral-50 dark:text-stone-200 dark:hover:bg-[#121212]">
+        {/* <li className=" px-4 py-[3px] text-lg hover:bg-neutral-50 dark:text-stone-200 dark:hover:bg-[#121212]">
           <Checkbox />
           Full Text Search
-        </li>
-        <Tippy
+        </li> */}
+        {/* <Tippy
           className="rounded-[4px] bg-white p-2 shadow-[0_0px_0px_1px_rgba(31,34,37,0.09),0px_12px_24px_-4px_rgba(0,0,0,0.08),0px_8px_16px_-4px_rgba(0,0,0,0.06)] dark:border dark:border-[#333333] dark:bg-[#141415]"
           placement="top"
           followCursor={true}
@@ -296,8 +296,8 @@ export const ProPlan = (props: {
               </span>
             </h3>
           </li>
-        </Tippy>
-        <Tippy
+        </Tippy> */}
+        {/* <Tippy
           className="rounded-[4px] bg-white p-2 shadow-[0_0px_0px_1px_rgba(31,34,37,0.09),0px_12px_24px_-4px_rgba(0,0,0,0.08),0px_8px_16px_-4px_rgba(0,0,0,0.06)] dark:border dark:border-[#333333] dark:bg-[#141415]"
           placement="top"
           followCursor={true}
@@ -321,14 +321,14 @@ export const ProPlan = (props: {
               </span>
             </h3>
           </li>
-        </Tippy>
+        </Tippy> */}
       </ul>
       <Link href="/signup">
         <button
           onClick={() => {
             handleSubmit(isYearlyPlan!, user?.id!);
           }}
-          className="mx-5 mb-5 mt-8 w-[90%] rounded-md bg-white px-6 py-1.5 text-base font-medium text-[#38383D] shadow-[0_0_0_1px_rgba(18,55,105,0.08),0_1px_2px_0_rgba(18,55,105,0.12)]"
+          className="mx-5 mt-20 w-[90%] rounded-md bg-white px-6 py-1.5 text-base font-medium text-[#38383D] shadow-[0_0_0_1px_rgba(18,55,105,0.08),0_1px_2px_0_rgba(18,55,105,0.12)]"
         >
           Try Now -&gt;{" "}
         </button>
