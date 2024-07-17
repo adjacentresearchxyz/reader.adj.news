@@ -5,7 +5,6 @@ import type { Market } from "@refeed/types/item";
 const MarketCard = (markets: Market[]) => {
   const marketsArray = Object.values(markets);
   const sortedMarketsArray = Object.values(markets).sort((a, b) => b.probability - a.probability);
-  console.log(marketsArray)
   return (
     <div className="flex flex-wrap flex-col -m-4 w-[110%]">
       {sortedMarketsArray.map((market) => (

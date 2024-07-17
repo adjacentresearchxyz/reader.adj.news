@@ -10,25 +10,24 @@ import type { Session } from "@supabase/auth-helpers-nextjs";
 import { createClient } from "@supabase/supabase-js";
 import { createPagesBrowserClient } from "@supabase/auth-helpers-nextjs";
 import { SessionContextProvider } from "@supabase/auth-helpers-react";
-import {
-  NEXT_PUBLIC_POSTHOG_HOST,
-  NEXT_PUBLIC_POSTHOG_KEY,
-} from "@utils/posthog";
 import { Provider as JotaiProvider } from "jotai";
 import { ThemeProvider } from "next-themes";
 import posthog from "posthog-js";
 import { PostHogProvider } from "posthog-js/react";
+
 import { trpc } from "utils/trpc";
 
 import { Toaster } from "@refeed/ui";
 
-if (typeof window !== "undefined") {
-  if (NEXT_PUBLIC_POSTHOG_KEY && NEXT_PUBLIC_POSTHOG_HOST) {
-    posthog.init(NEXT_PUBLIC_POSTHOG_KEY, {
-      api_host: NEXT_PUBLIC_POSTHOG_HOST || "https://app.posthog.com",
-      enable_recording_console_log: true,
-    });
-  }
+if (typeof window !== 'undefined') { // checks that we are client-side
+  posthog.init(process.env.NEXT_PUBLIC_POSTHOG_KEY!, {
+    api_host: process.env.NEXT_PUBLIC_POSTHOG_HOST! || 'https://us.i.posthog.com',
+    // person_profiles: 'identified_only', // or 'always' to create profiles for anonymous users as well
+    person_profiles: 'always',
+    loaded: (posthog) => {
+      if (process.env.NODE_ENV === 'development') posthog.debug() // debug mode in development
+    },
+  })
 }
 
 const App = ({
@@ -41,13 +40,14 @@ const App = ({
   const { item: urlItem } = router.query;
 
   useEffect(() => {
-    const handleRouteChange = () => posthog?.capture("$pageview");
-    router.events.on("routeChangeComplete", handleRouteChange);
+    // Track page views
+    const handleRouteChange = () => posthog?.capture('$pageview')
+    router.events.on('routeChangeComplete', handleRouteChange)
 
     return () => {
-      router.events.off("routeChangeComplete", handleRouteChange);
-    };
-  }, []);
+      router.events.off('routeChangeComplete', handleRouteChange)
+    }
+  }, [])
 
   return (
     <PostHogProvider client={posthog}>
