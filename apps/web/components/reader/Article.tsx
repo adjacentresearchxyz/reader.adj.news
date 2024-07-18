@@ -210,7 +210,7 @@ export const Article = (props: ArticleProps) => {
                 </TooltipTrigger>
                 <TooltipContent>Write Note</TooltipContent>
               </Tooltip> */}
-              {props.Type != "Article View" && (
+              {/* {props.Type != "Article View" && (
                 <Tooltip>
                   <TooltipTrigger>
                     <div
@@ -224,7 +224,7 @@ export const Article = (props: ArticleProps) => {
                   </TooltipTrigger>
                   <TooltipContent>Full Screen</TooltipContent>
                 </Tooltip>
-              )}
+              )} */}
             </TooltipProvider>
           </div>
           <div className="flex my-10">

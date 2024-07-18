@@ -70,7 +70,6 @@ const Reader = ({ item }) => {
 
   return (
     <motion.div
-      // layout="preserve-aspect"
       className={clsx(
         "fixed z-30 w-full transform overflow-hidden bg-white py-0.5 md:left-auto md:w-[100%] dark:bg-[#0f0f10]",
         windowWidth! > 500 &&
@@ -84,9 +83,9 @@ const Reader = ({ item }) => {
       // style={widthStyle}
     >
       <div className="flex flex-row items-center rounded-t border-b border-[#f0f0f0] bg-[#fcfcfc] py-2.5 font-bold dark:border-[#303030]/90 dark:bg-[#141415]">
-        <div className={`${fullscreen ? "mx-auto w-[680px]" : "w-[90%]"}`}>
+        <div className={`${fullscreen ? "mx-auto w-[680px]" : "w-[90%]"} overflow-auto`}>
           <div
-            className={`flex  justify-between`}
+            className={`flex justify-between`}
           >
             <div className="flex space-x-4">
               {windowWidth > 500 && <CopyLinkButton />}
