@@ -69,26 +69,27 @@ const Reader = ({ item }) => {
   }, [item]);
 
   return (
-    <motion.div
-      className={clsx(
-        "fixed z-30 w-full transform overflow-hidden bg-white py-0.5 md:left-auto md:w-[100%] dark:bg-[#0f0f10]",
-        windowWidth! > 500 &&
-        (fullscreen
-          ? `left-0 right-0 top-0 h-full`
-          : `left-1 top-1.5 mx-1 h-[98.5vh] border-[1.5px] border-neutral-400/25 shadow-[rgba(0,0,0,0.05)_0px_0px_1px,rgba(0,0,0,0.04)_0px_15px_30px] lg:w-[36%] dark:border-[#24252A] dark:bg-[#0f0f10] dark:shadow-none`),
-      )}
-      transition={{
-        duration: 0.2,
-      }}
-      // style={widthStyle}
-    >
+<motion.div
+        layout="preserve-aspect"
+        className={clsx(
+          "fixed z-30 w-full transform overflow-hidden bg-white py-0.5 md:left-auto dark:bg-[#0f0f10]",
+          windowWidth! > 500 &&
+          (fullscreen
+            ? `left-0 right-0 top-0 h-full`
+            : `right-1 rounded-lg" left-1 top-1.5 mx-1 h-[98.5vh] border-[1.5px] border-neutral-400/25 shadow-[rgba(0,0,0,0.05)_0px_0px_1px,rgba(0,0,0,0.04)_0px_15px_30px] lg:w-[36%] dark:border-[#24252A] dark:bg-[#0f0f10] dark:shadow-none`),
+        )}
+        transition={{
+          duration: 0.2,
+        }}
+        // style={widthStyle}
+      >
       <div className="flex flex-row items-center rounded-t border-b border-[#f0f0f0] bg-[#fcfcfc] py-2.5 font-bold dark:border-[#303030]/90 dark:bg-[#141415]">
         <div className={`${fullscreen ? "mx-auto w-[680px]" : "w-[90%]"} overflow-auto`}>
           <div
             className={`flex justify-between`}
           >
             <div className="flex space-x-4">
-              {windowWidth > 500 && <CopyLinkButton />}
+              <h2 style={{ marginLeft: "1em", marginTop: "0.2em" }}>Adjacent News</h2>
               {/* <Sharing/> */}
             </div>
             <Link href="/signup" style={{ marginRight: windowWidth < 500 ? '1em' : '0' }}>
