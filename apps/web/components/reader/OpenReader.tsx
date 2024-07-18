@@ -74,7 +74,7 @@ const Reader = ({ item }) => {
               {/* <Sharing/> */}
             </div>
             {/* <Link href="/signup" style={{ marginRight: windowWidth < 500 ? '1em' : '0' }}> */}
-            <Link href="/" style={{ marginRight: windowWidth < 500 ? '1em' : '0' }}>
+            <Link href="https://adj.news" style={{ marginRight: windowWidth < 500 ? '1em' : '0' }}>
               <TryNowButton />
             </Link>
           </div>
