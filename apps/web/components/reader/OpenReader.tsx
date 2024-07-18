@@ -1,33 +1,14 @@
 import { memo, useEffect, useRef, useState } from "react";
-import { useRouter } from "next/router";
-import * as Dialog from "@radix-ui/react-dialog";
 import clsx from "clsx";
-import useEmblaCarousel from "embla-carousel-react";
 import { motion } from "framer-motion";
 import { atom, useAtom, useSetAtom } from "jotai";
-import Head from 'next/head'
 
-import { useUser } from "@refeed/features/hooks/useUser";
-import { useItemData, useOpenItem } from "@refeed/features/item/useItemDataWeb";
-import { debounce } from "@refeed/lib/debounce";
-import type { FeedType } from "@refeed/types/feed";
-import type { ItemType } from "@refeed/types/item";
-
-import { BookmarkButton } from "../../features/bookmarks/BookmarkButton";
-import BookmarkFolderButton from "../../features/bookmarks/BookmarkFolderButton";
-import { ShortTermBookmarkButton } from "../../features/bookmarks/ShortTermBookmarkButton";
-import { useUpdateFeeds } from "../../features/feed/useUpdateFeeds";
-import { PricingDialog } from "../../features/pricing/PricingDialog";
 import useWindowSize from "../../lib/useWindowSize";
-import Sharing from "../sharing/Sharing";
 import { Article } from "./Article";
-import { CopyLinkButton } from "./CopyLinkButton";
 import { useReaderAnimation } from "./useReaderAnimation";
-import { decodeHtmlEntities } from "@refeed/lib/decodeHtmlEntities";
 import TryNowButton from "../../components/landing/TryNowButton";
 import Link from "next/link";
-import { createClient } from '@supabase/supabase-js'
-import MarketCard from "./MarketCard";
+import { createClient } from '@supabase/supabase-js';
 
 export const fullscreenAtom = atom(false);
 export const titleAtom = atom("Title");
@@ -76,7 +57,7 @@ const Reader = ({ item }) => {
           windowWidth! > 500 &&
           (fullscreen
             ? `left-0 right-0 top-0 h-full`
-            : `right-1 rounded-lg" left-1 top-1.5 mx-1 h-[98.5vh] border-[1.5px] border-neutral-400/25 shadow-[rgba(0,0,0,0.05)_0px_0px_1px,rgba(0,0,0,0.04)_0px_15px_30px] lg:w-[36%] dark:border-[#24252A] dark:bg-[#0f0f10] dark:shadow-none`),
+            : `right-1 rounded-lg"} left-1 top-1.5 mx-1 h-[98.5vh] border-[1.5px] border-neutral-400/25 shadow-[rgba(0,0,0,0.05)_0px_0px_1px,rgba(0,0,0,0.04)_0px_15px_30px] lg:w-[36%] dark:border-[#24252A] dark:bg-[#0f0f10] dark:shadow-none`),
         )}
         transition={{
           duration: 0.2,
@@ -107,7 +88,7 @@ const Reader = ({ item }) => {
         <div className="flex w-full">
           <div
             key={item.id}
-            className="scrollbar-rounded-md w-full flex-shrink-0 overflow-y-scroll overscroll-none scrollbar scrollbar-thumb-neutral-300 scrollbar-thumb-rounded-md scrollbar-w-1 md:overscroll-contain dark:bg-[#0f0f10] dark:scrollbar-thumb-[#404245]"
+            className="scrollbar-rounded-md h-[calc(100svh-3.4rem)] w-full flex-shrink-0 overflow-y-scroll overscroll-none scrollbar scrollbar-thumb-neutral-300 scrollbar-thumb-rounded-md scrollbar-w-1 md:overscroll-contain dark:bg-[#0f0f10] dark:scrollbar-thumb-[#404245]"
           >
             {item.title && (
               <div className={fullscreen ? "mx-auto md:w-[650px]" : "w-full"}>
