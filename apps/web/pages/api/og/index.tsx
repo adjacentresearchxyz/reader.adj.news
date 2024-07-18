@@ -1,6 +1,6 @@
-import { NextApiRequest, NextApiResponse } from 'next';
 import { ImageResponse } from 'next/og';
 import { createClient } from '@supabase/supabase-js';
+import { NodeHtmlMarkdown } from "node-html-markdown";
 
 export const config = {
   runtime: 'edge',
@@ -51,7 +51,7 @@ async function fetchItemDetailsAndDisplay(id) {
     })
 
     relatedMarkets = numberOfMarkets["data"].length
-  } catch(error) {
+  } catch (error) {
     console.log("Related Markets Error: ", error)
   }
 
@@ -67,6 +67,7 @@ async function fetchItemDetailsAndDisplay(id) {
       width: '100%',
       backgroundColor: '#ffffff',
       padding: '20px',
+      position: 'relative', // Add this line
     }}>
       <div style={{
         display: 'flex',
@@ -74,11 +75,9 @@ async function fetchItemDetailsAndDisplay(id) {
         height: '100%',
       }}>
         <div style={{
-          marginTop: '12px',
           display: 'flex',
           flexDirection: 'column',
           justifyContent: 'space-between',
-          height: '40%',
         }}>
           <h1 style={{
             fontSize: '32px',
@@ -86,44 +85,42 @@ async function fetchItemDetailsAndDisplay(id) {
             color: '#000000',
             margin: '0 0 12px 0',
             lineHeight: 1.2,
+            marginBottom: '0.5em',
           }}>
-            {itemData.title}
+            {itemData.title} via {feedData.title}
           </h1>
 
           <span style={{
             fontSize: '16px',
             color: '#757575',
-            marginTop: '85px',
             textDecoration: 'underline',
-            textDecorationStyle: 'dotted'
+            textDecorationStyle: 'dotted',
+            marginBottom: '0.5em',
           }}>
             {relatedMarkets} related prediction markets
           </span>
 
           <p style={{
-            fontSize: '12px',
+            fontSize: '16px',
             color: '#4A4A4A',
-            marginTop: '50px',
             lineHeight: 1.4,
+            marginBottom: '3em',
           }}>
-            {`${itemData.website_content.substring(0, 120)}...`}
+            {`${NodeHtmlMarkdown.translate(itemData.website_content).substring(0, 120)}...`}
           </p>
-
-          <div style={{
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'space-between',
-          }}>
-            <span style={{
-              fontSize: '16px',
-              color: '#757575',
-              marginTop: '100px',
-            }}>
-              <span style={{ marginRight: '2px', fontWeight: 'bold' }}>ADJACENT NEWS</span>via {feedData.title}
-            </span>
-          </div>
         </div>
       </div>
+      {/* Add this img element for the SVG */}
+      {/* Add this img element for the SVG */}
+      <img src="https://adj.news/logo.svg" alt="Logo" style={{
+        position: 'absolute',
+        bottom: '0', // Align at the bottom
+        right: '0', // Align at the right
+        width: '25px', // Fixed width
+        height: '25px', // Fixed height
+        marginRight: "20px", // Add margin
+        marginBottom: "20px", // Add margin
+      }} />
     </div>,
     {
       width: 592,
@@ -137,23 +134,23 @@ export default async function GET(request: Request) {
   const id = searchParams.get('id');
   if (!id) {
     return new ImageResponse(
-        <div style={{ 
-            display: 'flex', 
-            justifyContent: 'center', 
-            alignItems: 'center', 
-            width: '100%', 
-            height: '100%', 
-            fontSize: '48px', // Adjust the font size as needed
-            fontFamily: 'Arial, sans-serif', // Specify the font family if needed
-        }}>
-            Visit Adjacent News at adj.news
-        </div>, 
-        {
-            width: 592,
-            height: 339,
-        }
+      <div style={{
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        width: '100%',
+        height: '100%',
+        fontSize: '48px', // Adjust the font size as needed
+        fontFamily: 'Arial, sans-serif', // Specify the font family if needed
+      }}>
+        Visit Adjacent News at adj.news
+      </div>,
+      {
+        width: 592,
+        height: 339,
+      }
     );
-}
- 
+  }
+
   return fetchItemDetailsAndDisplay(id);
 }
