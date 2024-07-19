@@ -131,6 +131,11 @@ function Signup() {
               Privacy Policy
             </Link>.
           </h3>
+          <h5 className="pt-1 text-center text-[13px] text-neutral-500">
+            <Link href="/" className="underline">
+                Adjacent News
+            </Link>
+          </h5>
         </div>
       </div>
     </LandingWrapper>

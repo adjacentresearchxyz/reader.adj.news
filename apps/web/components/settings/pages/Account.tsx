@@ -197,8 +197,14 @@ export const AccountSettingsPage = () => {
               {userInviteCodes.length > 0 ? (
                 <ul>
                   {userInviteCodes.map((code, index) => (
-                    <li key={index} className="text-sm leading-5 text-neutral-450 dark:text-stone-500">
+                    <li key={index} className="flex items-center space-x-2 text-sm leading-5 text-neutral-450 dark:text-stone-500">
                       {code}
+                      <button
+                        onClick={() => navigator.clipboard.writeText(code)}
+                        className="rounded bg-blue-500 px-2 py-1 text-xs text-white"
+                      >
+                        Copy
+                      </button>
                     </li>
                   ))}
                 </ul>
