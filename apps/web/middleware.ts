@@ -84,7 +84,7 @@ export async function middleware(req: NextRequest) {
   }
 
   if (session && req.nextUrl.pathname === "/signup") {
-    return NextResponse.redirect(new URL("/discover", req.url));
+    return NextResponse.redirect(new URL("/feed/all", req.url));
   }
 
   if (!session && req.nextUrl.pathname === "/bookmarks" || req.nextUrl.pathname === "/recentlyread") {
