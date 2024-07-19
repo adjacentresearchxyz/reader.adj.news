@@ -54,7 +54,7 @@ const All: NextPage<{ title: string; description: string, id: string }> = ({ tit
     <PageWrapper>
       <SEO title={title} description={description} id={id}/>
       <CommandPalette />
-      {user && <SideBar />}
+      <SideBar />
       <div className={`flex h-screen w-full flex-col`}>
         <Reader />
         <NavBar title="All Feeds" />

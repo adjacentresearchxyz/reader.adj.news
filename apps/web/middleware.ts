@@ -71,7 +71,7 @@ export async function middleware(req: NextRequest) {
 
   // Match URLs of the pattern /feed/anything?item=
   const feedItemRegex = /^\/feed\/.*\?item=/;
-  if (!session && feedItemRegex.test(req.nextUrl.pathname + req.nextUrl.search)) {
+  if (feedItemRegex.test(req.nextUrl.pathname + req.nextUrl.search)) {
     const urlSearchParams = new URLSearchParams(req.nextUrl.search);
     const item = urlSearchParams.get('item');
 

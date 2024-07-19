@@ -25,7 +25,7 @@ import { Badge } from "@refeed/ui";
 export const AccountDropdown = ({ width }: { width: number }) => {
   const supabase = useSupabaseClient();
   const user = useSupabaseUser();
-  const { data } = useUser();
+  const { plan } = useUser();
   const { replace, query, pathname } = useRouter();
 
   const [DialogType, setDialogType] = useState<
@@ -201,7 +201,7 @@ export const AccountDropdown = ({ width }: { width: number }) => {
           <OpenDiscovery />
           <Link href="https://data.adj.news" className="relative select-none items-center items-center rounded-[6px] px-2 py-1.5 text-sm font-medium text-[#38383d] outline-none data-[disabled]:pointer-events-none data-[disabled]:opacity-50 focus:bg-[#f7f7f7] dark:text-stone-200 dark:focus:bg-[#19191a]" target="_blank" rel="noopener noreferrer">Explore Data</Link><br />
           <DropdownMenuSeparator /> */}
-          <UpgradeButton />
+          {plan == 'free' && <UpgradeButton />}
           <SettingsTrigger />
           <LogOutButton />
         </DropdownMenuContent>

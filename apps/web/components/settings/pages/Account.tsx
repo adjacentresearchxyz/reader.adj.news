@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import { PricingPage } from "@components/upgrade/PricingPage";
 import * as Dialog from "@radix-ui/react-dialog";
 import { useUser as useSupabaseUser } from "@supabase/auth-helpers-react";
@@ -13,9 +14,72 @@ import {
 import { DeleteAccount } from "../../dialog/DeleteAccountDialog";
 import { SettingsHeader } from "../SettingsHeader";
 
+const simpleHash = (str) => {
+  let hash = 0;
+  for (let i = 0; i < str.length; i++) {
+    const char = str.charCodeAt(i);
+    hash = (hash << 5) - hash + char;
+    hash = hash & hash; // Convert to 32bit integer
+  }
+  return Math.abs(hash);
+};
+
 export const AccountSettingsPage = () => {
   const user = useSupabaseUser();
   const { data, plan } = useUser();
+
+  const inviteCodes = [
+    "dreamy_goldberg",
+    "trusting_bhaskara",
+    "inspiring_liskov",
+    "sharp_easley",
+    "amazing_almeida",
+    "dazzling_kepler",
+    "tender_easley",
+    "dreamy_leavitt",
+    "keen_ptolemy",
+    "quizzical_gates",
+    "dreamy_goldstine",
+    "admiring_wozniak",
+    "ecstatic_carson",
+    "sharp_fermi",
+    "priceless_hugle",
+    "tender_galileo",
+    "optimistic_hermann",
+    "compassionate_tesla",
+    "eager_agnesi",
+    "wizardly_kowalevski",
+    "brave_darwin",
+    "stupefied_torvalds",
+    "nifty_tesla",
+    "reverent_kowalevski",
+    "gallant_jennings",
+    "dreamy_shannon",
+    "blissful_poincare",
+    "thirsty_allen",
+    "eager_bartik",
+    "dreamy_lichterman",
+    "xenodochial_johnson",
+    "sad_lamarr",
+    "keen_mayer",
+    "awesome_hamilton",
+    "trusting_dijkstra",
+    "unruffled_wozniak",
+    "happy_panini",
+    "festive_jang",
+    "gallant_shaw",
+    "loving_colden",
+    "adoring_kilby",
+    "nervous_payne",
+    "determined_varahamihira",
+    "sharp_jackson",
+    "condescending_allen",
+    "jovial_hamilton",
+    "unruffled_spence",
+    "magical_fermat",
+    "epic_bartik",
+    "modest_pare",
+  ];
 
   const { data: trialEnd } = useQuery({
     queryKey: ["subscriptionTrialEnd", data?.stripeSubscriptionId],
@@ -28,6 +92,20 @@ export const AccountSettingsPage = () => {
   });
 
   const remainingHours = calculateRemainingTime(trialEnd!);
+
+  const [userInviteCodes, setUserInviteCodes] = useState([]);
+
+  useEffect(() => {
+    if (user?.email) {
+      const hash = simpleHash(user.email);
+      const selectedIndices = [
+        hash % inviteCodes.length,
+        (hash + 1) % inviteCodes.length,
+        (hash + 2) % inviteCodes.length,
+      ];
+      setUserInviteCodes(selectedIndices.map(index => inviteCodes[index]));
+    }
+  }, [user?.email]);
 
   return (
     <div>
@@ -105,6 +183,30 @@ export const AccountSettingsPage = () => {
             </h4>
             <div className="mt-1">
               {plan != "free" && <OpenPortalButton userId={user?.id!} />}
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className="mt-4 flex items-center space-x-2">
+        <div className="flex w-full items-start">
+          <div className="flex flex-col">
+            <h1 className="mb-1 select-none text-sm font-medium leading-5">
+              Invite Codes
+            </h1>
+            <div className="mt-1">
+              {userInviteCodes.length > 0 ? (
+                <ul>
+                  {userInviteCodes.map((code, index) => (
+                    <li key={index} className="text-sm leading-5 text-neutral-450 dark:text-stone-500">
+                      {code}
+                    </li>
+                  ))}
+                </ul>
+              ) : (
+                <h1 className="text-sm leading-5 text-neutral-450 dark:text-stone-500">
+                  You have 0 invite codes
+                </h1>
+              )}
             </div>
           </div>
         </div>
