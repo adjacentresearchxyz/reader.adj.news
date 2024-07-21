@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { ExternalLink } from 'lucide-react';
 import type { Market } from "@refeed/types/item";
+import Markdown from "marked-react";
 
 const MarketCard = (markets: Market[]) => {
   const marketsArray = Object.values(markets);
@@ -18,9 +19,11 @@ const MarketCard = (markets: Market[]) => {
                 <div className={`p-4 flex flex-col justify-between`}>
                 {/* <div className={`p-4 w-2/3 flex flex-col justify-between`}> */}
                   <div>
-                    <h2 className="font-bold text-lg mb-2 text-gray-800">{market.question}</h2>
+                    <h2 className="font-bold text-lg mb-2 text-gray-800">
+                      <Markdown>{market.question}</Markdown>
+                    </h2>
                     <p className="text-sm text-gray-600 mb-2">{`${market.probability}%`} probability of <strong>{market.description}</strong></p>
-                    <p className="text-xs text-gray-600">{`${market.rules}`}</p>
+                    <p className="text-xs text-gray-600"><Markdown>{`${market.rules}`}</Markdown></p>
                   </div>
                   <div className="mt-auto">
                     <div className="flex items-center text-xs text-gray-500 mt-5">
