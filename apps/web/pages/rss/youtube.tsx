@@ -19,12 +19,12 @@ const Youtube: NextPage = () => {
 
   return (
     <LandingWrapper>
-      <div className="overflow-hidden bg-[#FCFCFC] ">
+      <div className="overflow-hidden bg-[#FCFCFC]" style={{ minHeight: "70vh" }}>
         <div className="z-10 rounded-b-xl pt-5">
           <NavBar />
         </div>
         <Head>
-          <title>Youtube RSS Link Generator - Refeed</title>
+          <title>Youtube RSS Link Generator</title>
         </Head>
         <div className=" bg-[#FCFCFC]">
           <div className="pb-20" />
@@ -70,7 +70,7 @@ const Youtube: NextPage = () => {
               </div>
               {finalLink && (
                 <div className="mt-5 flex justify-center">
-                  <h1 className=" text-neutral-450">
+                  <h1 className="text-neutral-450">
                     RSS Link:{" "}
                     {finalLink && (
                       <>
@@ -80,37 +80,17 @@ const Youtube: NextPage = () => {
                     )}
                     <Link href="/signup" className="text-sky-500">
                       {" "}
-                      Add to Refeed
+                      <br /><br />Add to Reader
                     </Link>
                   </h1>
                 </div>
               )}
             </div>
           </div>
-          <div className="z-10 mb-20  mt-6 flex translate-y-12 transform justify-center">
-            <div
-              className="rounded-lg shadow-[0px_0px_50px_100px_rgba(30,161,255,0.02)]"
-              onClick={() => {
-                router.push("/signup");
-              }}
-            >
-              <Tilt scale={1.01} tiltMaxAngleY={0} tiltMaxAngleX={1.5}>
-                <Image
-                  src="/Screenshot 2024-02-22 at 02-39-31 Refeed.png"
-                  alt="App screenshot"
-                  priority
-                  width={960}
-                  height={497}
-                  unoptimized
-                  className="transform rounded-lg border border-neutral-200 shadow-[0px_20px_70px_-10px_hsla(227,30%,20%,0.08),0px_10px_24px_-8px_hsla(227,30%,20%,0.04),0px_1px_4px_-1px_hsla(227,30%,20%,0.06)] sm:scale-[1.03]"
-                />
-              </Tilt>
-            </div>
-          </div>
-          <div className="border">
-            <BottomFooter />
-          </div>
         </div>
+      </div>
+      <div style={{ marginTop: "auto" }}>
+        <BottomFooter />
       </div>
     </LandingWrapper>
   );

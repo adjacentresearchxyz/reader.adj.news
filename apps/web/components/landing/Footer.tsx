@@ -38,6 +38,23 @@ export const BottomFooter = () => {
             </div>
             <div>
               <h2 className="mb-6 text-base font-medium text-neutral-900 dark:text-white">
+                Utilities
+              </h2>
+              <ul className="font-medium text-neutral-450">
+                <li className="mb-4">
+                  <Link href="https://rss-finder.rook1e.com/" target="_blank" className="hover:underline">
+                    Find RSS Feed
+                  </Link>
+                </li>
+                <li className="mb-4">
+                  <Link href="/rss/youtube" className="hover:underline">
+                    Youtube RSS
+                  </Link>
+                </li>
+              </ul>
+            </div>
+            <div>
+              <h2 className="mb-6 text-base font-medium text-neutral-900 dark:text-white">
                 Follow us
               </h2>
               <ul className="font-medium text-neutral-450">
