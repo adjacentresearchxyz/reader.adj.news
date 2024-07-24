@@ -266,10 +266,10 @@ export const proRouter = createTRPCRouter({
 
         if (newEmail) {
           // Check if it has @refeedreader.com on the end
-          if (!newEmail?.includes("@inbox.refeedreader.com")) {
+          if (!newEmail?.includes("@adjacentresearch.xyz")) {
             throw new TRPCError({
               code: "FORBIDDEN",
-              message: "Email must end with refeedreader.com",
+              message: "Email must end with adjacenresearch.xyz",
             });
           }
 

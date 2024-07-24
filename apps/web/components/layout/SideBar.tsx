@@ -63,9 +63,10 @@ export default function SideBar() {
         <Drawer.Root direction="right" shouldScaleBackground>
           <div className={`ml-2.5 mr-1.5 mt-1.5`}>
             <div className="ml-1">
-              {user && user?.aud === 'authenticated' && (
+              {/* {user && user?.aud === 'authenticated' && (
                 <AccountDropdown width={width} />
-              )}
+              )} */}
+              <AccountDropdown width={width} />
             </div>
           </div>
           <div className="ml-2.5">

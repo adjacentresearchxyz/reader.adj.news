@@ -64,10 +64,10 @@ export const handleInvoicePaid = async ({
   );
   const userId = subscription.metadata.userId;
 
-  // Their is probably a better way to do this
+  // There is probably a better way to do this
   const Plan =
-    subscription.items.data[0]?.plan.id == "price_1OmSxDBXmca2WokEeEmTAnWZ" ||
-    subscription.items.data[0]?.plan.id == "price_1NpofzBXmca2WokEhuEPIWEJ"
+    subscription.items.data[0]?.plan.id == "prod_QW4hSXNFnsJPty" ||
+    subscription.items.data[0]?.plan.id == "prod_QW4jzCx0Cm2h0F"
       ? "pro"
       : "free";
 
@@ -94,10 +94,10 @@ export const handleSubscriptionCreatedOrUpdated = async ({
   const subscription = event.data.object as Stripe.Subscription;
   const userId = subscription.metadata.userId;
 
-  // Their is probably a better way to do this
+  // There is probably a better way to do this
   const Plan =
-    subscription.items.data[0]?.plan.id == "price_1OmSxDBXmca2WokEeEmTAnWZ" ||
-    subscription.items.data[0]?.plan.id == "price_1NpofzBXmca2WokEhuEPIWEJ"
+    subscription.items.data[0]?.plan.id == "prod_QW4hSXNFnsJPty" ||
+    subscription.items.data[0]?.plan.id == "prod_QW4jzCx0Cm2h0F"
       ? "pro"
       : "free";
 
