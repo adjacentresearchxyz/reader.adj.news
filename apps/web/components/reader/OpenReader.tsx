@@ -69,10 +69,12 @@ const Reader = ({ item }) => {
           <div
             className={`flex justify-between`}
           >
-            <div className="flex space-x-4">
-              <h2 style={{ marginLeft: "1em", marginTop: "0.2em" }}>Adjacent News</h2>
-              {/* <Sharing/> */}
-            </div>
+          <div className="flex space-x-4">
+            <a href="https://adj.news" style={{ marginLeft: "1em", marginTop: "0.2em" }} target="_blank" rel="noopener noreferrer">
+              <h2>Adjacent News</h2>
+            </a>
+            {/* <Sharing/> */}
+          </div>
             {/* <Link href="/signup" style={{ marginRight: windowWidth < 500 ? '1em' : '0' }}> */}
             <Link href="/feed" style={{ marginRight: windowWidth < 500 ? '1em' : '0' }}>
               <TryNowButton />

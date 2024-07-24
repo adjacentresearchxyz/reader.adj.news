@@ -66,8 +66,8 @@ export const handleInvoicePaid = async ({
 
   // There is probably a better way to do this
   const Plan =
-    subscription.items.data[0]?.plan.id == "prod_QW4hSXNFnsJPty" ||
-    subscription.items.data[0]?.plan.id == "prod_QW4jzCx0Cm2h0F"
+    subscription.items.data[0]?.plan.id == "price_1Pf2YYJHM9jR7ebhya3E54OF" ||
+    subscription.items.data[0]?.plan.id == "price_1Pf2ZvJHM9jR7ebhtz66h3gZ"
       ? "pro"
       : "free";
 
@@ -96,8 +96,8 @@ export const handleSubscriptionCreatedOrUpdated = async ({
 
   // There is probably a better way to do this
   const Plan =
-    subscription.items.data[0]?.plan.id == "prod_QW4hSXNFnsJPty" ||
-    subscription.items.data[0]?.plan.id == "prod_QW4jzCx0Cm2h0F"
+    subscription.items.data[0]?.plan.id == "price_1Pf2YYJHM9jR7ebhya3E54OF" ||
+    subscription.items.data[0]?.plan.id == "price_1Pf2ZvJHM9jR7ebhtz66h3gZ"
       ? "pro"
       : "free";
 
