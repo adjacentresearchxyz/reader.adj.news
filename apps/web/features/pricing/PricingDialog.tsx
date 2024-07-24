@@ -130,7 +130,7 @@ export const ProPlan = (props: {
   return (
     <div
       className={clsx(
-        "mx-4 h-[565px] select-none rounded-lg bg-white text-[#161718] shadow-[0px_20px_70px_-10px_hsla(227,30%,20%,0.08),0px_10px_24px_-8px_hsla(227,30%,20%,0.04),0px_1px_4px_-1px_hsla(227,30%,20%,0.06)] ring-1 ring-[#1EA1FF]/40 md:mx-0 md:w-[375px] dark:bg-[#0f0f10]",
+        "mx-4 h-[465px] select-none rounded-lg bg-white text-[#161718] shadow-[0px_20px_70px_-10px_hsla(227,30%,20%,0.08),0px_10px_24px_-8px_hsla(227,30%,20%,0.04),0px_1px_4px_-1px_hsla(227,30%,20%,0.06)] ring-1 ring-[#1EA1FF]/40 md:mx-0 md:w-[375px] dark:bg-[#0f0f10]",
         className,
       )}
     >
@@ -139,7 +139,7 @@ export const ProPlan = (props: {
       </h1>
       <div className="flex">
         <h1 className="ml-5 mt-4 flex pb-4 text-5xl font-bold text-[#38383d] dark:text-stone-200">
-          {props.isYearlyPlan ? "$6" : "$8"}
+          {props.isYearlyPlan ? "$8.33" : "$10"}
         </h1>
         <h1 className="text-md ml-1.5 mt-9 flex pb-4 font-bold text-neutral-600 dark:text-stone-200">
           {props.isYearlyPlan ? "/mo" : "/mo"}
@@ -158,7 +158,7 @@ export const ProPlan = (props: {
           <Checkbox />
           Up to <span className="font-[550]">2500</span> Unread Items
         </li>
-        <Tippy
+        {/* <Tippy
           className="rounded-[4px] border bg-white p-2 shadow-[rgba(0,0,0,0.05)_0px_0px_1px,rgba(0,0,0,0.04)_0px_15px_30px] dark:border dark:border-[#333333] dark:bg-[#141415]"
           placement="top"
           followCursor={true}
@@ -176,15 +176,15 @@ export const ProPlan = (props: {
               </h2>
             </div>
           }
-        >
+        > */}
           <li className=" px-4 py-[3px] text-lg hover:bg-neutral-50 dark:text-stone-200 dark:hover:bg-[#121212]">
             <Checkbox />
             <span className="underline decoration-neutral-300 decoration-dashed decoration-1 underline-offset-2">
               Bookmark Folders
             </span>
           </li>
-        </Tippy>
-        <Tippy
+        {/* </Tippy> */}
+        {/* <Tippy
           className="rounded-[4px] border bg-white p-2 shadow-[rgba(0,0,0,0.05)_0px_0px_1px,rgba(0,0,0,0.04)_0px_15px_30px] dark:border dark:border-[#333333] dark:bg-[#141415]"
           placement="top"
           followCursor={true}
@@ -200,15 +200,15 @@ export const ProPlan = (props: {
               </h2>
             </div>
           }
-        >
+        > */}
           <li className=" px-4 py-[3px] text-lg hover:bg-neutral-50 dark:text-stone-200 dark:hover:bg-[#121212]">
             <Checkbox />
             <span className="underline decoration-neutral-300 decoration-dashed decoration-1 underline-offset-2">
               Timed Bookmarks
             </span>
           </li>
-        </Tippy>
-        <Tippy
+        {/* </Tippy> */}
+        {/* <Tippy
           className="rounded-[4px] border bg-white p-2 shadow-[rgba(0,0,0,0.05)_0px_0px_1px,rgba(0,0,0,0.04)_0px_15px_30px] dark:border dark:border-[#333333] dark:bg-[#141415]"
           placement="top"
           followCursor={true}
@@ -230,15 +230,15 @@ export const ProPlan = (props: {
               </h2>
             </div>
           }
-        >
-          <li className=" px-4 py-[3px] text-lg hover:bg-neutral-50 dark:text-stone-200 dark:hover:bg-[#121212]">
+        > */}
+          {/* <li className=" px-4 py-[3px] text-lg hover:bg-neutral-50 dark:text-stone-200 dark:hover:bg-[#121212]">
             <Checkbox />
             <span className="underline decoration-neutral-300 decoration-dashed decoration-1 underline-offset-2">
               Notes
             </span>
-          </li>
-        </Tippy>
-        <Tippy
+          </li> */}
+        {/* </Tippy> */}
+        {/* <Tippy
           className="rounded-[4px] border bg-white shadow-[rgba(0,0,0,0.05)_0px_0px_1px,rgba(0,0,0,0.04)_0px_15px_30px] dark:border dark:border-[#333333] dark:bg-[#141415]"
           placement="top"
           followCursor={true}
@@ -259,14 +259,14 @@ export const ProPlan = (props: {
               </div>
             </div>
           }
-        >
+        > */}
           <li className=" px-4 py-[3px] text-lg hover:bg-neutral-50 dark:text-stone-200 dark:hover:bg-[#121212]">
             <Checkbox />
             <span className="underline decoration-neutral-300 decoration-dashed decoration-1 underline-offset-2">
               Filters
             </span>
           </li>
-        </Tippy>
+        {/* </Tippy> */}
         {/* <li className=" px-4 py-[3px] text-lg hover:bg-neutral-50 dark:text-stone-200 dark:hover:bg-[#121212]">
           <Checkbox />
           Full Text Search
@@ -328,7 +328,7 @@ export const ProPlan = (props: {
           onClick={() => {
             handleSubmit(isYearlyPlan!, user?.id!);
           }}
-          className="mx-5 mt-20 w-[90%] rounded-md bg-white px-6 py-1.5 text-base font-medium text-[#38383D] shadow-[0_0_0_1px_rgba(18,55,105,0.08),0_1px_2px_0_rgba(18,55,105,0.12)]"
+          className="mx-5 mt-10 w-[90%] rounded-md bg-white px-6 py-1.5 text-base font-medium text-[#38383D] shadow-[0_0_0_1px_rgba(18,55,105,0.08),0_1px_2px_0_rgba(18,55,105,0.12)]"
         >
           Try Now -&gt;{" "}
         </button>
@@ -340,7 +340,7 @@ export const ProPlan = (props: {
 export const FreePlan = ({ className }: { className?: string }) => (
   <div
     className={clsx(
-      "mx-4 h-[565px] rounded-lg border bg-white text-[#161718] shadow-[0px_20px_70px_-10px_hsla(227,30%,20%,0.08),0px_10px_24px_-8px_hsla(227,30%,20%,0.04),0px_1px_4px_-1px_hsla(227,30%,20%,0.06)] md:mx-0 md:w-[375px]  dark:border-neutral-700 dark:bg-[#0f0f10]",
+      "mx-4 h-[465px] rounded-lg border bg-white text-[#161718] shadow-[0px_20px_70px_-10px_hsla(227,30%,20%,0.08),0px_10px_24px_-8px_hsla(227,30%,20%,0.04),0px_1px_4px_-1px_hsla(227,30%,20%,0.06)] md:mx-0 md:w-[375px]  dark:border-neutral-700 dark:bg-[#0f0f10]",
       className,
     )}
   >
@@ -353,7 +353,7 @@ export const FreePlan = ({ className }: { className?: string }) => (
     <ul className="mx-2 mt-2 flex flex-col">
       <li className="px-4 py-[3px] text-lg hover:bg-neutral-50 dark:text-stone-200 dark:hover:bg-[#121212]">
         <CheckboxGray />
-        Inline Prediction Markets
+        Embedded Prediction Markets
       </li>
       <li className="px-4 py-[3px] text-lg hover:bg-neutral-50 dark:text-stone-200 dark:hover:bg-[#121212]">
         <CheckboxGray />
@@ -378,6 +378,14 @@ export const FreePlan = ({ className }: { className?: string }) => (
       <li className="px-4 py-[3px] text-lg hover:bg-neutral-50 dark:text-stone-200 dark:hover:bg-[#121212]">
         <CheckboxGray />
         Follow any Public Feed
+      </li>
+      <li className="px-4 py-[3px] text-lg hover:bg-neutral-50 dark:text-stone-200 dark:hover:bg-[#121212]">
+        <CheckboxGray />
+        Ad Free News
+      </li>
+      <li className="px-4 py-[3px] text-lg hover:bg-neutral-50 dark:text-stone-200 dark:hover:bg-[#121212]">
+        <CheckboxGray />
+        Custom Sources
       </li>
     </ul>
   </div>

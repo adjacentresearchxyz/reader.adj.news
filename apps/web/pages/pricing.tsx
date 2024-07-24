@@ -31,7 +31,7 @@ export const PricingPage = ({ homepage = false }: { homepage?: boolean } = {}) =
 
   return (
     <>
-      <div className="background-pattern rounded-b-xl border-b bg-[#FAFBFC]">
+      <div className={`${!homepage ? 'rounded-b-xl border-b background-pattern bg-[#FAFBFC]' : ''}`}>
         {!isSafari && !homepage && <PricingBackground />}
         {!homepage && <NavBar />}
         {!homepage && <h1 className="mx-auto mb-1 mt-20 flex justify-center text-7xl font-[750] leading-none tracking-tighter md:w-[700px]">

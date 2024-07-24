@@ -13,6 +13,7 @@ import { MobileCard } from "../components/landing/MobileBlock";
 import NavBar from "../components/landing/NavBar";
 import TimeBookmarksCard from "../components/landing/TimeBookmarksCard";
 import { LandingWrapper } from "../components/layout/PageWrapper";
+import { PricingPage } from "./pricing";
 
 const Landing: NextPage = () => {
   return (
@@ -48,6 +49,7 @@ const Landing: NextPage = () => {
           </div> */}
           {/* <div className="pb-6" /> */}
           {/* <MobileCard /> */}
+          <PricingPage homepage />
           <BottomFooter />
         </div>
       </div>

@@ -157,7 +157,7 @@ export const Article = (props: ArticleProps) => {
                   <a
                     target="_blank"
                     rel="noopener noreferrer"
-                    href={`https://data.adj.news/?q=${item.title}`}
+                    href={`https://data.adj.news/`}
                     className="ml-2 flex w-[50px] justify-center rounded-md border border-neutral-200 py-2 text-base shadow-sm  hover:border-gray-300 dark:border-neutral-700 dark:hover:border-neutral-700/90"
                   >
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#878787" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-external-link"><path d="M15 3h6v6" /><path d="M10 14 21 3" /><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" /></svg>

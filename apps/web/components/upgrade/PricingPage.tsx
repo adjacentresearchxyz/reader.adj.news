@@ -29,9 +29,9 @@ export const PricingPage = () => {
           </div>
         </div>
       </div>
-      <div className="bg-white dark:bg-[#141415]">
+      {/* <div className="bg-white dark:bg-[#141415]">
         <FAQ removeTitle={true} />
-      </div>
+      </div> */}
     </>
   );
 };
