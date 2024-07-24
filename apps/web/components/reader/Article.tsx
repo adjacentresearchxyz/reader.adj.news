@@ -103,11 +103,18 @@ export const Article = (props: ArticleProps) => {
           >
             {itemTitle}
           </a>
-          <div className="mb-5 mt-3 flex">
+          <div className="mb-1 mt-3 flex">
             <h4 className="font-base text-sm tracking-wide text-neutral-500/90 dark:text-stone-500">
               {"From "} {item.feed_title} on
               {dayjs(created_at).format(" MMMM D, YYYY [at] h:mmA")}
             </h4>
+          </div>
+          <div className="mb-5 mt-1 flex">
+            {(props.markets?.length > 0 || item.markets?.length > 0) && (
+              <a href="#markets" className="font-base text-sm tracking-wide text-neutral-500/90 dark:text-stone-500 underline decoration-dotted">
+                {props.markets?.length || item.markets?.length} related markets
+              </a>
+            )}
           </div>
           <div
             className={`${props.Type == "Full" && "w-fit md:w-[640px]"} reader prose prose-base mb-5 text-neutral-700 subpixel-antialiased dark:prose-invert prose-a:text-neutral-700 prose-a:underline prose-a:decoration-neutral-300/70 prose-a:decoration-[0.5px] prose-a:underline-offset-[3px] hover:prose-a:decoration-neutral-400/60 dark:text-inherit dark:text-stone-200 dark:prose-a:text-stone-200 dark:prose-a:decoration-[#F4F4F5]`}
@@ -227,7 +234,7 @@ export const Article = (props: ArticleProps) => {
               )} */}
             </TooltipProvider>
           </div>
-          <div className="flex my-10">
+          <div className="flex my-10" id="markets">
             {props.markets ? (
               <MarketCard {...props.markets} />
             ) : (
