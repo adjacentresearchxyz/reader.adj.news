@@ -68,8 +68,8 @@ const CheckboxGray = () => (
 const handleSubmit = async (isYearlyPlan: boolean, userId: string) => {
   // Make sure to change the pricing in trpc as well if you change these
   const price = isYearlyPlan
-    ? "price_1OmSxDBXmca2WokEeEmTAnWZ"
-    : "price_1NpofzBXmca2WokEhuEPIWEJ";
+    ? "prod_QW4hSXNFnsJPty"
+    : "prod_QW4jzCx0Cm2h0F"
 
   // Create a Checkout Session.
   const response = await fetchPostJSON("/api/payment", {

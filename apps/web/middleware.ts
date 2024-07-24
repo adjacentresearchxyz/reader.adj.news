@@ -77,6 +77,28 @@ export async function middleware(req: NextRequest) {
     return NextResponse.redirect(new URL(`/reader?item=${item}`, req.url));
   }
 
+    // Match URLs of the pattern /feed/anything?item=
+  const feedItemFragmentRegex = /^\/feed\/.*(\?item=|#\/\?item=)/;
+  const fullUrl = req.nextUrl.href; // Assuming this contains the full URL including the fragment
+  
+  if (feedItemFragmentRegex.test(fullUrl)) {
+    let item;
+    if (fullUrl.includes('#')) {
+      // Extract the item from the fragment
+      const fragment = new URL(fullUrl).hash.substring(1); // Remove the '#' at the beginning
+      const urlSearchParams = new URLSearchParams(fragment);
+      item = urlSearchParams.get('item');
+    } else {
+      // Extract the item from the search parameters
+      const urlSearchParams = new URLSearchParams(req.nextUrl.search);
+      item = urlSearchParams.get('item');
+    }
+  
+    if (item) {
+      return NextResponse.redirect(new URL(`/reader?item=${item}`, req.url));
+    }
+  }
+
   // if user is signed in and the current path is /login the user to the app
   if (session && req.nextUrl.pathname === "/login") {
     return NextResponse.redirect(new URL("/feed/all", req.url));
