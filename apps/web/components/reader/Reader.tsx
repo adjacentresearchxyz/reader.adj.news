@@ -272,8 +272,8 @@ export const Topbar = ({ className }: { className?: string }) => {
     <div className={clsx("flex items-center gap-5", className)}>
       <Dialog.Root>
         <BookmarkButton />
-        <BookmarkFolderButton />
-        <ShortTermBookmarkButton />
+        {/* <BookmarkFolderButton />
+        <ShortTermBookmarkButton /> */}
         <CopyLinkButton />
         {plan == "free" && (
           <PricingDialog setDialogUndefined={() => undefined} />
