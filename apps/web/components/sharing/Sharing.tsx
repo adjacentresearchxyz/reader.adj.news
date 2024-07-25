@@ -24,6 +24,8 @@ const Sharing = () => {
 
   const { openItem } = useOpenItem();
 
+  const openItemURL = `https://adj.news/reader?item=${openItem?.id}`;
+
   const includesAll =
     providers?.includes("Twitter") &&
     providers?.includes("Telegram") &&
@@ -39,7 +41,7 @@ const Sharing = () => {
         <div className="pr-5">
           <TwitterShareButton
             title={openItem?.title}
-            url={openItem?.url!}
+            url={openItemURL}
             className="h-[22px] w-[22px]"
           >
             <Twitter
@@ -51,7 +53,7 @@ const Sharing = () => {
       ) : null}
       {providers?.includes("Email") ? (
         <div className="pr-5">
-          <EmailShareButton url={openItem?.url!} className="h-[22px] w-[22px]">
+          <EmailShareButton url={openItemURL} className="h-[22px] w-[22px]">
             <Mail
               shapeRendering="geometricPrecision"
               className="translate-y-[3px] transform stroke-neutral-450 stroke-[1.25] dark:stroke-stone-400"
@@ -62,7 +64,7 @@ const Sharing = () => {
       {providers?.includes("Facebook") ? (
         <div className="pr-5">
           <FacebookShareButton
-            url={openItem?.url!}
+            url={openItemURL}
             className="h-[22px] w-[22px]"
           >
             <Facebook
@@ -75,7 +77,7 @@ const Sharing = () => {
 
       {providers?.includes("Telegram") ? (
         <div className="pr-5">
-          <TelegramShareButton url={openItem?.url!}>
+          <TelegramShareButton url={openItemURL}>
             <svg
               fill="transparent"
               shapeRendering="geometricPrecision"
@@ -91,7 +93,7 @@ const Sharing = () => {
       ) : null}
       {providers?.includes("Pocket") ? (
         <div className="pr-5">
-          <PocketShareButton className="h-[22px] w-[22px]" url={openItem?.url!}>
+          <PocketShareButton className="h-[22px] w-[22px]" url={openItemURL}>
             <svg
               fill="transparent"
               shapeRendering="geometricPrecision"
@@ -108,7 +110,7 @@ const Sharing = () => {
       ) : null}
       {providers?.includes("Mastodon") ? (
         <div className="pr-5">
-          <PocketShareButton url={openItem?.url!}>
+          <PocketShareButton url={openItemURL}>
             <svg
               fill="transparent"
               shapeRendering="geometricPrecision"
@@ -122,7 +124,7 @@ const Sharing = () => {
       ) : null}
       {providers?.includes("Linkedin") ? (
         <div className={`${!includesAll && "pr-5"}`}>
-          <LinkedinShareButton className="flex" url={openItem?.url!}>
+          <LinkedinShareButton className="flex" url={openItemURL}>
             <Linkedin
               shapeRendering="geometricPrecision"
               className={`h-[22px] w-[22px] translate-y-[3px] transform overflow-visible stroke-neutral-450 stroke-[1.25] dark:stroke-stone-400`}
@@ -154,7 +156,7 @@ const Sharing = () => {
               <DropdownMenuItem>
                 <TwitterShareButton
                   className="flex items-center"
-                  url={openItem?.url!}
+                  url={openItemURL}
                 >
                   <Twitter
                     shapeRendering="geometricPrecision"
@@ -168,7 +170,7 @@ const Sharing = () => {
               <DropdownMenuItem>
                 <EmailShareButton
                   className="flex items-center"
-                  url={openItem?.url!}
+                  url={openItemURL}
                 >
                   <Mail
                     shapeRendering="geometricPrecision"
@@ -182,7 +184,7 @@ const Sharing = () => {
               <DropdownMenuItem>
                 <TelegramShareButton
                   className="flex items-center"
-                  url={openItem?.url!}
+                  url={openItemURL}
                 >
                   <div className="mr-2 h-[22px] w-[22px]">
                     <svg
@@ -202,7 +204,7 @@ const Sharing = () => {
               <DropdownMenuItem>
                 <PocketShareButton
                   className="flex items-center"
-                  url={openItem?.url!}
+                  url={openItemURL}
                 >
                   <svg
                     fill="transparent"

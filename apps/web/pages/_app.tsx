@@ -18,6 +18,7 @@ import {
   NEXT_PUBLIC_POSTHOG_KEY,
 } from "@utils/posthog";
 import { PostHogProvider } from "posthog-js/react";
+import { useUser } from "@supabase/auth-helpers-react";
 
 import { trpc } from "utils/trpc";
 
@@ -39,8 +40,13 @@ const App = ({
 }: AppProps<{ initialSession: Session | null }>) => {
   const [supabaseClient] = useState(() => createPagesBrowserClient());
   const router = useRouter();
+  const user = useUser();
 
-  const { item: urlItem } = router.query;
+  if (user) {
+    posthog.identify(
+      user.id
+    );
+  }
 
   useEffect(() => {
     // Track page views

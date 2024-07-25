@@ -130,7 +130,7 @@ export const ProPlan = (props: {
   return (
     <div
       className={clsx(
-        "mx-4 h-[465px] select-none rounded-lg bg-white text-[#161718] shadow-[0px_20px_70px_-10px_hsla(227,30%,20%,0.08),0px_10px_24px_-8px_hsla(227,30%,20%,0.04),0px_1px_4px_-1px_hsla(227,30%,20%,0.06)] ring-1 ring-[#1EA1FF]/40 md:mx-0 md:w-[375px] dark:bg-[#0f0f10]",
+        "mx-4 h-[565px] select-none rounded-lg bg-white text-[#161718] shadow-[0px_20px_70px_-10px_hsla(227,30%,20%,0.08),0px_10px_24px_-8px_hsla(227,30%,20%,0.04),0px_1px_4px_-1px_hsla(227,30%,20%,0.06)] ring-1 ring-[#1EA1FF]/40 md:mx-0 md:w-[375px] dark:bg-[#0f0f10]",
         className,
       )}
     >
@@ -151,6 +151,12 @@ export const ProPlan = (props: {
           Everything in Free Plan+
         </li>
         <li className=" px-4 py-[3px] text-lg hover:bg-neutral-50 dark:text-stone-200 dark:hover:bg-[#121212]">
+            <Checkbox />
+            <span className="underline decoration-neutral-300 decoration-dashed decoration-1 underline-offset-2">
+              Support our Work
+            </span>
+          </li>
+        <li className=" px-4 py-[3px] text-lg hover:bg-neutral-50 dark:text-stone-200 dark:hover:bg-[#121212]">
           <Checkbox />
           Up to <span className="font-[550]">1000</span> Feeds
         </li>
@@ -158,6 +164,12 @@ export const ProPlan = (props: {
           <Checkbox />
           Up to <span className="font-[550]">2500</span> Unread Items
         </li>
+        <li className=" px-4 py-[3px] text-lg hover:bg-neutral-50 dark:text-stone-200 dark:hover:bg-[#121212]">
+            <Checkbox />
+            <span className="underline decoration-neutral-300 decoration-dashed decoration-1 underline-offset-2">
+              Filters
+            </span>
+          </li>
         {/* <Tippy
           className="rounded-[4px] border bg-white p-2 shadow-[rgba(0,0,0,0.05)_0px_0px_1px,rgba(0,0,0,0.04)_0px_15px_30px] dark:border dark:border-[#333333] dark:bg-[#141415]"
           placement="top"
@@ -182,6 +194,13 @@ export const ProPlan = (props: {
             <span className="underline decoration-neutral-300 decoration-dashed decoration-1 underline-offset-2">
               Bookmark Folders
             </span>
+            <span
+                className={
+                  "ml-1.5 rounded bg-[#0496FF]/10 px-[3px] text-right text-xs font-[500] text-sky-500"
+                }
+              >
+                Coming Soon
+              </span>
           </li>
         {/* </Tippy> */}
         {/* <Tippy
@@ -206,6 +225,13 @@ export const ProPlan = (props: {
             <span className="underline decoration-neutral-300 decoration-dashed decoration-1 underline-offset-2">
               Timed Bookmarks
             </span>
+            <span
+                className={
+                  "ml-1.5 rounded bg-[#0496FF]/10 px-[3px] text-right text-xs font-[500] text-sky-500"
+                }
+              >
+                Coming Soon
+              </span>
           </li>
         {/* </Tippy> */}
         {/* <Tippy
@@ -231,12 +257,18 @@ export const ProPlan = (props: {
             </div>
           }
         > */}
-          {/* <li className=" px-4 py-[3px] text-lg hover:bg-neutral-50 dark:text-stone-200 dark:hover:bg-[#121212]">
+          <li className=" px-4 py-[3px] text-lg hover:bg-neutral-50 dark:text-stone-200 dark:hover:bg-[#121212]">
             <Checkbox />
             <span className="underline decoration-neutral-300 decoration-dashed decoration-1 underline-offset-2">
               Notes
-            </span>
-          </li> */}
+            </span><span
+                className={
+                  "ml-1.5 rounded bg-[#0496FF]/10 px-[3px] text-right text-xs font-[500] text-sky-500"
+                }
+              >
+                Coming Soon
+              </span>
+          </li>
         {/* </Tippy> */}
         {/* <Tippy
           className="rounded-[4px] border bg-white shadow-[rgba(0,0,0,0.05)_0px_0px_1px,rgba(0,0,0,0.04)_0px_15px_30px] dark:border dark:border-[#333333] dark:bg-[#141415]"
@@ -261,16 +293,17 @@ export const ProPlan = (props: {
           }
         > */}
           <li className=" px-4 py-[3px] text-lg hover:bg-neutral-50 dark:text-stone-200 dark:hover:bg-[#121212]">
-            <Checkbox />
-            <span className="underline decoration-neutral-300 decoration-dashed decoration-1 underline-offset-2">
-              Filters
-            </span>
-          </li>
-        {/* </Tippy> */}
-        {/* <li className=" px-4 py-[3px] text-lg hover:bg-neutral-50 dark:text-stone-200 dark:hover:bg-[#121212]">
           <Checkbox />
           Full Text Search
-        </li> */}
+          <span
+                className={
+                  "ml-1.5 rounded bg-[#0496FF]/10 px-[3px] text-right text-xs font-[500] text-sky-500"
+                }
+              >
+                Coming Soon
+              </span>
+        </li>
+        {/* </Tippy> */}
         {/* <Tippy
           className="rounded-[4px] bg-white p-2 shadow-[0_0px_0px_1px_rgba(31,34,37,0.09),0px_12px_24px_-4px_rgba(0,0,0,0.08),0px_8px_16px_-4px_rgba(0,0,0,0.06)] dark:border dark:border-[#333333] dark:bg-[#141415]"
           placement="top"
@@ -279,8 +312,8 @@ export const ProPlan = (props: {
           delay={0}
           duration={0}
           content="Subscribe to Newsletters using a email address provided by Refeed."
-        >
-          <li className=" hover:help Newsletter flex px-4 py-[3px] text-lg hover:bg-neutral-50 dark:hover:bg-[#121212]">
+        > */}
+          {/* <li className=" hover:help Newsletter flex px-4 py-[3px] text-lg hover:bg-neutral-50 dark:hover:bg-[#121212]">
             <h3>
               {" "}
               <Checkbox />
@@ -295,8 +328,8 @@ export const ProPlan = (props: {
                 Coming Soon
               </span>
             </h3>
-          </li>
-        </Tippy> */}
+          </li> */}
+        {/* </Tippy> */}
         {/* <Tippy
           className="rounded-[4px] bg-white p-2 shadow-[0_0px_0px_1px_rgba(31,34,37,0.09),0px_12px_24px_-4px_rgba(0,0,0,0.08),0px_8px_16px_-4px_rgba(0,0,0,0.06)] dark:border dark:border-[#333333] dark:bg-[#141415]"
           placement="top"
@@ -340,7 +373,7 @@ export const ProPlan = (props: {
 export const FreePlan = ({ className }: { className?: string }) => (
   <div
     className={clsx(
-      "mx-4 h-[465px] rounded-lg border bg-white text-[#161718] shadow-[0px_20px_70px_-10px_hsla(227,30%,20%,0.08),0px_10px_24px_-8px_hsla(227,30%,20%,0.04),0px_1px_4px_-1px_hsla(227,30%,20%,0.06)] md:mx-0 md:w-[375px]  dark:border-neutral-700 dark:bg-[#0f0f10]",
+      "mx-4 h-[565px] rounded-lg border bg-white text-[#161718] shadow-[0px_20px_70px_-10px_hsla(227,30%,20%,0.08),0px_10px_24px_-8px_hsla(227,30%,20%,0.04),0px_1px_4px_-1px_hsla(227,30%,20%,0.06)] md:mx-0 md:w-[375px]  dark:border-neutral-700 dark:bg-[#0f0f10]",
       className,
     )}
   >

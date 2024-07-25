@@ -43,7 +43,7 @@ export const SettingsDialog = (props: {
     "feeds",
     "organize",
     "filters",
-    "bookmarks",
+    // "bookmarks",
     "account",
     // "feedback",
   ];
@@ -162,7 +162,7 @@ export const SettingsDialog = (props: {
             )}
             {page == "general" && <GeneralSettingsPage />}
             {page == "filters" && <FiltersSettingsPage />}
-            {page == "bookmarks" && <BookmarksSettingsPage />}
+            {/* {page == "bookmarks" && <BookmarksSettingsPage />} */}
             {page == "feeds" && <FeedsSettingsPage />}
             {page == "organize" && <OrganizeFeeds />}
             {page == "account" && <AccountSettingsPage />}

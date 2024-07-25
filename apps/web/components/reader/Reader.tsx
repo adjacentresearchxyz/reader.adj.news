@@ -296,8 +296,8 @@ export const ArticleTopbar = ({
     <div className={clsx("flex items-center gap-5", className)}>
       <Dialog.Root>
         <BookmarkButton openItemFromArticle={openItemFromArticle} />
-        <BookmarkFolderButton openItemFromArticle={openItemFromArticle} />
-        <ShortTermBookmarkButton openItemFromArticle={openItemFromArticle} />
+        {/* <BookmarkFolderButton openItemFromArticle={openItemFromArticle} /> */}
+        {/* <ShortTermBookmarkButton openItemFromArticle={openItemFromArticle} /> */}
         <CopyLinkButton />
         {plan == "free" && (
           <PricingDialog setDialogUndefined={() => undefined} />
