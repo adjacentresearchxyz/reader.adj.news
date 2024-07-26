@@ -118,7 +118,7 @@ function Signup() {
           {codeVerified && (
             <>
               <GoogleButton />
-              <EmailButton type="signup" />
+              {/* <EmailButton type="signup" /> */}
             </>
           )}
 
