@@ -13,6 +13,7 @@ function Signup() {
   const [codeError, setCodeError] = useState(false);
 
   const inviteCodes = [
+    "adjacent_beta",
     "inspiring_carson",
     "dreamy_goldberg",
     "trusting_bhaskara",
