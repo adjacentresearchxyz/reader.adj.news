@@ -77,7 +77,7 @@ export const opmlRouter = createTRPCRouter({
         opml: {
           "@version": "2.0",
           head: {
-            title: "Refeed OPML Export",
+            title: "Adjacent News OPML Export",
           },
           body: feeds.map((feed) => ({
             outline: {

@@ -8,6 +8,7 @@ import type { ItemType } from "@refeed/types/item";
 
 import type { FeedTypes } from "../../types/feed";
 import { CardTitle } from "./FeedTitle";
+import { Markets } from "./Markets";
 
 export const CardItem = (props: {
   i: number;
@@ -76,6 +77,7 @@ export const NonLinkedCardItem = ({
             <CardTitle FeedType={FeedType} title={item?.title ?? ""} />
           </div>
           <FeedInfo removeSummary FeedType={FeedType} item={item!} />
+          {item?.markets?.length > 0 && <Markets FeedType={FeedType} title={`${item?.markets?.length} Related Markets`} />}
         </div>
       </div>
     </div>
