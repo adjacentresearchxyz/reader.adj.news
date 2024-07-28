@@ -34,7 +34,7 @@ const Reader = () => {
   const { width: windowWidth } = useWindowSize();
 
   const { items, FeedType, fetchNextPage } = useItemData();
-  
+
   const { closeReader, initialIndex, isLoaded, searchItem } =
     useReaderNavigation(items);
   const { fullscreen, widthStyle, transitionDuration } = useReaderAnimation();
@@ -47,16 +47,16 @@ const Reader = () => {
       <motion.div
         layout="preserve-aspect"
         className={clsx(
-          "fixed z-30 w-full transform overflow-hidden bg-white py-0.5 md:left-auto md:w-[65%] dark:bg-[#0f0f10]",
+          "fixed z-30 w-full transform overflow-hidden bg-white py-0.5 md:left-auto dark:bg-[#0f0f10]",
           windowWidth! > 500 &&
           (fullscreen
             ? `left-0 right-0 top-0 h-full`
-            : `${aIDrawerOpen ? "right-[16.5%] rounded-lg" : "right-1 rounded-lg"} left-1 top-1.5 mx-1 h-[98.5vh] border-[1.5px] border-neutral-400/25 shadow-[rgba(0,0,0,0.05)_0px_0px_1px,rgba(0,0,0,0.04)_0px_15px_30px] lg:w-[36%] dark:border-[#24252A] dark:bg-[#0f0f10] dark:shadow-none`),
+            : `right-1 rounded-lg"} left-1 top-1.5 mx-1 h-[98.5vh] border-[1.5px] border-neutral-400/25 shadow-[rgba(0,0,0,0.05)_0px_0px_1px,rgba(0,0,0,0.04)_0px_15px_30px] lg:w-[36%] dark:border-[#24252A] dark:bg-[#0f0f10] dark:shadow-none`),
         )}
         transition={{
           duration: 0.2,
         }}
-        style={widthStyle}
+      // style={widthStyle}
       >
         <div className="flex flex-row items-center rounded-t border-b border-[#f0f0f0] bg-[#fcfcfc] py-2.5 font-bold dark:border-[#303030]/90 dark:bg-[#141415]">
           <BackButton onBackClick={() => closeReader()} />
@@ -82,7 +82,7 @@ const Reader = () => {
                     className="mr-5 h-[22px] w-[22px] stroke-neutral-500/75 stroke-[1.5] dark:stroke-stone-400"
                   />
                 </button> */}
-                <Sharing/>
+                <Sharing />
               </div>
             </div>
           </div>
