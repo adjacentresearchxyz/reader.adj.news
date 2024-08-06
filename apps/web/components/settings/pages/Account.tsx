@@ -233,7 +233,7 @@ export const AccountSettingsPage = () => {
   );
 };
 
-const OpenPortalButton = ({ userId }: { userId: string }) => {
+export const OpenPortalButton = ({ userId }: { userId: string }) => {
   const openStripeBillingPortal = async () => {
     try {
       const response = await fetch("/api/portal", {

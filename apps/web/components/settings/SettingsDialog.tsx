@@ -46,6 +46,7 @@ export const SettingsDialog = (props: {
     // "bookmarks",
     "account",
     // "feedback",
+    "developer",
   ];
 
   // Prefetch queries to preven pop in

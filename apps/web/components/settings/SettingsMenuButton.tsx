@@ -12,6 +12,7 @@ export type SideBarMenuPages =
   | "organize"
   | "reader"
   | "integrations"
+  | "developer"
   | "feedback";
 
 export interface SettingsMenuButtonProps {
@@ -133,6 +134,16 @@ export const SettingsMenuButton: React.FC<SettingsMenuButtonProps> = (
               className={`stroke-neutral-700 pl-0.5 text-sm font-[450] text-neutral-700 dark:text-stone-200`}
             >
               Integrations
+            </Text>
+          </div>
+        )}
+        {props.name == "developer" && (
+          <div className="inline-flex items-center">
+            <Text
+              slot="label"
+              className={`stroke-neutral-700 pl-0.5 text-sm font-[450] text-neutral-700 dark:text-stone-200`}
+            >
+              Developer
             </Text>
           </div>
         )}

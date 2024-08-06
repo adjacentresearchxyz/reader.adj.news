@@ -56,6 +56,8 @@ export const FAQ = ({ removeTitle }: { removeTitle?: boolean }) => (
         <a href="https://supabase.com/" className="underline-dotted" target="_blank">Supabase</a>
       </li>
     </ul>
+    <br />
+    <h2>We are also fully open-source, you can find our repositories at <a href="https://github.com/orgs/adjacentresearchxyz/repositories?q=adjacent-news" className="py-[3px] text-lg dark:text-stone-200 underline-dotted">github.com/adjacentresearchxyz</a></h2>
   </div>
 );
 

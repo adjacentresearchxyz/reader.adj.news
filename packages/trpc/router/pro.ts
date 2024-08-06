@@ -46,6 +46,7 @@ export const proRouter = createTRPCRouter({
         inbox_email: true,
         stripeSubscriptionId: true,
         sharing: true,
+        api_key: true,
       },
     });
 

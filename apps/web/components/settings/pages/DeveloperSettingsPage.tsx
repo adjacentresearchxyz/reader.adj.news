@@ -3,10 +3,17 @@ import { useAtom } from "jotai";
 
 import { Switch } from "@refeed/ui";
 
+import { OpenPortalButton } from "./Account";
+
 import { settingsAtom } from "../../../stores/settings";
+
+import { useUser as useSupabaseUser } from "@supabase/auth-helpers-react";
+import { useUser } from "@refeed/features/hooks/useUser";
 
 export const DeveloperSettingsPage = () => {
   const [settings, setSettings] = useAtom(settingsAtom);
+  const { plan, api_key } = useUser();
+  const user = useSupabaseUser();
 
   return (
     <div>
@@ -23,6 +30,21 @@ export const DeveloperSettingsPage = () => {
         </div>
       </div>
       <div className="mt-6 flex w-full items-start">
+        <div className="flex flex-col">
+          <h1 className="mb-1 select-none text-sm font-medium leading-5">
+            API Key
+          </h1>
+          <h4 className="select-none text-sm leading-5 text-neutral-450 dark:text-stone-500">
+            {plan === 'pro' ? api_key : 
+              <div>
+                <p>You need to be on the Pro plan to access this feature.</p>
+                <OpenPortalButton userId={user?.id!} />
+              </div>
+            }
+          </h4>
+        </div>
+      </div>
+      {/* <div className="mt-6 flex w-full items-start">
         <div className="flex flex-col">
           <h1 className="mb-1 select-none text-sm font-medium leading-5">
             Enabled Newsletters
@@ -42,7 +64,7 @@ export const DeveloperSettingsPage = () => {
           }}
           id="airplane-mode"
         />
-      </div>
+      </div> */}
       {/* <div className="mt-6 flex w-full items-start">
         <div className="flex flex-col">
           <h1 className="mb-1 select-none text-sm font-medium leading-5">

@@ -6,17 +6,39 @@ export const BottomFooter = () => {
     <footer className="bg-white pt-6 dark:bg-neutral-900">
       <div className="w-full max-w-screen-xl p-4 py-6 sm:mx-2 md:mx-auto md:w-[825px] md:py-8 xl:w-[1252px]">
         <div className="md:flex md:justify-between">
-          <div className="grid grid-cols-2 gap-8 sm:grid-cols-4 sm:gap-6">
+          <div className="grid grid-cols-2 gap-8 sm:grid-cols-6 sm:gap-6">
+          <div>
+              <h2 className="mb-6 text-base font-medium text-neutral-900 dark:text-white">
+                Products
+              </h2>
+              <ul className="font-medium text-neutral-450">
+                <li className="mb-4">
+                  <Link href="https://data.adj.news" target="_blank" className="hover:underline">
+                    Data Platform
+                  </Link>
+                </li>
+                <li className="mb-4">
+                  <Link href="https://docs.adj.news" target="_blank" className="hover:underline">
+                    API
+                  </Link>
+                </li>
+                <li className="mb-4">
+                  <Link href="https://observablehq.com/collection/@adjacent/adjacent-news" target="_blank" className="hover:underline">
+                    Notebooks
+                  </Link>
+                </li>
+                <li className="mb-4">
+                  <Link href="https://github.com/adjacentresearchxyz/chrome.adj.news" target="_blank" className="hover:underline">
+                    Chrome Extension
+                  </Link>
+                </li>
+              </ul>
+            </div>
             <div>
               <h2 className="mb-6 text-base font-medium text-neutral-900 dark:text-white">
                 Resources
               </h2>
               <ul className="font-medium text-neutral-450">
-              <li className="mb-4">
-                  <Link href="https://observablehq.com/collection/@adjacent/adjacent-news" target="_blank" className="hover:underline">
-                    Notebooks
-                  </Link>
-                </li>
                 <li className="mb-4">
                   <Link href="/opensource" className="hover:underline">
                     Open Source
@@ -28,12 +50,6 @@ export const BottomFooter = () => {
                     About
                   </a>
                 </li>
-
-                {/* <li className="mb-4">
-                  <Link href="/pricing" className="hover:underline">
-                    Pricing
-                  </Link>
-                </li> */}
               </ul>
             </div>
             <div>

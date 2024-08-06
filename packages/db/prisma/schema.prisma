@@ -31,6 +31,7 @@ model user {
   custom_items             item[]
   feeds                    user_feeds[]
   items                    user_item[]
+  api_key                  String
 
   @@unique([name, email])
   @@index([user_id, id])
