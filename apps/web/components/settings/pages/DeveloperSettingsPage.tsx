@@ -60,7 +60,7 @@ export const DeveloperSettingsPage = () => {
       </div>
       <div className="mt-6 flex w-full items-start">
         <div className="flex flex-col">
-          <h1 className="mb-1 select-none text-sm font-medium leading-5">
+          <h1 className="mb-1 text-sm font-medium leading-5">
             API Key
           </h1>
           <h4 className="select-none text-sm leading-5 text-neutral-450 dark:text-stone-500">
