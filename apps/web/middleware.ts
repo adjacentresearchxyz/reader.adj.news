@@ -100,15 +100,15 @@ export async function middleware(req: NextRequest) {
   }
 
   // Check if the user is on a page they aren't supposed to be on
-  // if (
-  //   !session &&
-  //   req.nextUrl.pathname !== "/" &&
-  //   req.nextUrl.pathname !== "/login" &&
-  //   req.nextUrl.pathname !== "/signup" &&
-  //   req.nextUrl.pathname !== "/pricing"
-  // ) {
-  //   return NextResponse.redirect(new URL("/signup", req.url));
-  // }
+  if (
+    !session &&
+    req.nextUrl.pathname !== "/" &&
+    req.nextUrl.pathname !== "/login" &&
+    req.nextUrl.pathname !== "/signup" &&
+    req.nextUrl.pathname !== "/pricing"
+  ) {
+    return NextResponse.redirect(new URL("/signup", req.url));
+  }
 
   return res;
 }
