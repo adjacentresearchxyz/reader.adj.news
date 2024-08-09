@@ -13,13 +13,13 @@ export const BottomFooter = () => {
               </h2>
               <ul className="font-medium text-neutral-450">
                 <li className="mb-4">
-                  <Link href="https://data.adj.news" target="_blank" className="hover:underline">
-                    Data Platform
+                  <Link href="https://adj.news/feed" target="_blank" className="hover:underline">
+                    RSS Reader
                   </Link>
                 </li>
                 <li className="mb-4">
-                  <Link href="https://docs.adj.news" target="_blank" className="hover:underline">
-                    API
+                  <Link href="https://data.adj.news" target="_blank" className="hover:underline">
+                    Data Platform
                   </Link>
                 </li>
                 <li className="mb-4">
@@ -30,6 +30,11 @@ export const BottomFooter = () => {
                 <li className="mb-4">
                   <Link href="https://github.com/adjacentresearchxyz/chrome.adj.news" target="_blank" className="hover:underline">
                     Chrome Extension
+                  </Link>
+                </li>
+                <li className="mb-4">
+                  <Link href="https://docs.adj.news" target="_blank" className="hover:underline">
+                    API
                   </Link>
                 </li>
               </ul>
@@ -48,6 +53,16 @@ export const BottomFooter = () => {
                 <li className="mb-4">
                   <a href="/about" className="hover:underline">
                     About
+                  </a>
+                </li>
+                <li className="mb-4">
+                  <a href="https://adjacent.canny.io/" className="hover:underline">
+                    Feedback
+                  </a>
+                </li>
+                <li className="mb-4">
+                  <a href="https://www.notion.so/62beb3cc57d042af89c9ef1b3b5f758f?v=999ae1d0e5a749949d593c50f4647a73&pvs=4" className="hover:underline">
+                    Roadmap
                   </a>
                 </li>
               </ul>
@@ -89,6 +104,18 @@ export const BottomFooter = () => {
                   >
                     Telegram
                   </a>
+                </li>
+              </ul>
+            </div>
+            <div>
+              <h2 className="mb-6 text-base font-medium text-neutral-900 dark:text-white">
+                Engineering
+              </h2>
+              <ul className="font-medium text-neutral-450">
+                <li className="mb-4">
+                  <Link href="https://engineering.adj.news" className="hover:underline">
+                   Blog
+                  </Link>
                 </li>
               </ul>
             </div>

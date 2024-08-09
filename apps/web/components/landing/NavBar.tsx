@@ -30,17 +30,14 @@ export default function NavBar() {
           >
             Data
           </Link>
+          <Link href="https://github.com/adjacentresearchxyz/chrome.adj.news" className="hidden md:block">
+            Extension
+          </Link>
+          <Link href="https://docs.adj.news" className="hidden md:block">
+            API
+          </Link>
           <Link href="https://press.adjacentresearch.xyz" className="hidden md:block">
-            Press
-          </Link>
-          <Link href="/about" className="hidden md:block">
-            About
-          </Link>
-          <Link href="https://adjacent.canny.io/" className="hidden md:block">
-            Feedback
-          </Link>
-          <Link href="https://www.notion.so/62beb3cc57d042af89c9ef1b3b5f758f?v=999ae1d0e5a749949d593c50f4647a73&pvs=4" className="hidden md:block">
-            Roadmap
+            Blog
           </Link>
           {/* <Link href="/pricing" className="hidden md:block">
             Pricing
