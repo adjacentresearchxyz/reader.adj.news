@@ -32,7 +32,7 @@ export default function Hero() {
               </h1>
               <h3 className="z-10 mt-4 text-[16px] font-[400] leading-none tracking-tight sm:text-[24px] md:text-[30px] lg:w-[700px]">
                 <span className="text-black-500">
-                  Robust RSS Reader for Prediction Market Enthusiasts
+                  Market Driven News
                 </span>
               </h3>
               <div className="z-10 mt-6">
