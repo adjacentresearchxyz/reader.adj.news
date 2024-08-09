@@ -74,16 +74,13 @@ const MobileNav = () => {
                 <NavigationButton title="Data" subtitle="Explore Prediction Markets" />
               </Link>
               <Link href="https://press.adjacentresearch.xyz">
-                <NavigationButton title="Research" subtitle="Ramblings on Markets" />
+                <NavigationButton title="Extension" subtitle="Embed markets on twitter and news sites" />
               </Link>
-              <Link href="/about">
-                <NavigationButton title="About" subtitle="FAQ and Resources" />
+              <Link href="https://press.adjacentresearch.xyz">
+                <NavigationButton title="API" subtitle="Query our data" />
               </Link>
-              <Link href="https://adjacent.canny.io/">
-                <NavigationButton title="Feedback" subtitle="Submit Feature Requests" />
-              </Link>
-              <Link href="https://www.notion.so/62beb3cc57d042af89c9ef1b3b5f758f?v=999ae1d0e5a749949d593c50f4647a73&pvs=4">
-                <NavigationButton title="Roadmap" subtitle="Backlog and Feature Roadmap" />
+              <Link href="https://press.adjacentresearch.xyz">
+                <NavigationButton title="Blog" subtitle="Ramblings on Markets" />
               </Link>
               {/* <Link href="https://github.com/michaelkremenetsky/Refeed?tab=readme-ov-file#self-hosting-with-docker">
                 <NavigationButton

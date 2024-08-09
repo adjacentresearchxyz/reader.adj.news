@@ -69,6 +69,18 @@ export const BottomFooter = () => {
             </div>
             <div>
               <h2 className="mb-6 text-base font-medium text-neutral-900 dark:text-white">
+                Engineering
+              </h2>
+              <ul className="font-medium text-neutral-450">
+                <li className="mb-4">
+                  <Link href="https://engineering.adj.news" className="hover:underline">
+                   Blog
+                  </Link>
+                </li>
+              </ul>
+            </div>
+            <div>
+              <h2 className="mb-6 text-base font-medium text-neutral-900 dark:text-white">
                 Utilities
               </h2>
               <ul className="font-medium text-neutral-450">
@@ -104,18 +116,6 @@ export const BottomFooter = () => {
                   >
                     Telegram
                   </a>
-                </li>
-              </ul>
-            </div>
-            <div>
-              <h2 className="mb-6 text-base font-medium text-neutral-900 dark:text-white">
-                Engineering
-              </h2>
-              <ul className="font-medium text-neutral-450">
-                <li className="mb-4">
-                  <Link href="https://engineering.adj.news" className="hover:underline">
-                   Blog
-                  </Link>
                 </li>
               </ul>
             </div>
