@@ -6,12 +6,12 @@ export const BottomFooter = () => {
     <footer className="bg-white pt-6 dark:bg-neutral-900">
       <div className="w-full max-w-screen-xl p-4 py-6 sm:mx-2 md:mx-auto md:w-[825px] md:py-8 xl:w-[1252px]">
         <div className="md:flex md:justify-between">
-          <div className="grid grid-cols-2 gap-8 sm:grid-cols-6 sm:gap-6">
+          <div className="grid grid-cols-2 gap-8 sm:grid-cols-7 sm:gap-6">
           <div>
-              <h2 className="mb-6 text-base font-medium text-neutral-900 dark:text-white">
+              <h2 className="text-sm mb-6 text-base font-medium text-neutral-900 dark:text-white">
                 Products
               </h2>
-              <ul className="font-medium text-neutral-450">
+              <ul className="text-sm font-medium text-neutral-450">
                 <li className="mb-4">
                   <Link href="https://adj.news/feed" target="_blank" className="hover:underline">
                     RSS Reader
@@ -40,11 +40,11 @@ export const BottomFooter = () => {
               </ul>
             </div>
             <div>
-              <h2 className="mb-6 text-base font-medium text-neutral-900 dark:text-white">
+              <h2 className="text-sm mb-6 text-base font-medium text-neutral-900 dark:text-white">
                 Resources
               </h2>
-              <ul className="font-medium text-neutral-450">
-                <li className="mb-4">
+              <ul className="text-sm font-medium text-neutral-450">
+                <li className="text-sm mb-4">
                   <a href="/about" className="hover:underline">
                     About
                   </a>
@@ -62,10 +62,10 @@ export const BottomFooter = () => {
               </ul>
             </div>
             <div>
-              <h2 className="mb-6 text-base font-medium text-neutral-900 dark:text-white">
+              <h2 className="text-sm mb-6 text-base font-medium text-neutral-900 dark:text-white">
                 Engineering
               </h2>
-              <ul className="font-medium text-neutral-450">
+              <ul className="text-sm font-medium text-neutral-450">
                 <li className="mb-4">
                   <Link href="/opensource" className="hover:underline">
                     Open Source
@@ -79,16 +79,16 @@ export const BottomFooter = () => {
               </ul>
             </div>
             <div>
-              <h2 className="mb-6 text-base font-medium text-neutral-900 dark:text-white">
+              <h2 className="text-sm mb-6 text-base font-medium text-neutral-900 dark:text-white">
                 Utilities
               </h2>
-              <ul className="font-medium text-neutral-450">
+              <ul className="text-sm font-medium text-neutral-450">
                 <li className="mb-4">
                   <Link href="https://rss-finder.rook1e.com/" target="_blank" className="hover:underline">
                     Find RSS Feed
                   </Link>
                 </li>
-                <li className="mb-4">
+                <li className="text-sm mb-4">
                   <Link href="/rss/youtube" className="hover:underline">
                     Youtube RSS
                   </Link>
@@ -96,11 +96,11 @@ export const BottomFooter = () => {
               </ul>
             </div>
             <div>
-              <h2 className="mb-6 text-base font-medium text-neutral-900 dark:text-white">
+              <h2 className="text-sm mb-6 text-base font-medium text-neutral-900 dark:text-white">
                 Funding
               </h2>
-              <ul className="font-medium text-neutral-450">
-                <li className="mb-4">
+              <ul className="text-sm font-medium text-neutral-450">
+                <li className="text-sm mb-4">
                   <Link href="https://manifund.org/projects/adjacent-news" className="hover:underline">
                     Manifund
                   </Link>
@@ -110,7 +110,7 @@ export const BottomFooter = () => {
                    Gitcoin
                   </Link>
                 </li>
-                <li className="mb-4">
+                <li className="text-sm mb-4">
                   <Link href="/addresses" className="hover:underline">
                    Addresses
                   </Link>
@@ -118,10 +118,10 @@ export const BottomFooter = () => {
               </ul>
             </div>
             <div>
-              <h2 className="mb-6 text-base font-medium text-neutral-900 dark:text-white">
+              <h2 className="text-sm mb-6 text-base font-medium text-neutral-900 dark:text-white">
                 Follow us
               </h2>
-              <ul className="font-medium text-neutral-450">
+              <ul className="text-sm font-medium text-neutral-450">
                 <li className="mb-4">
                   <a
                     href="https://twitter.com/adjacent___"
@@ -141,16 +141,16 @@ export const BottomFooter = () => {
               </ul>
             </div>
             <div>
-              <h2 className="mb-6 text-base font-medium text-neutral-900 dark:text-white">
+              <h2 className="text-sm mb-6 text-base font-medium text-neutral-900 dark:text-white">
                 Legal
               </h2>
               <ul className="font-medium text-neutral-450">
-                <li className="mb-4">
+                <li className="text-sm mb-4">
                   <Link href="/privacy" className="hover:underline">
                     Privacy Policy
                   </Link>
                 </li>
-                <li>
+                <li className="text-sm">
                   <a href="/terms" className="hover:underline">
                     Terms &amp; Conditions
                   </a>

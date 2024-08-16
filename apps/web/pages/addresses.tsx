@@ -24,21 +24,9 @@ export const FAQ = ({ removeTitle }: { removeTitle?: boolean }) => (
       </div>
     )}
     <h2 className="mt-4 text-lg font-[550]">If you would like to donate digital assets to us you can at the following addresses</h2>
-    <ul className="mx-2 mt-2 flex flex-col list-disc list-inside">
-      <li className="py-[3px] text-lg dark:text-stone-200">
-        <p>EVM: <code>0x97e55DF556254dDB9298ABB16307c5C378b74CcA</code></p>
-      </li>
-    </ul>
-    <ul className="mx-2 mt-2 flex flex-col list-disc list-inside">
-      <li className="py-[3px] text-lg dark:text-stone-200">
-        <p>BTC: <code>bc1qpnk8r9pt20kskhfra45flurezz8f8mhydjljpe</code></p>
-      </li>
-    </ul>
-    <ul className="mx-2 mt-2 flex flex-col list-disc list-inside">
-      <li className="py-[3px] text-lg dark:text-stone-200">
-        <p>SOL: <code>GjXhukrcFh5z53cCDFWYCKyqjRgtFdrCsVy1Rshtk5P4</code></p>
-      </li>
-    </ul>
+    <p>EVM: <code>0x97e55DF556254dDB9298ABB16307c5C378b74CcA</code></p>
+    <p>BTC: <code>bc1qpnk8r9pt20kskhfra45flurezz8f8mhydjljpe</code></p>  
+    <p>SOL: <code>GjXhukrcFh5z53cCDFWYCKyqjRgtFdrCsVy1Rshtk5P4</code></p>
   </div>
 );
 
