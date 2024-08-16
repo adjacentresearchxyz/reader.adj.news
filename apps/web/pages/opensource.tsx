@@ -37,7 +37,7 @@ export const FAQ = ({ removeTitle }: { removeTitle?: boolean }) => (
       <li className="py-[3px] text-lg dark:text-stone-200">
         <a href="https://nextjs.org/" className="underline-dotted" target="_blank">Next.js</a>
       </li>
-      <li className="py-[3px] text-lg dark:text-stone-200">
+      <li className="py-[3px] text-lg dark:text-stone-200"> 
         <a href="https://trpc.io/" className="underline-dotted" target="_blank">tRPC</a>
       </li>
       <li className="py-[3px] text-lg dark:text-stone-200">
