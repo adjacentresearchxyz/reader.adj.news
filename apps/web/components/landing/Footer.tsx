@@ -45,12 +45,6 @@ export const BottomFooter = () => {
               </h2>
               <ul className="font-medium text-neutral-450">
                 <li className="mb-4">
-                  <Link href="/opensource" className="hover:underline">
-                    Open Source
-                  </Link>
-                </li>
-                
-                <li className="mb-4">
                   <a href="/about" className="hover:underline">
                     About
                   </a>
@@ -73,6 +67,11 @@ export const BottomFooter = () => {
               </h2>
               <ul className="font-medium text-neutral-450">
                 <li className="mb-4">
+                  <Link href="/opensource" className="hover:underline">
+                    Open Source
+                  </Link>
+                </li>
+                <li className="mb-4">
                   <Link href="https://engineering.adj.news" className="hover:underline">
                    Blog
                   </Link>
@@ -92,6 +91,28 @@ export const BottomFooter = () => {
                 <li className="mb-4">
                   <Link href="/rss/youtube" className="hover:underline">
                     Youtube RSS
+                  </Link>
+                </li>
+              </ul>
+            </div>
+            <div>
+              <h2 className="mb-6 text-base font-medium text-neutral-900 dark:text-white">
+                Funding
+              </h2>
+              <ul className="font-medium text-neutral-450">
+                <li className="mb-4">
+                  <Link href="https://manifund.org/projects/adjacent-news" className="hover:underline">
+                    Manifund
+                  </Link>
+                </li>
+                <li className="mb-4">
+                  <Link href="https://explorer.gitcoin.co/#/projects/0x3f41e1ebe5e4dc04373a56b48eb0d59a27274660b5aa50dfb98fb3aebb828ded" className="hover:underline">
+                   Gitcoin
+                  </Link>
+                </li>
+                <li className="mb-4">
+                  <Link href="/addresses" className="hover:underline">
+                   Addresses
                   </Link>
                 </li>
               </ul>
