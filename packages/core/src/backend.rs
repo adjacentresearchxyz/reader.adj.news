@@ -36,10 +36,12 @@ struct RefreshFeedsRequest {
 }
 
 async fn refreshfeeds(Json(request): Json<RefreshFeedsRequest>) {
+    println!("Starting API refresh");
+
     let client: Result<PrismaClient, NewClientError> = PrismaClient::_builder().build().await;
     let client = Arc::new(client.unwrap());
 
-    println!("Starting API refresh");
+    println!("Created Client")
 
     let feeds = client
         .feed()
