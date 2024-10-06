@@ -13,6 +13,8 @@ import { GoogleButton } from "../features/auth/GoogleLoginButton";
 function Login() {
   const router = useRouter();
   const user = useUser();
+  const { query } = useRouter();
+  const isGhost = query.ghost === 'true';
 
   useEffect(() => {
     if (user?.id != undefined) {
@@ -37,8 +39,8 @@ function Login() {
             </button>
           </div>
           {/* <AppleButton /> */}
-          <GoogleButton />
-          <EmailButton type="login" />
+          <GoogleButton ghost={isGhost}/>
+          <EmailButton ghost={isGhost} type="login" />
           <h4 className="pt-1 text-center text-[13px] text-neutral-500">
             By clicking “Continue” above, you acknowledge that you have read and
             understood, and agree to Adjacent's{" "}

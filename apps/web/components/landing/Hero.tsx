@@ -24,9 +24,9 @@ export default function Hero() {
         <div className="mt-20">
           <div className="mx-auto max-w-4xl px-5 lg:px-8 xl:max-w-7xl">
             <div className="mx-auto flex flex-col items-center text-center ">
-              <div className="z-10">
+              {/* <div className="z-10">
                 <Banner />
-              </div>
+              </div> */}
               <h1 className="z-10 text-[36px] font-[775] leading-none tracking-tight sm:text-[100px] md:text-[100px] lg:w-[900px]">
                 <span className="text-black-500">Adjacent News</span>
               </h1>
@@ -35,9 +35,9 @@ export default function Hero() {
                   Market Driven News
                 </span>
               </h3>
-              <div className="z-10 mt-6">
+              {/* <div className="z-10 mt-6">
                 <SignUpFormReact />
-              </div>
+              </div> */}
             </div>
             <div className="mx-auto mt-24 flex w-full justify-center px-1.5">
               <div className="mx-4 grid grid-cols-1 gap-6 md:mx-0 md:grid-cols-2 xl:grid-cols-2">

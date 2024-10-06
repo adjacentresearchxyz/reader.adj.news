@@ -7,7 +7,8 @@ import { Input } from "@refeed/ui/components/input";
 
 import { trpc } from "../../utils/trpc";
 
-export const EmailButton = (props: { type: "login" | "signup" }) => {
+// @TODO: add ghost login here
+export const EmailButton = (props: { type: "login" | "ghost", ghost: true | false }) => {
   const Supabase = useSupabaseClient();
   const utils = trpc.useUtils();
 
@@ -27,6 +28,14 @@ export const EmailButton = (props: { type: "login" | "signup" }) => {
     if (window) {
       setEmailSent(true);
 
+      const origin =
+      typeof window !== "undefined" ?? window.location.origin
+        ? window.location.origin
+        : "";
+
+      const ghostRedirectTo = 
+        props.ghost ? origin + "/redirect" : origin + "/login"
+
       const emailRedirectTo =
         window.location.host == "localhost:3000"
           ? "http://localhost:3000/login"
@@ -36,8 +45,7 @@ export const EmailButton = (props: { type: "login" | "signup" }) => {
         email,
         options: {
           shouldCreateUser: true,
-          // The redirect to dosen't to work, set the default in the supabase dashboard instead
-          emailRedirectTo: emailRedirectTo,
+          emailRedirectTo: props.ghost ? ghostRedirectTo : emailRedirectTo,
         },
       });
 

@@ -7,11 +7,16 @@ export const BottomFooter = () => {
       <div className="w-full max-w-screen-xl p-4 py-6 sm:mx-2 md:mx-auto md:w-[825px] md:py-8 xl:w-[1252px]">
         <div className="md:flex md:justify-between">
           <div className="grid grid-cols-2 gap-8 sm:grid-cols-7 sm:gap-6">
-          <div>
+            <div>
               <h2 className="text-sm mb-6 text-base font-medium text-neutral-900 dark:text-white">
                 Products
               </h2>
               <ul className="text-sm font-medium text-neutral-450">
+                <li className="mb-4">
+                  <Link href="https://adj.news" target="_blank" className="hover:underline">
+                    News
+                  </Link>
+                </li>
                 <li className="mb-4">
                   <Link href="https://adj.news/feed" target="_blank" className="hover:underline">
                     RSS Reader
@@ -72,8 +77,8 @@ export const BottomFooter = () => {
                   </Link>
                 </li>
                 <li className="mb-4">
-                  <Link href="https://engineering.adj.news" className="hover:underline">
-                   Blog
+                  <Link href="https://adj.news/tag/engineering/" className="hover:underline">
+                    Blog
                   </Link>
                 </li>
               </ul>
@@ -107,12 +112,12 @@ export const BottomFooter = () => {
                 </li>
                 <li className="mb-4">
                   <Link href="https://explorer.gitcoin.co/#/projects/0x3f41e1ebe5e4dc04373a56b48eb0d59a27274660b5aa50dfb98fb3aebb828ded" className="hover:underline">
-                   Gitcoin
+                    Gitcoin
                   </Link>
                 </li>
                 <li className="text-sm mb-4">
                   <Link href="/addresses" className="hover:underline">
-                   Addresses
+                    Addresses
                   </Link>
                 </li>
               </ul>

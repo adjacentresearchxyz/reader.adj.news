@@ -68,6 +68,7 @@ export async function middleware(req: NextRequest) {
   const {
     data: { session },
   } = await supabase.auth.getSession();
+  const user = await supabase.auth.getUser();
 
   // Match URLs of the pattern /feed/anything?item=
   const sanitizedPathname = req.nextUrl.pathname.replace(/#.*/, '');
@@ -80,6 +81,12 @@ export async function middleware(req: NextRequest) {
     return NextResponse.redirect(new URL(`/reader?item=${item}`, req.url));
   }
   
+  // if signed in and wanting to auth into ghost redirect them 
+  // if (session && req.nextUrl.pathname === "/redirect") {
+  //   const redirectUrl = new URL(`https://ghost-auth-proxy.adjacentresearch.workers.dev/redirect/?email=${user.data.user?.email}`);
+  //   return NextResponse.redirect(redirectUrl);
+  // }
+
   // if user is signed in and the current path is /login the user to the app
   if (session && req.nextUrl.pathname === "/login") {
     return NextResponse.redirect(new URL("/feed/all", req.url));
@@ -105,7 +112,8 @@ export async function middleware(req: NextRequest) {
     req.nextUrl.pathname !== "/" &&
     req.nextUrl.pathname !== "/login" &&
     req.nextUrl.pathname !== "/signup" &&
-    req.nextUrl.pathname !== "/pricing"
+    req.nextUrl.pathname !== "/pricing" &&
+    req.nextUrl.pathname !== "/redirect"
   ) {
     return NextResponse.redirect(new URL("/signup", req.url));
   }
@@ -124,5 +132,6 @@ export const config = {
     "/bookmarks",
     "/login",
     "/signup",
+    "/redirect",
   ],
 };

@@ -3,7 +3,7 @@ import { useSupabaseClient, useUser } from "@supabase/auth-helpers-react";
 
 import { trpc } from "../../utils/trpc";
 
-export const GoogleButton = () => {
+export const GoogleButton = (props: { ghost: true | false }) => {
   const Supabase = useSupabaseClient();
   const utils = trpc.useUtils();
   const origin =
@@ -23,7 +23,7 @@ export const GoogleButton = () => {
     const { error } = await Supabase.auth.signInWithOAuth({
       provider: "google",
       options: {
-        redirectTo: origin + "/login",
+        redirectTo: props.ghost ? origin + "/redirect" : origin + "/login",
       },
     });
 

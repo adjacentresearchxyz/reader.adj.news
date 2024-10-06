@@ -19,8 +19,8 @@ const Landing: NextPage = () => {
   return (
     <LandingWrapper>
       <NextSeo
-        title="Adjacent News - Read the news with a market lens"
-        description="Adjacent News let's you read the news with a market lens. We provide a robust RSS reader that allows you to read news from your favorite sources and also see prediction / information markets live."
+        title="Adjacent News - Forward Looking News, Driven by Prediction Markets and Forecasting Platforms"
+        description="Adjacent News let's you read the news with a market lens"
       />
       <div className="background-pattern overscroll-hidden z-10 rounded-b-xl border-b border-[#D9D9D9] bg-[#fafafa]">
         <NavBar />
@@ -49,7 +49,6 @@ const Landing: NextPage = () => {
           </div> */}
           {/* <div className="pb-6" /> */}
           {/* <MobileCard /> */}
-          <PricingPage homepage />
           <BottomFooter />
         </div>
       </div>
