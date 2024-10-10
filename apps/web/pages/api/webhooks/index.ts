@@ -3,6 +3,7 @@ import {
   handleInvoicePaid,
   handleSubscriptionCanceled,
   handleSubscriptionCreatedOrUpdated,
+  getOrCreateStripeCustomerIdForUser,
 } from "features/payments/stripe-handlers";
 import { buffer } from "micro";
 import Cors from "micro-cors";
@@ -41,6 +42,34 @@ const webhookHandler = async (req: NextApiRequest, res: NextApiResponse) => {
     }
 
     switch (event.type) {
+      case "customer.created":
+        console.log('Customer created')
+        const customer = event.data.object as Stripe.Customer;
+        console.log(customer)
+        const stripeCustomer = await stripe.customers.retrieve(customer.id);
+        const email = stripeCustomer.email;
+        const user = await prisma.user.findFirst({
+          where: {
+            email: email,
+          },
+          select: {
+            id: true,
+          },
+        });
+        const userId = user?.id;
+        console.log(userId)
+
+        const updatedUser = await prisma.user.update({
+          where: {
+            id: userId,
+          },
+          data: {
+            stripeCustomerId: customer.id,
+          },
+        });
+
+        console.log(`Created stripe customer for user ${userId}`)
+        break;
       case "invoice.paid":
         // Used to provision services after the trial has ended.
         // The status of the invoice will show up as paid. Store the status in your database to reference when a user accesses your service to avoid hitting rate limits.
