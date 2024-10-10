@@ -112,7 +112,7 @@ async function fetchItemDetailsAndDisplay(id) {
       </div>
       {/* Add this img element for the SVG */}
       {/* Add this img element for the SVG */}
-      <img src="https://adj.news/logo.svg" alt="Logo" style={{
+      <img src="https://reader.adj.news/logo.svg" alt="Logo" style={{
         position: 'absolute',
         bottom: '0', // Align at the bottom
         right: '0', // Align at the right
