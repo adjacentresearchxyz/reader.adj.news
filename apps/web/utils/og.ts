@@ -6,7 +6,7 @@ export function buildOgUrl<P extends Record<string, string>>(
 ) {
   // Change to localhost:3000 for local testing
   const url =
-    `https://${domain ?? `adj.news`}/api/og/?id=${id}`
+    `https://${domain ?? `reader.adj.news`}/api/og/?id=${id}`
 
   return url
 }
