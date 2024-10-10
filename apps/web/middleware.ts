@@ -87,9 +87,16 @@ export async function middleware(req: NextRequest) {
   //   return NextResponse.redirect(redirectUrl);
   // }
 
+  
+
   // if user is signed in and the current path is /login the user to the app
   if (session && req.nextUrl.pathname === "/login") {
-    return NextResponse.redirect(new URL("/feed/all", req.url));
+    // if user is signed in and the current path is /login and the search param includes ?ghost=true redirect them to /redirect
+    if (req.nextUrl.search.includes("?ghost=true")) {
+      return NextResponse.redirect(new URL("/redirect", req.url));
+    } else {
+      return NextResponse.redirect(new URL("/feed/all", req.url));
+    }
   }
 
   if (session && req.nextUrl.pathname === "/signup") {
