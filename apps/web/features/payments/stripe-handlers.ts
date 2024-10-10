@@ -102,9 +102,11 @@ export const handleInvoicePaid = async ({
 
 export const handleSubscriptionCreatedOrUpdated = async ({
   event,
+  stripe,
   prisma,
 }: {
   event: Stripe.Event;
+  stripe: Stripe;
   prisma: PrismaClient;
 }) => {
   const subscription = event.data.object as Stripe.Subscription;
@@ -148,13 +150,31 @@ export const handleSubscriptionCreatedOrUpdated = async ({
 
 export const handleSubscriptionCanceled = async ({
   event,
+  stripe,
   prisma,
 }: {
   event: Stripe.Event;
+  stripe: Stripe;
   prisma: PrismaClient;
 }) => {
   const subscription = event.data.object as Stripe.Subscription;
-  const userId = subscription.metadata.userId;
+  let userId = subscription.metadata.userId;
+
+  if (!userId) {
+    const customer = await stripe.customers.retrieve(subscription.customer as string);
+    const email = customer.email;
+    const user = await prisma.user.findFirst({
+      where: {
+        email: email,
+      },
+      select: {
+        id: true,
+      },
+    });
+    userId = user?.id;
+  }
+
+  console.log(`UserID: ${userId}`)
 
   // Remove subscription data from user
   await prisma.user.update({

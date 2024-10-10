@@ -54,6 +54,7 @@ const webhookHandler = async (req: NextApiRequest, res: NextApiResponse) => {
         // Used to provision services as they are added to a subscription.
         await handleSubscriptionCreatedOrUpdated({
           event,
+          stripe,
           prisma,
         });
         break;
@@ -62,6 +63,7 @@ const webhookHandler = async (req: NextApiRequest, res: NextApiResponse) => {
         // Used to provision services as they are updated.
         await handleSubscriptionCreatedOrUpdated({
           event,
+          stripe,
           prisma,
         });
         break;
@@ -78,6 +80,7 @@ const webhookHandler = async (req: NextApiRequest, res: NextApiResponse) => {
         // upon your subscription settings.
         await handleSubscriptionCanceled({
           event,
+          stripe,
           prisma,
         });
         break;
