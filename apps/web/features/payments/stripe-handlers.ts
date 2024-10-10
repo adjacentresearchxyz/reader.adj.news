@@ -62,7 +62,23 @@ export const handleInvoicePaid = async ({
   const subscription = await stripe.subscriptions.retrieve(
     subscriptionId as string,
   );
-  const userId = subscription.metadata.userId;
+  
+  let userId = subscription.metadata.userId;
+  if (!userId) {
+    const customer = await stripe.customers.retrieve(subscription.customer as string);
+    const email = customer.email;
+    const user = await prisma.user.findFirst({
+      where: {
+        email: email,
+      },
+      select: {
+        id: true,
+      },
+    });
+    userId = user?.id;
+  }
+
+  console.log(`UserID: ${userId}`)
 
   // There is probably a better way to do this
   const Plan =
