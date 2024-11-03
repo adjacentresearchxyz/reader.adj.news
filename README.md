@@ -1,4 +1,4 @@
-# Refeed
+# Adjacent
 [Refeed Reader](https://refeedreader.com/) is an open source RSS Reader. With Refeed, you can easily organize and read your favorite websites, blogs, and news sources in one place, saving you time and effort in staying up-to-date with the content that matters most to you.
 
 <a href="https://refeedreader.com">
