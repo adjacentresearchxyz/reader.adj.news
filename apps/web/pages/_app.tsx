@@ -19,6 +19,7 @@ import {
 } from "@utils/posthog";
 import { PostHogProvider } from "posthog-js/react";
 import { useUser } from "@supabase/auth-helpers-react";
+import { NuqsAdapter } from 'nuqs/adapters/next/pages'
 
 import { trpc } from "utils/trpc";
 
@@ -88,7 +89,9 @@ const App = ({
               <main
                 className={`bg-background text-optimize-legibility min-h-screen text-[#38383d] subpixel-antialiased outline-none dark:bg-[#0f0f10] dark:text-[#f3f3f7]`}
               >
-                <Component className={`dark`} {...pageProps} />
+                <NuqsAdapter>
+                  <Component className={`dark`} {...pageProps} />
+                </NuqsAdapter>
                 <Toaster position="bottom-right" />
               </main>
             </ThemeProvider>
