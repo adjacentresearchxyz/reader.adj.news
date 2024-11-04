@@ -1,67 +1,65 @@
 FROM --platform=linux/amd64 node:20-alpine AS builder
 
-	RUN apk add --no-cache libc6-compat openssl && apk update
-	WORKDIR /app
-	RUN yarn policies set-version 1.22.1
-	COPY . . 
-	RUN turbo@1.13.4 prune --scope=@refeed/nextjs --docker
+RUN apk add --no-cache libc6-compat openssl && apk update
+WORKDIR /app
+RUN yarn policies set-version 1.22.1
+
+# Install turbo globally first
+RUN yarn global add turbo@1.13.4
+
+COPY . .
+RUN turbo prune --scope=@refeed/nextjs --docker
 
 FROM --platform=linux/amd64 node:20-alpine AS installer
 
-    # Temp Removed
-	# ARG OPENAI_API_KEY
-	# ENV OPENAI_API_KEY=$OPENAI_API_KEY
+ARG NEXT_PUBLIC_SUPABASE_URL
+ARG NEXT_PUBLIC_SUPABASE_ANON_KEY
+ARG NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY
 
-	ARG NEXT_PUBLIC_SUPABASE_URL
-	ARG NEXT_PUBLIC_SUPABASE_ANON_KEY
-	ARG NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY
+ENV NEXT_PUBLIC_SUPABASE_URL=$NEXT_PUBLIC_SUPABASE_URL
+ENV NEXT_PUBLIC_SUPABASE_ANON_KEY=$NEXT_PUBLIC_SUPABASE_ANON_KEY
+ENV NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY=${NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY}
 
-	ENV NEXT_PUBLIC_SUPABASE_URL=$NEXT_PUBLIC_SUPABASE_URL
-	ENV NEXT_PUBLIC_SUPABASE_ANON_KEY=$NEXT_PUBLIC_SUPABASE_ANON_KEY
-	ENV NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY=${NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY}
+ENV SKIP_YARN_COREPACK_CHECK=0
 
-	ENV SKIP_YARN_COREPACK_CHECK=0
+RUN apk add --no-cache libc6-compat openssl && apk update
+WORKDIR /app
 
-	RUN apk add --no-cache libc6-compat openssl && apk update
-	WORKDIR /app
+ENV NODE_ENV production
+ENV CI true
 
-	ENV NODE_ENV production
-	ENV CI         true
+COPY .gitignore .gitignore
+COPY --from=builder /app/out/json .
+COPY --from=builder /app/out/pnpm-lock.yaml* ./
 
-	COPY .gitignore .gitignore 
-	COPY --from=builder /app/out/json .
-	COPY --from=builder /app/out/pnpm-lock.yaml\* ./
+RUN yarn policies set-version 1.22.1
+RUN yarn global add pnpm@8.15.7 turbo@1.13.4 && pnpm fetch --prod && pnpm install -r
 
-	RUN yarn policies set-version 1.22.1
-	RUN yarn global add pnpm@8.15.7 && pnpm fetch --prod && pnpm install -r
+COPY --from=builder /app/out/full .
 
-	COPY --from=builder /app/out/full .
-
-	RUN SKIP_ENV_VALIDATION=1 pnpm turbo@1.13.4 build --filter=nextjs...
-
+RUN SKIP_ENV_VALIDATION=1 turbo build --filter=nextjs...
 
 FROM --platform=linux/amd64 node:20-alpine AS runner
 
-	RUN apk add --no-cache libc6-compat openssl && apk update
-	WORKDIR /app
+RUN apk add --no-cache libc6-compat openssl && apk update
+WORKDIR /app
 
-	RUN addgroup --system --gid 1001 nodejs
-	RUN adduser --system --uid 1001 nextjs
-	USER nextjs
-	EXPOSE 3000
-	ENV PORT 3000
+RUN addgroup --system --gid 1001 nodejs
+RUN adduser --system --uid 1001 nextjs
+USER nextjs
+EXPOSE 3000
+ENV PORT 3000
 
-	ENV NODE_ENV production
+ENV NODE_ENV production
+ENV NEXT_TELEMETRY_DISABLED 1
 
-	ENV NEXT_TELEMETRY_DISABLED 1
+COPY --from=installer /app/apps/web/next.config.mjs ./
+COPY --from=installer /app/apps/web/package.json ./
 
-	COPY --from=installer /app/apps/web/next.config.mjs ./
-	COPY --from=installer /app/apps/web/package.json ./
+COPY --from=installer --chown=nextjs:nodejs /app/apps/web/.next/standalone ./
+COPY --from=installer --chown=nextjs:nodejs /app/apps/web/.next/static ./apps/web/.next/static
+COPY --from=installer --chown=nextjs:nodejs /app/apps/web/public ./apps/web/public
 
-	COPY --from=installer --chown=nextjs:nodejs /app/apps/web/.next/standalone ./
-	COPY --from=installer --chown=nextjs:nodejs /app/apps/web/.next/static ./apps/web/.next/static
-	COPY --from=installer --chown=nextjs:nodejs /app/apps/web/public ./apps/web/public
+ENV HOSTNAME "0.0.0.0"
 
-	ENV HOSTNAME "0.0.0.0"
-
-	CMD node apps/web/server.js
+CMD node apps/web/server.js
