@@ -3,9 +3,8 @@ FROM --platform=linux/amd64 node:20-alpine AS builder
 	RUN apk add --no-cache libc6-compat openssl && apk update
 	WORKDIR /app
 	RUN yarn policies set-version 1.22.1
-	RUN yarn global add turbo@"^1.10.12"
 	COPY . . 
-	RUN turbo@1.10.12 prune --scope=@refeed/nextjs --docker
+	RUN turbo@1.13.4 prune --scope=@refeed/nextjs --docker
 
 FROM --platform=linux/amd64 node:20-alpine AS installer
 
@@ -34,12 +33,11 @@ FROM --platform=linux/amd64 node:20-alpine AS installer
 	COPY --from=builder /app/out/pnpm-lock.yaml\* ./
 
 	RUN yarn policies set-version 1.22.1
-	RUN yarn global add turbo@"^1.10.12"
 	RUN yarn global add pnpm@8.15.7 && pnpm fetch --prod && pnpm install -r
 
 	COPY --from=builder /app/out/full .
 
-	RUN SKIP_ENV_VALIDATION=1 pnpm turbo@1.10.12 build --filter=nextjs...
+	RUN SKIP_ENV_VALIDATION=1 pnpm turbo@1.13.4 build --filter=nextjs...
 
 
 FROM --platform=linux/amd64 node:20-alpine AS runner
