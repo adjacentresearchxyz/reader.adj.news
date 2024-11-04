@@ -9,7 +9,7 @@ RUN corepack enable && corepack prepare pnpm@8.15.7 --activate
 
 # Copy source for turbo prune
 COPY . .
-RUN pnpm dlx turbo prune --scope=@refeed/nextjs --docker
+RUN pnpm dlx turbo@1.10.12 prune --scope=@refeed/nextjs --docker
 
 FROM --platform=linux/amd64 node:20-alpine AS installer
 
