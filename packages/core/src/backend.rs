@@ -41,8 +41,6 @@ async fn refreshfeeds(Json(request): Json<RefreshFeedsRequest>) {
     let client: Result<PrismaClient, NewClientError> = PrismaClient::_builder().build().await;
     let client = Arc::new(client.unwrap());
 
-    println!("Created Client")
-
     let feeds = client
         .feed()
         .find_many(vec![feed::id::in_vec(request.feed_ids)])
